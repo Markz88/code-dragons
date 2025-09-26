@@ -44,10 +44,10 @@ Open the game at [http://localhost:8000](http://localhost:8000).
 ### Run with Docker
 ```bash
 docker build -t code-and-dragons .
-docker run --rm -p 8000:8000 code-and-dragons
+docker run --rm -p 5000:8000 code-and-dragons
 ```
-
-The game will be available at [http://localhost:8000](http://localhost:8000).  
+Replace 5000 with the port you want to use (e.g., 3000:8000, 5000:8000, etc.).
+The game will be available at [http://localhost:5000](http://localhost:5000) (replace 5000 with the host port you mapped).  
 
 ---
 
