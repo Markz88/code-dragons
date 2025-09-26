@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bottega — Code & Dragons RPG</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="icon" href="/static/favicon.ico" />
+</head>
+<body>
+  <div class="container layout">
+    <aside class="sidebar">
+      <div class="profile">
+        <h2>🎭 Personaggio</h2>
+        <div id="profileView"></div>
+        <div id="xpBar"></div>
+        <div class="toolbar">
+          <button id="backBtn">Torna alla Storia</button>
+          <!-- <button id="sidequestsBtn">Side Quest</button> -->
+        </div>
+      </div>
+      <div class="achievements">
+        <h2>🧾 Inventario</h2>
+        <ul id="inventoryList"></ul>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="shop-hero">
+        <div class="shop-hero-text">
+          <h1>🛒 Emporio delle Meraviglie</h1>
+          <p class="muted">Spendi le tue monete d'oro per acquistare consumabili con effetti di gioco.</p>
+        </div>
+        <img class="shop-npc" src="/static/assets/npc/shop.png" alt="Il mercante dell'emporio delle meraviglie" loading="lazy" />
+      </div>
+      <div id="shopList" class="shop-grid"></div>
+      <div id="shopMessage" class="muted"></div>
+    </main>
+  </div>
+
+  <dialog id="rewardDialog">
+    <div id="rewardContent"></div>
+    <menu>
+      <button id="rewardCloseBtn" type="button">Chiudi</button>
+    </menu>
+  </dialog>
+
+  <script defer src="/static/shop.js"></script>
+</body>
+</html>

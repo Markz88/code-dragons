@@ -1,0 +1,16 @@
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  button { display: none; }
+  body { background: white !important; }
+  .sheet { box-shadow: none !important; border: none !important; }
+}
+/* Screen styling */
+body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b1020;color:#e6e9f0}
+.sheet{max-width:800px;margin:20px auto;background:#121938;border:1px solid #2a3361;border-radius:12px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+h1,h2{margin:.2em 0}
+ul{padding-left:18px}
+.muted{opacity:.7}
+.meta{font-size:12px;opacity:.8}
+button{background:#3b82f6;border:none;color:white;padding:8px 12px;border-radius:8px;cursor:pointer}
+.comp-avatar{display:flex;align-items:center;gap:12px;margin:8px 0}
+.comp-avatar img{width:64px;height:64px;border:1px solid #2a3361;border-radius:8px}

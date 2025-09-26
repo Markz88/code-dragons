@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Side Quest — Code & Dragons RPG</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="icon" href="/static/favicon.ico" />
+</head>
+<body>
+  <div class="container layout">
+    <aside class="sidebar">
+      <div class="profile">
+        <h2>🎭 Personaggio</h2>
+        <div id="profileView"></div>
+        <div id="xpBar"></div>
+      <div class="toolbar">
+        <button id="backBtn">Torna alla Storia</button>
+        <!-- <button id="shopBtn">Bottega</button> 
+        <button id="compendiumBtn">Compendio</button> -->
+      </div>
+      </div>
+      <div class="achievements">
+        <h2>🏅 Conquiste</h2>
+        <ul id="achievementsList"></ul>
+      </div>
+    </aside>
+    <main class="content">
+      <h1>🌟 Missioni Opzionali</h1>
+      <p class="muted" id="sidequestIntro">Completa queste avventure bonus per ottenere sigilli e XP extra.</p>
+      <div id="sidequests"></div>
+    </main>
+  </div>
+
+  <dialog id="rewardDialog">
+    <div id="rewardContent"></div>
+    <menu>
+      <button id="rewardCloseBtn" type="button">Chiudi</button>
+    </menu>
+  </dialog>
+
+  <script defer src="/static/sidequests.js"></script>
+</body>
+</html>

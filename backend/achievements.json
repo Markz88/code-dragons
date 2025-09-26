@@ -1,0 +1,661 @@
+{
+  "roles": [
+    "mage",
+    "rogue",
+    "swordsman",
+    "alchemist",
+    "ranger"
+  ],
+  "role_intro": {
+    "mage": "Ultimo custode della Biblioteca degli Specchi, raduni frammenti dispersi per ridare voce ai portali. Dal Bastone degli Itinerari Arcani alla Tavola Armonica, ogni capitolo ti chiede logica e incanti per risvegliare l'accademia dormiente.",
+    "rogue": "Nella Cittadella Velata la tua gilda ha bisogno di mappe furtive e codici implacabili. Ricompone sacchi di bottino, fonde atlanti segreti e chiudi la missione quando la catena d'ombra sussurra ordini perfetti.",
+    "swordsman": "Alla Scuola della Lama il kata d'apertura \u00e8 solo l'inizio. Ordina registri tattici, scolpisci colpi codificati e guida la parata sincronica che prover\u00e0 il valore della tua compagnia.",
+    "alchemist": "Nel Laboratorio Reale le mense sono in subbuglio e i registri si confondono. Raccogli essenze, aggiorna gli annali della corte e orchestra la pipeline alchemica che trasformer\u00e0 ogni esperimento in potere stabile.",
+    "ranger": "Dal Bosco Lungo alle capanne degli anziani ti attendono piste da tessere e clan da coordinare. Raduna provviste, aggiorna totem messaggeri e guida la marcia coordinata che difender\u00e0 il confine."
+  },
+  "narration_by_level": {
+    "c01_lists_l1": {
+      "mage": "Gli specchi hanno ripreso a riflettere: hai convogliato ogni frammento nel Flusso dei Frammenti.",
+      "rogue": "Hai svuotato la sala dei tributi: il Flusso dei Frammenti scorre compatto nel tuo sacco.",
+      "swordsman": "Il kata si apre senza esitazioni: hai contato ogni colpo del Flusso dei Frammenti.",
+      "alchemist": "Le mense brillano di reagenti sommati: il Flusso dei Frammenti e' stabile.",
+      "ranger": "Gli esploratori battono lo stesso ritmo: hai raccolto il Flusso dei Frammenti."
+    },
+    "c01_lists_l2": {
+      "mage": "Nel foyer cristallino hai isolato il Picco della Lista che alimenta i portali.",
+      "rogue": "Nel tesoro velato hai trovato la gemma piu' alta: Picco della Lista domato.",
+      "swordsman": "Il maestro annuisce: hai individuato il Picco della Lista nei tuoi colpi.",
+      "alchemist": "Le provette brillano sull'apice corretto: Picco della Lista completato.",
+      "ranger": "Sulla radura osservi la cima guida: Picco della Lista raggiunto."
+    },
+    "c01_lists_l3": {
+      "mage": "Gli echi numerici sono quieti: Eco delle Tracce ora tace nella Biblioteca.",
+      "rogue": "Hai zittito le trappole duplicate: Eco delle Tracce ripulito.",
+      "swordsman": "La forma conserva solo i primi passi: Eco delle Tracce disciplinato.",
+      "alchemist": "I residui non si ripetono piu': Eco delle Tracce riuscito.",
+      "ranger": "Ogni pista resta unica sul fango: Eco delle Tracce riportato all'ordine."
+    },
+    "c01_lists_l4": {
+      "mage": "Hai scandito i Segmenti Rituali: le colonne seguono il tuo tempo arcano.",
+      "rogue": "Le sacche sono pronte alla fuga: Segmenti Rituali organizzati.",
+      "swordsman": "Le squadre si alternano senza esitazione: Segmenti Rituali completati.",
+      "alchemist": "Gli alambicchi travasano per blocchi perfetti: Segmenti Rituali stabilizzati.",
+      "ranger": "Le carovane marciano in squadre regolari: Segmenti Rituali conclusi."
+    },
+    "c01_lists_l5": {
+      "mage": "La Trama Lineare intreccia ogni fibra della Biblioteca: capitolo pronto.",
+      "rogue": "Hai riversato il bottino in un'unica pila: Trama Lineare sigillata.",
+      "swordsman": "Ogni combinazione confluisce in un assalto fluido: Trama Lineare dominata.",
+      "alchemist": "Tutte le infusioni convergono nel crogiolo finale: Trama Lineare completa.",
+      "ranger": "Le provviste sono in un'unica colonna pronta alla marcia: Trama Lineare assicurata."
+    },
+    "c02_dicts_l1": {
+      "mage": "Gli archivi specchiati ti obbediscono: il Sigillo Cercato appare e il ricambio e' pronto.",
+      "rogue": "Nel mercato ombra trovi sempre l'emblema giusto o la sua copia sicura.",
+      "swordsman": "Nel cortile degli stendardi recuperi il simbolo richiesto o il vessillo di riserva.",
+      "alchemist": "Negli annali reali recuperi l'ingrediente esatto o il sostituto pianificato.",
+      "ranger": "Alle capanne degli anziani trovi l'erba invocata o il rametto di scorta."
+    },
+    "c02_dicts_l2": {
+      "mage": "Gli atlanti rivali condividono ora rune coerenti: Atlante Fuso completato.",
+      "rogue": "Le mappe segrete combaciano senza lasciare tracce: Atlante Fuso riuscito.",
+      "swordsman": "I registri tattici raccontano un'unica strategia: Atlante Fuso sigillato.",
+      "alchemist": "I ricettari sovrapposti mostrano solo dosi aggiornate: Atlante Fuso ordinato.",
+      "ranger": "Le carte del territorio riportano i sentieri piu' recenti: Atlante Fuso confermato."
+    },
+    "c02_dicts_l3": {
+      "mage": "Gli stemmi degli arconti scambiano fedelta con precisione: Alleanze Invertite eseguite.",
+      "rogue": "I codici della gilda sono girati senza confusione: Alleanze Invertite operative.",
+      "swordsman": "Ruoli e formazioni si rispecchiano correttamente: Alleanze Invertite compiute.",
+      "alchemist": "Le tabelle reagenti puntano all'essenza originaria: Alleanze Invertite stabili.",
+      "ranger": "Coordinate e esploratori si riconoscono al primo sguardo: Alleanze Invertite concluse."
+    },
+    "c02_dicts_l4": {
+      "mage": "Hai contato ogni lettera arcana nel diluvio: Pioggia di Lettere domata.",
+      "rogue": "Dalla pioggia di sigilli rotti hai salvato solo i messaggi veri.",
+      "swordsman": "Hai contato i cori sugli spalti ignorando clangori e fischi.",
+      "alchemist": "Hai registrato le lettere incise sulle pergamene lasciando perdere le macchie.",
+      "ranger": "Hai ascoltato solo i nomi attorno al fuoco, lasciando cadere la cenere."
+    },
+    "c02_dicts_l5": {
+      "mage": "Il Bastone degli Itinerari Arcani ti guida sempre al nodo corretto o si ferma con prudenza.",
+      "rogue": "Tra i cunicoli segreti raggiungi il bottino giusto o attivi il piano di riserva.",
+      "swordsman": "Il percorso verso l'armeria segue ogni svolta prevista o chiude l'accesso.",
+      "alchemist": "Le distillazioni annidate ti conducono al valore richiesto o al dosaggio sicuro.",
+      "ranger": "Tra alberi e radure trovi il rifugio esatto o accetti il riparo di emergenza."
+    },
+    "c03_sets_l1": {
+      "mage": "Il Conclave ha contato ogni essenza distinta rimasta nel caos: Censimento completato.",
+      "rogue": "Gli informatori hanno l'elenco dei contatti unici: Censimento delle Essenze riuscito.",
+      "swordsman": "Sai quanti avversari diversi affronterai: Censimento delle Essenze chiuso.",
+      "alchemist": "Il giardino delle essenze registra quante specie uniche hai raccolto.",
+      "ranger": "Il censimento del bosco elenca le specie distinte incontrate."
+    },
+    "c03_sets_l2": {
+      "mage": "Le sfere cristalline mostrano solo le figure condivise: Cristalli Condivisi risolti.",
+      "rogue": "Le bande rivali vedono gli stessi nomi e mettono via i pugnali.",
+      "swordsman": "Gli ordini cavallereschi riconoscono i combattenti comuni.",
+      "alchemist": "Le serre condividono solo i semi compatibili: Cristalli Condivisi sistemati.",
+      "ranger": "I branchi incrociati sanno chi appartiene a entrambi i fuochi."
+    },
+    "c03_sets_l3": {
+      "mage": "Hai distinto le scintille che non coincidono tra le sfere: Scintille Divergenti chiarite.",
+      "rogue": "Hai segnalato i disertori di ogni fazione senza confonderti.",
+      "swordsman": "Sai chi resta fuori dalle compagnie rivali e puo' unirsi a te.",
+      "alchemist": "Hai isolato le specie presenti in una sola serra.",
+      "ranger": "Hai marcato le creature che appartengono a un solo branco."
+    },
+    "c03_sets_l4": {
+      "mage": "Gli archivi delle parole confermano i veri gemelli: Parole Gemelle verificate.",
+      "rogue": "Hai smascherato alias fasulli e salvato quelli con lettere perfette.",
+      "swordsman": "Il maestro delle parole applaude: i motti gemelli coincidono davvero.",
+      "alchemist": "Le formule anagrammate distillano la stessa essenza: prova superata.",
+      "ranger": "Le tribu riconoscono i nomi sussurrati con ordine diverso."
+    },
+    "c03_sets_l5": {
+      "mage": "Hai stimato i futuri possibili del Conclave: il tuo conteggio e' impeccabile.",
+      "rogue": "Sai quante combinazioni di agenti puoi orchestrare per la fuga.",
+      "swordsman": "Conosci tutte le formazioni che il drappello puo' schierare.",
+      "alchemist": "Hai contato le miscele che un lotto di foglie puo' generare.",
+      "ranger": "Hai stimato ogni pattuglia che la stagione permette di inviare."
+    },
+    "c04_functions_l1": {
+      "mage": "Il Santuario accetta il Sigillo dell'Addizione: due fiamme diventano una.",
+      "rogue": "Il tuo trucco fonde due valori senza lasciare tracce: sigillo completato.",
+      "swordsman": "La sala dei kata accetta il gesto base che unisce le energie.",
+      "alchemist": "I catalizzatori mescolano due reagenti di base con precisione.",
+      "ranger": "La radura dei rituali vede due correnti unirsi senza attrito."
+    },
+    "c04_functions_l2": {
+      "mage": "L'incanto rimbalza due volte con stabilita perfetta nel Rimbalzo Arcano.",
+      "rogue": "Il tuo arnese ripete la mossa due volte aprendo ogni serratura.",
+      "swordsman": "Il colpo doppio mantiene forza costante durante l'allenamento.",
+      "alchemist": "La trasformazione ripetuta due volte purifica il filtro.",
+      "ranger": "La benedizione doppia rinsalda la pianta guarita."
+    },
+    "c04_functions_l3": {
+      "mage": "Hai intessuto un canale arcano dove un incanto scorre dentro l'altro.",
+      "rogue": "La tua trappola combina preparazione e colpo finale senza inceppi.",
+      "swordsman": "Due tecniche si fondono in una sequenza armonica.",
+      "alchemist": "I reagenti concatenati reagiscono nell'ordine perfetto.",
+      "ranger": "I canti intrecciati del bosco si richiamano a vicenda."
+    },
+    "c04_functions_l4": {
+      "mage": "Hai imprigionato una costante nel gesto: il Vincolo della Costante risponde.",
+      "rogue": "La polvere aggiunge sempre lo stesso spostamento ai codici rubati.",
+      "swordsman": "La riserva fissa aggiunge forza ad ogni offensiva.",
+      "alchemist": "Il flacone sigillato aggiunge sempre la stessa dose alla mistura.",
+      "ranger": "Il talismano conserva un bonus fisso per ogni misura presa."
+    },
+    "c04_functions_l5": {
+      "mage": "Hai memorizzato il labirinto di Fibonacci: la sequenza risponde al tuo richiamo.",
+      "rogue": "La tua rete ricorda ogni passo della serie senza ricominciare da zero.",
+      "swordsman": "La progressione memorizzata anticipa il ritmo dell'avversario.",
+      "alchemist": "Il golem numerico risveglia i valori di Fibonacci con efficienza.",
+      "ranger": "La spirale delle stagioni e' scolpita nella memoria del clan."
+    },
+    "c05_loops_l1": {
+      "mage": "Hai contato i gradini del Ponte delle Spirali accendendo l'arco.",
+      "rogue": "Conosci ogni passo nel corridoio segreto del ponte.",
+      "swordsman": "La marcia d'addestramento fino alla vetta e' registrata col numero esatto.",
+      "alchemist": "Le gocce cadute nella sala delle spirali sono state contate tutte.",
+      "ranger": "La pattuglia ha contato i passi fino alla collina sacra."
+    },
+    "c05_loops_l2": {
+      "mage": "Hai previsto quante torce emetteranno luce pari nel teatro arcano.",
+      "rogue": "Sai quante lampade resteranno accese per coprire la fuga.",
+      "swordsman": "Conosci quante lance risplenderanno nello stesso turno.",
+      "alchemist": "Hai calcolato le reazioni che daranno luce equilibrata.",
+      "ranger": "Hai contato i fuochi che illumineranno i sentieri gemelli."
+    },
+    "c05_loops_l3": {
+      "mage": "Hai separato le correnti pari e dispari come chiesto dagli spiriti del ponte.",
+      "rogue": "Hai diviso gli scagnozzi in coppie precise senza perderne uno.",
+      "swordsman": "Il drappello e' diviso in linee alternate pronte all'addestramento.",
+      "alchemist": "Le molecole alternate sono in file ordinate.",
+      "ranger": "Le pattuglie alternate seguono piste parallele senza sovrapporsi."
+    },
+    "c05_loops_l4": {
+      "mage": "Hai contato quanti passi servono per superare il portale ritmico.",
+      "rogue": "Sai dopo quanti turni la ronda tornera nello stesso punto.",
+      "swordsman": "Hai misurato il tempo dei cicli d'allenamento senza errori.",
+      "alchemist": "Il laboratorio sa dopo quante iterazioni la miscela torna allo stato iniziale.",
+      "ranger": "Hai contato il periodo con cui il branco ripete il percorso."
+    },
+    "c05_loops_l5": {
+      "mage": "La Melodia Compressa risuona nel ponte: ogni nota consecutiva e' annotata.",
+      "rogue": "Il cifrario ritmato racconta esattamente quante lettere ripeti.",
+      "swordsman": "Le cronache codificano la durata di ogni colpo consecutivo.",
+      "alchemist": "Il registro distillato conserva il numero di elementi ripetuti.",
+      "ranger": "Il canto delle tracce elenca gli avvistamenti consecutivi senza errori."
+    },
+    "c06_conditions_l1": {
+      "mage": "La Sala dell'Equilibrio riconosce il destino di ogni numero pronunciato.",
+      "rogue": "Ogni passo e' stato valutato come oscuro, neutro o favorevole.",
+      "swordsman": "Il maestro del giudizio approva le tue valutazioni di segno.",
+      "alchemist": "Ogni reagente e' classificato come corrosivo, neutro o vitale.",
+      "ranger": "I saggi del bosco conoscono ora il vento di ogni scelta."
+    },
+    "c06_conditions_l2": {
+      "mage": "Hai distribuito voti equi ai rotoli del consiglio arcano.",
+      "rogue": "Hai pesato con astuzia i documenti consegnati alla gilda.",
+      "swordsman": "Hai assegnato gradi giusti ai rapporti della caserma.",
+      "alchemist": "Le pergamene di laboratorio mostrano punteggi bilanciati.",
+      "ranger": "Hai giudicato con calma i resoconti dei guardiani."
+    },
+    "c06_conditions_l3": {
+      "mage": "Hai filtrato gli ordini mantenendo solo quelli che rispettano l'incanto centrale.",
+      "rogue": "Solo i piani che soddisfano la condizione di sicurezza sono passati al tavolo delle ombre.",
+      "swordsman": "Solo gli addestramenti conformi rimangono nel tuo registro.",
+      "alchemist": "Hai mantenuto le reazioni che rispettano il vincolo alchemico.",
+      "ranger": "Le pattuglie che soddisfano il segnale richiesto restano nel piano."
+    },
+    "c06_conditions_l4": {
+      "mage": "Hai valutato la griglia degli astri scegliendo il responso piu' favorevole.",
+      "rogue": "Hai scelto il piano migliore tra quelli consentiti dalla gilda.",
+      "swordsman": "Hai selezionato la strategia vincente rispettando le regole della scuola.",
+      "alchemist": "Il laboratorio applica il percorso piu' vantaggioso tra quelli ammessi.",
+      "ranger": "Il consiglio del bosco segue l'opzione ottimale fra quelle lecite."
+    },
+    "c06_conditions_l5": {
+      "mage": "La Tesoreria Lunare obbedisce: il tributo minimo e' calcolato senza errori.",
+      "rogue": "La borsa segreta pesa solo il necessario per pagare l'informatore.",
+      "swordsman": "Il quartiermastro riceve il numero minimo di monete per equipaggiare la truppa.",
+      "alchemist": "I bilanci di laboratorio restano in equilibrio con il minimo concesso.",
+      "ranger": "Il concilio delle monete distribuisce solo il necessario ai guardiani."
+    },
+    "c07_textio_l1": {
+      "mage": "Lo Scriptorium fedele conferma le righe trascritte senza errori.",
+      "rogue": "I messaggi rubati sono stati copiati e restituiti intatti.",
+      "swordsman": "I canti di battaglia tornano agli allievi identici.",
+      "alchemist": "Le istruzioni alchemiche restano precise come ricevute.",
+      "ranger": "I racconti dei sentieri ritornano esattamente alla tribu."
+    },
+    "c07_textio_l2": {
+      "mage": "Hai contato le righe delle pergamene per alimentare il scriptorium.",
+      "rogue": "Sai quante righe conteneva il messaggio rubato.",
+      "swordsman": "Conosci il numero di versi nel canto di addestramento.",
+      "alchemist": "Hai registrato quante istruzioni include il protocollo.",
+      "ranger": "Hai contato le righe del diario di pattuglia."
+    },
+    "c07_textio_l3": {
+      "mage": "Hai cercato e trovato il termine proibito nelle pergamene arcane.",
+      "rogue": "Hai scovato la parola chiave nascosta nelle note della gilda.",
+      "swordsman": "Hai individuato il grido richiesto tra gli ordini del campo.",
+      "alchemist": "Hai trovato l'indicazione vitale dentro il protocollo.",
+      "ranger": "Hai rintracciato il segnale segreto nel diario della foresta."
+    },
+    "c07_textio_l4": {
+      "mage": "Hai sostituito simboli insidiosi con formule sicure nelle pergamene.",
+      "rogue": "Hai depistato i messaggi cambiando i segni compromettenti.",
+      "swordsman": "Hai corretto gli ordini sostituendo termini sbagliati.",
+      "alchemist": "Hai ripulito il protocollo da simboli instabili.",
+      "ranger": "Hai adattato i racconti eliminando segni pericolosi."
+    },
+    "c07_textio_l5": {
+      "mage": "Lo Scriptorium ti saluta: hai estratto le prime righe con precisione d'avanguardia.",
+      "rogue": "Il dossier prioritario vola via con le prime istruzioni ben separate.",
+      "swordsman": "Le direttive di avanguardia raggiungono la prima linea in ordine perfetto.",
+      "alchemist": "Il protocollo lampo invia subito le righe iniziali ai laboranti.",
+      "ranger": "Le note per le vedette consegnano le righe iniziali della cronaca."
+    },
+    "c08_json_l1": {
+      "mage": "Hai distinto i registri viventi dalle illusioni nel Deposito dei Diagrammi.",
+      "rogue": "Hai scartato i dossier falsi mantenendo solo quelli autentici.",
+      "swordsman": "Hai riconosciuto i rapporti strategici reali dai diversivi.",
+      "alchemist": "Hai separato i tomi veri dalle forme illusorie nel laboratorio.",
+      "ranger": "Hai identificato i totem registrati dai simulacri del bosco."
+    },
+    "c08_json_l2": {
+      "mage": "Hai estratto solo le chiavi richieste dal consiglio arcano.",
+      "rogue": "Hai consegnato ai complici solo le informazioni autorizzate.",
+      "swordsman": "Hai fornito al comando solo i dati strategici necessari.",
+      "alchemist": "Hai filtrato i registri mantenendo solo gli ingredienti richiesti.",
+      "ranger": "Hai condiviso con le tribu solo i segnali richiesti."
+    },
+    "c08_json_l3": {
+      "mage": "Hai ripulito i registri scartando i campi non riconosciuti.",
+      "rogue": "Hai eliminato le esche che potevano tradire la tua rete.",
+      "swordsman": "Hai tolto dai rapporti strategici ogni nota superflua.",
+      "alchemist": "Hai filtrato gli alambicchi digitali tenendo solo misure valide.",
+      "ranger": "Hai rimosso dai totem i rami inutili per il viaggio."
+    },
+    "c08_json_l4": {
+      "mage": "Hai trasformato ogni registro in un'unica lista di valori ordinati.",
+      "rogue": "Hai preparato cassapanche di informazioni da trasportare in segreto.",
+      "swordsman": "Hai disposto i dati per addestrare le compagnie con ordine.",
+      "alchemist": "Hai riordinato le misure del laboratorio per servire il consiglio.",
+      "ranger": "Hai impilato le letture del bosco in colonne pronte al viaggio."
+    },
+    "c08_json_l5": {
+      "mage": "Gli automi scriventi cantano le linee generate: missione compiuta.",
+      "rogue": "I circuiti sicuri trasmettono stringhe pulite verso la rete ombra.",
+      "swordsman": "I rapporti codificati raggiungono il comando senza distorsioni.",
+      "alchemist": "Le ampolle telegrafate viaggiano come stringhe pronte al banco prove.",
+      "ranger": "I totem messaggeri portano le storie in formato leggero."
+    },
+    "c09_try_l1": {
+      "mage": "Nel Corridoio Incerto converti i simboli stanchi o accetti il valore di sicurezza.",
+      "rogue": "Tra messaggi rubati trasformi i numeri veri e sostituisci i falsi.",
+      "swordsman": "Nei giorni di tempesta traduci i rapporti intatti e salvi il resto.",
+      "alchemist": "Gli apprendisti portano dati confusi: converti cio che reagisce e usi il tampone.",
+      "ranger": "Tra rune scolorite traduci i numeri vivi e usi la riserva quando falliscono."
+    },
+    "c09_try_l2": {
+      "mage": "Hai letto con cautela messaggi che potrebbero svanire, offrendo alternative sicure.",
+      "rogue": "Le pergamene della gilda aprono i segreti o mostrano subito il piano di copertura.",
+      "swordsman": "Gli ordini del fronte vengono interpretati senza errori, con piani di riserva pronti.",
+      "alchemist": "Le formule delicate leggono i dati disponibili o ritornano alla dose sicura.",
+      "ranger": "I messaggi del bosco vengono decifrati o sostituiti con segnali prudenti."
+    },
+    "c09_try_l3": {
+      "mage": "Hai attivato rune solo se consegnavano numeri intatti, ignorando il resto.",
+      "rogue": "Le casse si aprono solo quando la cifra e' valida, altrimenti le lasci intatte.",
+      "swordsman": "Gli ordini vengono eseguiti solo se i valori sono chiari; il resto viene scartato.",
+      "alchemist": "Gli strumenti misurano solo quando il dato reagisce; altrimenti rimangono fermi.",
+      "ranger": "Le sentinelle leggono solo segnali affidabili, saltando i passi corrotti."
+    },
+    "c09_try_l4": {
+      "mage": "Hai isolato eccezioni per registrarle nella cronaca arcana.",
+      "rogue": "Ogni errore viene archiviato come prova contro chi ti insegue.",
+      "swordsman": "Annoti le manovre fallite per correggere l'addestramento.",
+      "alchemist": "Registri le reazioni fallite per raffinare il laboratorio.",
+      "ranger": "Annoti i passi insicuri per avvertire il clan."
+    },
+    "c09_try_l5": {
+      "mage": "Il Conclave Inflessibile ti riconosce: ogni numero dubbio scatena l'allarme giusto.",
+      "rogue": "Il codice implacabile filtra gli infiltrati senza esitazioni.",
+      "swordsman": "Il tribunale d'acciaio dichiara errore al primo simbolo falso.",
+      "alchemist": "Il rito infalsificabile espone ogni ingrediente corrotto.",
+      "ranger": "Il patto vigile avverte il clan quando una cifra si spezza."
+    },
+    "c10_classes_l1": {
+      "mage": "Hai forgiato il Compagno Conteggio che tiene il ritmo dei battiti arcani.",
+      "rogue": "Il contatore silenzioso registra ogni segnale della tua rete.",
+      "swordsman": "L'istruttore approva il contatore che misura i giri di addestramento.",
+      "alchemist": "Il laboratorio dispone di un contatore stabile per le distillazioni.",
+      "ranger": "Il clan usa il contatore di passi per tracciare ogni pattuglia."
+    },
+    "c10_classes_l2": {
+      "mage": "Hai costruito un deposito arcano che accetta doni e rifiuta abusi.",
+      "rogue": "Il fondo segreto della gilda reagisce solo alle mani autorizzate.",
+      "swordsman": "Il forziere della caserma protegge le risorse dai colpi scorretti.",
+      "alchemist": "Il laboratorio custodisce reagenti e blocca prelievi indebiti.",
+      "ranger": "Il clan mantiene il magazzino comune salvo da intrusioni."
+    },
+    "c10_classes_l3": {
+      "mage": "Hai animato un registro arcano che osserva ogni mutamento senza spegnersi.",
+      "rogue": "La rete dispone di una sentinella che avvisa quando cambia lo stato della missione.",
+      "swordsman": "La caserma ha un allarme che suona quando il campo varia.",
+      "alchemist": "Il laboratorio monitora i livelli e segnala le variazioni critiche.",
+      "ranger": "Il clan viene avvertito quando il territorio cambia stato."
+    },
+    "c10_classes_l4": {
+      "mage": "Hai creato un registro di formule che memorizza trasformazioni e controlli.",
+      "rogue": "La gilda tiene traccia degli artifici usati senza perderne uno.",
+      "swordsman": "La scuola cataloga gli esercizi eseguiti da ogni allievo.",
+      "alchemist": "Il laboratorio registra reagenti e catalizzatori applicati.",
+      "ranger": "Il clan annota ogni attrezzo usato lungo il cammino."
+    },
+    "c10_classes_l5": {
+      "mage": "Il Talismano Runico risponde a ogni invocazione con calcoli impeccabili.",
+      "rogue": "Il modulo mimetico fornisce codici perfetti per aprire ogni serratura.",
+      "swordsman": "L'arma runica calcola traiettorie al ritmo della tua volonta.",
+      "alchemist": "Il reattore sintetico valuta formule a ogni esperimento.",
+      "ranger": "Il totem variabile restituisce risposte per tutte le stagioni."
+    },
+    "c11_inheritance_l1": {
+      "mage": "Il protoanimale parla il linguaggio degli specchi e il cane sentinella risponde.",
+      "rogue": "Il clan ombra ha definito il richiamo base e addestrato il cane da guardia.",
+      "swordsman": "La galleria delle stirpi registra il comando e la sentinella lo esegue.",
+      "alchemist": "Il laboratorio modella la creatura base e il cane alchemico la replica.",
+      "ranger": "Il totem del clan insegna la parola e il cane guardiano la protegge."
+    },
+    "c11_inheritance_l2": {
+      "mage": "Hai forgiato il veicolo runico e il carro accelerato che ne discende.",
+      "rogue": "Hai costruito la carrozza di copertura e la versione veloce per le fughe.",
+      "swordsman": "Hai modellato il destriero base e il carro da sortita piu' rapido.",
+      "alchemist": "Hai progettato il telaio maestro e la versione potenziata per le consegne.",
+      "ranger": "Hai creato il carro del clan e la variante veloce per le staffette."
+    },
+    "c11_inheritance_l3": {
+      "mage": "Hai esteso la gerarchia dei tomi viventi con rune personalizzate.",
+      "rogue": "Hai duplicato l'oggetto base aggiungendo inganni su misura.",
+      "swordsman": "Hai derivato armi sorelle con peculiarita controllate.",
+      "alchemist": "Hai perfezionato strumenti figli mantenendo il cuore del prototipo.",
+      "ranger": "Hai adattato gli utensili del bosco alla missione della pattuglia."
+    },
+    "c11_inheritance_l4": {
+      "mage": "Hai organizzato un bestiario ereditario guidato dal tuo comando arcano.",
+      "rogue": "Hai addestrato una linea di compagni silenziosi che seguono il patto della gilda.",
+      "swordsman": "Hai definito il lignaggio di guardiani che rispondono al tuo segnale.",
+      "alchemist": "Hai creato esseri sintetici che condividono lo stesso schema.",
+      "ranger": "Hai intrecciato totem animali che rispettano il giuramento del clan."
+    },
+    "c11_inheritance_l5": {
+      "mage": "Il Diario della Memoria conserva ogni messaggio nella tua galleria.",
+      "rogue": "La cronaca segreta scrive ogni ordine che passa per la cellula.",
+      "swordsman": "Le ordonnanze tramandate custodiscono ogni comando pronunciato.",
+      "alchemist": "L'almanacco vivente annota esperimenti e risultati in sequenza.",
+      "ranger": "I canti custoditi tramandano ogni messaggio del bosco."
+    },
+    "c12_abc_l1": {
+      "mage": "Hai definito la Fonte Primigenia e la sua eco di parole arcane.",
+      "rogue": "La tua rete ombra possiede ora una sorgente dati di copertura.",
+      "swordsman": "La caserma dispone di una fonte di ordini incarnata in parole.",
+      "alchemist": "Il laboratorio ha una sorgente astratta che versa testo puro.",
+      "ranger": "Il clan custodisce una fonte di cronache pronta da ascoltare."
+    },
+    "c12_abc_l2": {
+      "mage": "Hai modellato il cerchio perfetto nel trattato delle forme astratte.",
+      "rogue": "Hai schematizzato un sigillo rotondo utile a depistare i guardiani.",
+      "swordsman": "Hai descritto l'anello di difesa per gli esercizi dei cadetti.",
+      "alchemist": "Hai tracciato il diagramma perfetto per gli esperimenti geometrici.",
+      "ranger": "Hai definito il perimetro ideale da proteggere nelle ronde."
+    },
+    "c12_abc_l3": {
+      "mage": "Hai dato voce ai comandi astratti trasformandoli in gesti concreti.",
+      "rogue": "Hai predisposto tecniche intercambiabili per la catena d'ombra.",
+      "swordsman": "Hai insegnato alle scuole sorelle come condividere le stesse mosse.",
+      "alchemist": "Hai creato strumenti astratti che ogni officina puo' incarnare.",
+      "ranger": "Hai definito rituali comuni che ogni clan puo' adattare."
+    },
+    "c12_abc_l4": {
+      "mage": "Hai convocato il tribunale degli animali parlanti e ne hai disciplinato le voci.",
+      "rogue": "Hai redatto il patto che obbliga gatto e cane della gilda a parlare a comando.",
+      "swordsman": "Hai addestrato le bestie araldiche a rispettare lo stesso giuramento.",
+      "alchemist": "Hai dato voce a creatura e sentinella secondo lo stesso contratto.",
+      "ranger": "Hai accordato i guardiani del clan perche ripetano il richiamo giusto."
+    },
+    "c12_abc_l5": {
+      "mage": "La Tavola Armonica risponde a ogni pipeline di comandi che componi.",
+      "rogue": "La catena d'ombra esegue ogni sequenza senza rumore.",
+      "swordsman": "La parata sincronica coordina ordini in serie impeccabile.",
+      "alchemist": "La pipeline alchemica trasforma il contesto passo dopo passo.",
+      "ranger": "La marcia coordinata applica ogni comando al ciclo del clan."
+    },
+    "sq_shadow_gallery": {
+      "mage": "Hai sigillato la Galleria delle Ombre con il riflesso corretto.",
+      "rogue": "Hai smascherato l'informatore che ripeteva la stessa nota.",
+      "swordsman": "Hai fermato l'eco sbagliato nel kata sotterraneo.",
+      "alchemist": "Hai isolato il reagente fantasma che duplicava l'alambicco.",
+      "ranger": "Hai bloccato la traccia duplicata nel sentiero nascosto."
+    },
+    "sq_mirror_lagoon": {
+      "mage": "Hai domato la laguna sommando ogni onda riflessa.",
+      "rogue": "Hai organizzato i carichi in blocchi perfetti per la fuga.",
+      "swordsman": "Hai alimentato le squadre con somme impeccabili.",
+      "alchemist": "Hai misurato dosi armoniche per calmare la laguna.",
+      "ranger": "Hai contato il raccolto di ogni colonna di esploratori."
+    },
+    "sq_astral_spire": {
+      "mage": "Hai ruotato le costellazioni del pinacolo astrale senza errori.",
+      "rogue": "Hai riallineato gli ingranaggi d'ombra aprendo il varco.",
+      "swordsman": "Hai fatto ruotare le guardie di torre come un'unica lama.",
+      "alchemist": "Hai orientato gli alambicchi celesti verso la giusta luce.",
+      "ranger": "Hai ruotato le sentinelle per coprire tutti i venti."
+    }
+  },
+  "by_chapter": {
+    "c01_lists_l5": {
+      "mage": "Sigillo dei Frammenti Rifusi",
+      "rogue": "Sigillo delle Tasche Riempite",
+      "swordsman": "Sigillo della Forma Iniziale",
+      "alchemist": "Sigillo delle Mense Ricolme",
+      "ranger": "Sigillo del Bosco Lungo"
+    },
+    "c02_dicts_l5": {
+      "mage": "Sigillo del Bastone degli Itinerari Arcani",
+      "rogue": "Sigillo delle Mappe Furtive",
+      "swordsman": "Sigillo dei Registri Tattici",
+      "alchemist": "Sigillo degli Annali della Corte",
+      "ranger": "Sigillo delle Capanna degli Anziani"
+    },
+    "c03_sets_l5": {
+      "mage": "Sigillo del Conclave dei Futuri",
+      "rogue": "Sigillo delle Combinazioni della Gilda",
+      "swordsman": "Sigillo delle Formazioni Gemelle",
+      "alchemist": "Sigillo dei Distillati Multipli",
+      "ranger": "Sigillo delle Pattuglie Potenziali"
+    },
+    "c04_functions_l5": {
+      "mage": "Sigillo del Labirinto Mnemonico",
+      "rogue": "Sigillo della Sequenza Segreta",
+      "swordsman": "Sigillo della Progressione del Maestro",
+      "alchemist": "Sigillo del Golem Memorico",
+      "ranger": "Sigillo della Spirale delle Stagioni"
+    },
+    "c05_loops_l5": {
+      "mage": "Sigillo della Melodia delle Spirali",
+      "rogue": "Sigillo del Cifrario Ritmato",
+      "swordsman": "Sigillo dei Colpi Codificati",
+      "alchemist": "Sigillo del Registro Distillato",
+      "ranger": "Sigillo del Canto delle Tracce"
+    },
+    "c06_conditions_l5": {
+      "mage": "Sigillo della Tesoreria Lunare",
+      "rogue": "Sigillo della Borsa Segreta",
+      "swordsman": "Sigillo del Tributo del Quartiermastro",
+      "alchemist": "Sigillo dei Bilanci di Laboratorio",
+      "ranger": "Sigillo del Concilio delle Monete"
+    },
+    "c07_textio_l5": {
+      "mage": "Sigillo dello Scriptorium d'Avanguardia",
+      "rogue": "Sigillo del Dossier Prioritario",
+      "swordsman": "Sigillo delle Direttive di Avanguardia",
+      "alchemist": "Sigillo del Protocollo Lampo",
+      "ranger": "Sigillo delle Note per le Vedette"
+    },
+    "c08_json_l5": {
+      "mage": "Sigillo degli Automi Scriventi",
+      "rogue": "Sigillo dei Circuiti Sicuri",
+      "swordsman": "Sigillo dei Rapporti Codificati",
+      "alchemist": "Sigillo delle Ampolle Telegrafate",
+      "ranger": "Sigillo dei Totem Messaggeri"
+    },
+    "c09_try_l5": {
+      "mage": "Sigillo del Conclave Inflessibile",
+      "rogue": "Sigillo del Codice Implacabile",
+      "swordsman": "Sigillo del Tribunale d'Acciaio",
+      "alchemist": "Sigillo del Rito Infalsificabile",
+      "ranger": "Sigillo del Patto Vigile"
+    },
+    "c10_classes_l5": {
+      "mage": "Sigillo del Talismano Runico",
+      "rogue": "Sigillo del Modulo Mimetico",
+      "swordsman": "Sigillo dell'Arma Runica",
+      "alchemist": "Sigillo del Reattore Sintetico",
+      "ranger": "Sigillo del Totem Variabile"
+    },
+    "c11_inheritance_l5": {
+      "mage": "Sigillo del Diario della Memoria",
+      "rogue": "Sigillo della Cronaca Segreta",
+      "swordsman": "Sigillo delle Ordonnanze Tramandate",
+      "alchemist": "Sigillo dell'Almanacco Vivente",
+      "ranger": "Sigillo dei Canti Custoditi"
+    },
+    "c12_abc_l5": {
+      "mage": "Sigillo della Tavola Armonica",
+      "rogue": "Sigillo della Catena d'Ombra",
+      "swordsman": "Sigillo della Parata Sincronica",
+      "alchemist": "Sigillo della Pipeline Alchemica",
+      "ranger": "Sigillo della Marcia Coordinata"
+    }
+  },
+  "chapter_completion_msg": {
+    "c01_lists_l5": {
+      "mage": "La Biblioteca degli Specchi canta di nuovo: hai intrecciato ogni frammento in una trama unica.",
+      "rogue": "Le camere segrete sono svuotate: hai raccolto ogni frammento nel sacco della gilda.",
+      "swordsman": "Il kata d'apertura scorre perfetto: ogni colpo della forma \u00e8 scolpito nella memoria.",
+      "alchemist": "Le mense brillano di essenze riunite: il foyer reale torna a splendere.",
+      "ranger": "Il Bosco Lungo canta i tuoi passi: le provviste marciano in una sola fila."
+    },
+    "c02_dicts_l5": {
+      "mage": "Il Bastone dei Sentieri pulsa: i registri arcani ora rispondono a ogni ricerca.",
+      "rogue": "Le mappe furtive combaciano: ogni via d'uscita \u00e8 segnata nel tuo atlante ombra.",
+      "swordsman": "I registri tattici brillano: le squadre seguono un unico comando.",
+      "alchemist": "Gli annali della corte ti obbediscono: ogni reagente ha il suo posto.",
+      "ranger": "Le capanne degli anziani ti onorano: ogni sentiero ritrova il proprio sigillo."
+    },
+    "c03_sets_l5": {
+      "mage": "Nel Conclave degli Insiemi i futuri possibili sono allineati sotto il tuo sigillo.",
+      "rogue": "La gilda contempla tutte le combinazioni: il colpo finale nasce da chi scegli.",
+      "swordsman": "Le formazioni gemelle obbediscono: il drappello risponde a ogni richiamo.",
+      "alchemist": "I distillati multipli sono calcolati: ogni miscela futura \u00e8 prevedibile.",
+      "ranger": "Le pattuglie potenziali sono contate: il clan sa come diramarsi."
+    },
+    "c04_functions_l5": {
+      "mage": "Hai risolto il Labirinto di Fibonacci: la sequenza custodisce i tuoi incanti.",
+      "rogue": "La sequenza segreta \u00e8 memorizzata: nessuno intercetta pi\u00f9 i tuoi calcoli.",
+      "swordsman": "La progressione del maestro \u00e8 completa: ogni duello segue il tuo ritmo.",
+      "alchemist": "Il golem memorico veglia: le formule si intrecciano senza sprechi.",
+      "ranger": "La spirale delle stagioni \u00e8 scritta: i sentieri battono con il tuo passo."
+    },
+    "c05_loops_l5": {
+      "mage": "La Melodia Compressa risuona nel ponte: domini il ritmo dei cicli arcani.",
+      "rogue": "Il cifrario ritmato canta sulle linee sicure: i complici ricevono ordini compressi.",
+      "swordsman": "I colpi codificati riecheggiano: i cronisti della caserma narrano ogni serie.",
+      "alchemist": "Il registro distillato pulsa regolare: la camera reagisce ai tuoi segnali.",
+      "ranger": "Il canto delle tracce guida le staffette: ogni ripetizione scolpisce il vento."
+    },
+    "c06_conditions_l5": {
+      "mage": "La tesoreria lunare obbedisce: ogni scelta pesa con il minimo tributo.",
+      "rogue": "La borsa segreta pesa il minimo: nessun contatto sospetta del tuo tributo.",
+      "swordsman": "Il quartiermastro sorride: il tributo equipaggia l'ordine con esattezza.",
+      "alchemist": "I bilanci di laboratorio restano in equilibrio: nessuna goccia viene sprecata.",
+      "ranger": "Il concilio delle monete approva: le guarnigioni ricevono il dovuto."
+    },
+    "c07_textio_l5": {
+      "mage": "Lo Scriptorium ti saluta: gli estratti di avanguardia aprono il prossimo varco.",
+      "rogue": "Il dossier prioritario \u00e8 gi\u00e0 in viaggio: i complici agiscono sulle prime righe.",
+      "swordsman": "Le direttive di avanguardia sono distribuite: la linea frontale parte all'unisono.",
+      "alchemist": "Il protocollo lampo \u00e8 trasmesso: il laboratorio reagisce all'istante.",
+      "ranger": "Le note per le vedette circolano: le torri sentinella aprono la strada."
+    },
+    "c08_json_l5": {
+      "mage": "Gli automi del deposito eseguono le tue linee: i registri viventi sono pronti a marciare.",
+      "rogue": "I circuiti sicuri trasmettono l'archivio: nessuna spia devier\u00e0 i tuoi dati.",
+      "swordsman": "I rapporti codificati raggiungono il comando: ogni schema tattico \u00e8 visibile.",
+      "alchemist": "Le ampolle telegrafate viaggiano: ogni formula \u00e8 pronta al banco prove.",
+      "ranger": "I totem messaggeri cantano: le trib\u00f9 ricevono le cronache digitali."
+    },
+    "c09_try_l5": {
+      "mage": "Il Consiglio Inflessibile ti riconosce: nessun simbolo errato sfugge alla tua voce.",
+      "rogue": "Il codice implacabile filtra gli infiltrati: scovi ogni falso segnale.",
+      "swordsman": "Il tribunale d'acciaio sancisce il verdetto: nessuna lettura indebita sopravvive.",
+      "alchemist": "Il rito infalsificabile reagisce: ogni reagente impuro viene esposto.",
+      "ranger": "Il patto vigile risuona: le guardie respingono i numeri corrotti."
+    },
+    "c10_classes_l5": {
+      "mage": "Il Talismano Polinomiale brilla: hai forgiato forme vive pronte a rispondere a ogni evocazione.",
+      "rogue": "Il modulo mimetico si adatta a ogni comando: la rete della gilda \u00e8 pronta.",
+      "swordsman": "L'arma runica \u00e8 temperata: ogni forma risponde al tuo ordine.",
+      "alchemist": "Il reattore sintetico pulsa: i costrutti reagiscono ai tuoi esperimenti.",
+      "ranger": "Il totem variabile muta volto: il clan affida i ruoli con un gesto."
+    },
+    "c11_inheritance_l5": {
+      "mage": "Il Cronista della Memoria trascrive i tuoi lignaggi: ogni stirpe segue il tuo richiamo.",
+      "rogue": "La cronaca segreta si scrive da sola: ogni messaggio della cellula \u00e8 custodito.",
+      "swordsman": "Le ordonnanze tramandate sono incise: gli eredi della lama conoscono il copione.",
+      "alchemist": "L'almanacco vivente fermenta: ogni prova \u00e8 annotata con rigore.",
+      "ranger": "I canti custoditi echeggiano: le generazioni del bosco apprendono la tua voce."
+    },
+    "c12_abc_l5": {
+      "mage": "La Tavola dei Comandi vibra: le pipeline arcane eseguono la tua ultima volont\u00e0.",
+      "rogue": "La catena d'ombra scorre: i comandi si passano senza rumore nel buio della gilda.",
+      "swordsman": "La parata sincronica domina: le compagnie si muovono come un'unica lama.",
+      "alchemist": "La pipeline alchemica reagisce: ogni trasmutazione segue il tuo segnale finale.",
+      "ranger": "La marcia coordinata \u00e8 partita: i clan intrecciano i rituali per il viaggio conclusivo."
+    }
+  },
+  "role_labels": {
+    "mage": "Mago",
+    "rogue": "Ladro",
+    "swordsman": "Spadaccino",
+    "alchemist": "Alchimista",
+    "ranger": "Ranger"
+  },
+  "sidequests": {
+    "sq_shadow_gallery": {
+      "mage": "Sigillo Ombra Riflessa",
+      "rogue": "Sigillo della Gilda Silente",
+      "swordsman": "Sigillo del Rimbalzo Perfetto",
+      "alchemist": "Sigillo del Reagente Fantasma",
+      "ranger": "Sigillo della Traccia Nascosta"
+    },
+    "sq_mirror_lagoon": {
+      "mage": "Sigillo delle Onde Specchiate",
+      "rogue": "Sigillo dei Carichi Velati",
+      "swordsman": "Sigillo delle Squadre in Marcia",
+      "alchemist": "Sigillo delle Dosi Armoniche",
+      "ranger": "Sigillo delle Colonne del Bosco"
+    },
+    "sq_astral_spire": {
+      "mage": "Sigillo della Rotazione Astrale",
+      "rogue": "Sigillo degli Ingranaggi d'Ombra",
+      "swordsman": "Sigillo della Guardia Rotante",
+      "alchemist": "Sigillo degli Alambicchi Celesti",
+      "ranger": "Sigillo delle Sentinelle a Spira"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code & Dragons RPG</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="icon" href="/static/favicon.ico" />
+</head>
+<body>
+  <div class="container layout">
+    <aside class="sidebar">
+      <div class="profile">
+        <h2>🎭 Personaggio</h2>
+        <div id="profileView"></div>
+        <div id="xpBar"></div>
+        <div class="toolbar">
+          <button id="newGameBtn">Nuova partita</button>
+          <button id="exportBtn">Salva</button>
+          <label class="importLabel">
+            Carica
+            <input type="file" id="importInput" accept=".pqs" hidden>
+          </label>
+          <button id="shopBtn">Emporio</button>
+          <button id="sidequestsBtn">Side Quest</button>
+          <button id="compendiumBtn">Compendio</button>
+        </div>
+      </div>
+      <div class="achievements">
+        <h2>🏅 Conquiste</h2>
+        <ul id="achievementsList"></ul>
+      </div>
+      <!--
+      <div class="sidequests-link">
+        <h2>🧭 Missioni Secondarie</h2>
+        <p class="muted">Ora in una pagina dedicata.</p>
+        <button id="sidequestsBtn">Apri Missioni Secondarie</button>
+      </div>
+      -->
+    </aside>
+    <main class="content">
+      <h1>🐍 Code & Dragons RPG <span id="appVersion" class="muted" style="font-size:12px;margin-left:8px"></span></h1>
+      <p>Trasforma lo studio in avventura: programma, combatti e conquista la gloria.</p>
+      <div id="levels"></div>
+    </main>
+  </div>
+
+  <dialog id="profileDialog">
+    <form method="dialog" id="profileForm">
+      <h3>Crea il tuo personaggio</h3>
+      <label>Nome
+        <input type="text" id="playerName" placeholder="Es. Aurora" required>
+      </label>
+      <label>Ruolo
+        <select id="playerRole" required></select>
+      </label>
+      <menu>
+        <button type="button" id="cancelProfileBtn">Annulla</button>
+        <button id="saveProfileBtn" value="default">Salva</button>
+      </menu>
+      <div class="toolbar">
+        <label class="importLabel">
+          Carica
+          <input type="file" id="importInputSetup" accept=".pqs" hidden>
+        </label>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="rewardDialog">
+    <div id="rewardContent"></div>
+    <menu>
+      <button id="rewardCloseBtn" type="button">Chiudi</button>
+    </menu>
+  </dialog>
+
+  <script defer src="/static/app.js"></script>
+</body>
+</html>

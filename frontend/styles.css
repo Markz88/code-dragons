@@ -1,0 +1,81 @@
+*{box-sizing:border-box} body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:#0b1020;color:#e6e9f0}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.layout{display:grid;grid-template-columns:360px 1fr;gap:16px}
+.sidebar{background:#11172f;border:1px solid #2a3361;border-radius:16px;padding:16px;height:calc(100vh - 48px);position:sticky;top:16px;overflow:auto}
+.content{min-height:100vh}
+h1{margin:0 0 8px 0}
+h2{margin:12px 0}
+.card{background:#121938;border:1px solid #2a3361;border-radius:16px;padding:16px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+.card.locked{opacity:.6}
+.card.passed{border-color:#30d158;box-shadow:0 8px 24px rgba(48,209,88,.25)}
+.editor{width:100%;height:180px;background:#0e142b;color:#e6e9f0;border:1px solid #2a3361;border-radius:12px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace}
+.actions{display:flex;gap:8px;margin-top:8px}
+.powerups{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+button{background:#3b82f6;border:none;color:white;padding:10px 14px;border-radius:10px;cursor:pointer}
+.secondary{background:#64748b}
+button.secondary:hover{filter:brightness(1.05)}
+.powerup-button{display:inline-flex;align-items:center;gap:8px;position:relative;background:#131f3a;border:1px solid #2a3361;border-radius:12px;padding:8px 12px;color:#e6e9f0;font-weight:600;transition:background .2s ease,border .2s ease,box-shadow .2s ease,transform .2s ease}
+.powerup-button .powerup-icon{width:32px;height:32px;object-fit:contain;transition:filter .2s ease}
+.powerup-button .powerup-text{font-size:13px}
+.powerup-button.icon-only{width:60px;height:60px;padding:10px;justify-content:center}
+.powerup-button.icon-only .powerup-text{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.powerup-button.icon-only .powerup-badge{display:flex;align-items:center;justify-content:center;position:absolute;top:4px;right:4px;min-width:20px;height:20px;padding:0 4px;border-radius:999px;background:#11172f;border:1px solid #2a3361;font-size:12px;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,0.45)}
+.powerup-button:not(.is-disabled):hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(59,130,246,0.2)}
+.powerup-button.is-disabled{opacity:.55;cursor:default}
+.powerup-button.is-disabled .powerup-icon{filter:grayscale(1) brightness(0.7)}
+.powerup-button.is-active{background:#1e392b;border-color:#30d158;box-shadow:0 0 0 2px rgba(48,209,88,0.25),0 8px 20px rgba(48,209,88,0.3);color:#dcfce7;cursor:default}
+.powerup-button.is-active .powerup-badge{background:#30d158;color:#0b1020;border-color:#2baf4e}
+.powerup-button.is-active .powerup-icon{filter:none}
+.powerup-details{margin-top:8px;padding-left:18px}
+.powerup-details li{font-size:13px;line-height:1.4}
+.extra-hint{font-size:13px;line-height:1.4}
+.feedback-list{margin-top:8px;padding-left:18px}
+.feedback-list li{margin-bottom:4px;font-size:13px;line-height:1.4}
+button:hover{filter:brightness(1.1)}
+.bubble{margin-top:12px;background:#0e223f;border-left:4px solid #3b82f6;padding:10px;border-radius:8px}
+.award{margin-top:12px;display:flex;align-items:center;gap:10px;background:#112848;border-left:6px solid #f59e0b;padding:12px;border-radius:10px;box-shadow:0 6px 16px rgba(0,0,0,0.2)}
+.award .medal{font-size:24px}
+.award .text{font-weight:600}
+ul{padding-left:18px}
+.muted{opacity:.7}
+dialog{border:none;border-radius:12px;padding:16px;background:#121938;color:#e6e9f0;max-width:560px}
+dialog menu{display:flex;gap:8px;justify-content:flex-end}
+#xpBar{margin:8px 0 16px 0}
+.shop-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
+@media (min-width:720px){.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.shop-hero{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px;margin:16px 0 24px}
+.shop-hero-text{flex:1 1 220px;min-width:0}
+.shop-hero-text h1{margin-bottom:6px}
+.shop-npc{flex:0 0 auto;width:180px;max-width:40%;border-radius:16px;background:#0b1420;border:1px solid #2a3361;box-shadow:0 10px 28px rgba(0,0,0,0.35)}
+@media (max-width:640px){.shop-npc{width:140px;margin:0 auto}.shop-hero{justify-content:center;text-align:center}.shop-hero-text{flex-basis:100%}}
+.shop-item-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.item-icon{width:44px;height:44px;border-radius:10px;object-fit:contain;background:#0b1420;padding:6px;border:1px solid #2a3361;box-shadow:0 6px 16px rgba(0,0,0,0.25)}
+.inventory-item{display:flex;align-items:center;gap:10px;margin:8px 0}
+.inventory-icon{width:36px;height:36px}
+.inventory-label{display:flex;flex-direction:column;line-height:1.2;flex:1 1 auto}
+.inventory-name{font-weight:600}
+.inventory-count{font-size:13px;opacity:.75}
+.inventory-actions{display:flex;align-items:center;margin-left:auto}
+.inventory-actions .sell-btn{padding:6px 10px;font-size:13px}
+.level-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.level-header h3{margin:0;flex:1 1 auto}
+.report-link{font-size:13px;padding:4px 8px;border-radius:8px;border:1px solid #3b82f6;color:#93c5fd;text-decoration:none;transition:background .2s ease,border .2s ease,color .2s ease}
+.report-link:hover{background:#1e3a8a;border-color:#60a5fa;color:#bfdbfe}
+.report-link:focus{outline:2px solid #60a5fa;outline-offset:2px}
+.shop-item button{margin-top:12px}
+.shop-profile div{margin-bottom:4px}
+#sidequestsSection{margin-top:32px}
+#sidequestsSection h2{margin-bottom:8px}
+#sidequests{display:flex;flex-direction:column}
+#sidequests .card{margin:16px 0}
+#sidequests .card.locked{opacity:.6}
+.xpbar{width:100%;height:10px;background:#0e142b;border:1px solid #2a3361;border-radius:8px;overflow:hidden}
+.xpbar .fill{height:100%;background:#30d158}
+.xptext{font-size:12px;opacity:.9;margin-top:4px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.importLabel{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;background:#334155;border:1px solid #475569;border-radius:10px;cursor:pointer}
+.chapter-title{margin:24px 0 8px 0; font-size:20px; color:#a5b4fc}
+.sidebar #achievementsList li.sigil{background:#112848;border-left:4px solid #f59e0b;padding:6px 8px;border-radius:8px;margin:4px 0}
+.avatar{width:64px;height:64px;border-radius:8px;border:1px solid #2a3361;display:block}
+.profile .avatarBox{display:flex;gap:10px;align-items:center;margin-top:8px}
+.sidequests-link { margin-top: 16px; }
