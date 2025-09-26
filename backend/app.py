@@ -5,9 +5,16 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import json
 from pathlib import Path
-from sandbox import run_safely
 from collections import OrderedDict, Counter
 import re
+
+try:
+    from .sandbox import run_safely
+except ImportError:
+    try:
+        from backend.sandbox import run_safely
+    except ImportError:
+        from sandbox import run_safely
 
 BASE = Path(__file__).parent
 LEVELS = json.loads((BASE / "levels.json").read_text(encoding="utf-8"))
