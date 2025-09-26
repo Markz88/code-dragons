@@ -1,4 +1,3 @@
-
 import ast, multiprocessing as mp, traceback, builtins as _bi
 
 SAFE_BUILTINS = {
@@ -24,31 +23,48 @@ class Guard(ast.NodeVisitor):
             raise ValueError(f"Chiamata non permessa: {node.func.id}")
         self.generic_visit(node)
 
-def _run(code:str, tests:list[str]):
+def _run(code: str, tests: list[str]):
     tree = ast.parse(code, mode='exec')
     Guard().visit(tree)
     compiled = compile(tree, '<student>', 'exec')
     env = {'__builtins__': SAFE_BUILTINS, '__name__': '__main__'}
     exec(compiled, env, env)
+
     failures = []
     for t in tests:
         try:
             exec(t, env, env)
         except Exception as e:
-            failures.append({'test': t, 'error': ''.join(traceback.format_exception_only(type(e), e)).strip()})
+            failures.append({
+                'test': t,
+                'error': ''.join(traceback.format_exception_only(type(e), e)).strip()
+            })
     return failures
 
-def run_safely(code:str, tests:list[str], timeout_sec:int=4):
-    q = mp.Queue()
-    def target():
-        try:
-            q.put({'ok': True, 'failures': _run(code, tests)})
-        except Exception as e:
-            q.put({'ok': False, 'error': str(e)})
-    p = mp.Process(target=target)
+# ---------- TARGET A LIVELLO DI MODULO (picklabile con spawn) ----------
+def _sandbox_target(code: str, tests: list[str], q: "mp.Queue") -> None:
+    try:
+        failures = _run(code, tests)
+        q.put({'ok': True, 'failures': failures})
+    except Exception as e:
+        q.put({'ok': False, 'error': str(e), 'traceback': traceback.format_exc()})
+
+def run_safely(code: str, tests: list[str], timeout_sec: int = 4):
+    # Usa esplicitamente lo start method 'spawn' (portabile; su Linux equivale al default 'fork' solo se lo forzi)
+    ctx = mp.get_context("spawn")
+    q = ctx.Queue()
+
+    p = ctx.Process(target=_sandbox_target, args=(code, tests, q), daemon=True)
     p.start()
     p.join(timeout=timeout_sec)
+
     if p.is_alive():
         p.terminate()
+        p.join(1)
         return {'ok': False, 'timeout': True, 'error': 'Timeout di esecuzione'}
-    return q.get() if not q.empty() else {'ok': False, 'error': 'Nessun risultato'}
+
+    # Se il figlio è morto senza mettere nulla in coda, restituisci un errore pulito
+    if q.empty():
+        return {'ok': False, 'error': 'Nessun risultato dal sandbox', 'exitcode': p.exitcode}
+
+    return q.get()
