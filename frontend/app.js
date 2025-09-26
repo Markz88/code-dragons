@@ -620,8 +620,14 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
   if(reportLink && unlocked){
     header.appendChild(reportLink);
   }
-  const prompt = el("p", {}, lv.prompt);
   card.appendChild(header);
+
+  if(!unlocked){
+    card.appendChild(el("p", {}, "Completa il livello precedente per sbloccare."));
+    return card;
+  }
+
+  const prompt = el("p", {}, lv.prompt);
   card.appendChild(prompt);
 
   const wasCompleted = completed;
@@ -649,15 +655,10 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
   };
 
   if(completed){
-    card.appendChild(el("p", {class:"muted"}, "✅ Capitolo completato"));
+    card.appendChild(el("p", {class:"muted"}, "✅ Livello completato"));
     if(lv.next_intro){
       card.appendChild(el("p", {class:"bubble"}, "Prossimo: " + lv.next_intro));
     }
-    return card;
-  }
-
-  if(!unlocked){
-    card.appendChild(el("p", {}, "Completa il livello precedente per sbloccare."));
     return card;
   }
 
