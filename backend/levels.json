@@ -351,10 +351,10 @@
       "name": "Alleanze Invertite",
       "prompt": {
         "mage": "Gli stemmi degli arconti chiedono inversioni fedeli: ogni simbolo ritrovi il proprio portatore. Esegui `invert_unique(d)`, che inverte chiavi e valori assumendo valori univoci. Mantieni la firma e compiaci i test.",
-        "rogue": "Per passare inosservato usi codici invertiti: nessun simbolo deve andare perduto. Attua `invert_unique(d)` per scambiare chiavi e valori (valori univoci). Mantieni la firma e svanisci tra i test.",
-        "swordsman": "Il capitano pretende ruoli e formazioni invertiti, così ognuno conosce il proprio contrapposto. Realizza `invert_unique(d)` invertendo coppie chiave-valore con unicità nei valori. Mantieni la firma e convinci i test.",
-        "alchemist": "Per evitare errori, inverti gli indici della tabella: ogni valore rimandi all'essenza originaria. Usa `invert_unique(d)` assumendo valori univoci. Mantieni la firma e passa i test.",
-        "ranger": "Rovescia i ruoli tra segnali e posizioni, così ogni coordinata indica l'esploratore giusto. Implementa `invert_unique(d)` con valori unici. Mantieni la firma e supera i test."
+        "rogue": "Per passare inosservato usi codici invertiti: nessun simbolo deve andare perduto. Attua `invert_unique(d)` che inverte chiavi e valori assumendo valori univoci. Mantieni la firma e svanisci tra i test.",
+        "swordsman": "Il capitano pretende ruoli e formazioni invertiti, così ognuno conosce il proprio contrapposto. Realizza `invert_unique(d)` che inverte chiavi e valori assumendo valori univoci. Mantieni la firma e convinci i test.",
+        "alchemist": "Per evitare errori, inverti gli indici della tabella: ogni valore rimandi all'essenza originaria. Usa `invert_unique(d)` che inverte chiavi e valori assumendo valori univoci. Mantieni la firma e passa i test.",
+        "ranger": "Rovescia i ruoli tra segnali e posizioni, così ogni coordinata indica l'esploratore giusto. Implementa `invert_unique(d)` che inverte chiavi e valori assumendo valori univoci. Mantieni la firma e supera i test."
       },
       "next_intro": "Mentre ti rimetti in cammino, il prossimo rituale ti sommergera di lettere da contare con precisione alchemica.",
       "signature": "def invert_unique(d: dict) -> dict:\n    ...",
@@ -389,10 +389,10 @@
       "name": "Pioggia di Lettere",
       "prompt": {
         "mage": "Una pioggia di lettere si stacca dal soffitto: conta i sussurri autentici ignorando il rumore delle luci e del metallo. Invoca `letter_count(text)` per restituire un dizionario con le occorrenze di ogni lettera alfabetica in minuscolo, ignorando simboli, numeri e spazi. Mantieni la firma e soddisfa i test.",
-        "rogue": "Lettere segrete cadono sul mantello: conta solo i messaggi reali, ignora i sigilli rotti. Usa `letter_count(text)` per mappare frequenze delle sole lettere minuscole, scartando il resto. Mantieni la firma e scavalca i test.",
+        "rogue": "Lettere segrete cadono sul mantello: conta solo i messaggi reali, ignora i sigilli rotti. Usa `letter_count(text)` per mappare frequenze di sole lettere minuscole, scartando il resto. Mantieni la firma e scavalca i test.",
         "swordsman": "Dagli spalti piovono lettere: conta quante volte ogni grido risuona, ignorando clangori e fischi. Esegui `letter_count(text)` riportando un dizionario di occorrenze in minuscolo e ignorando non-lettere. Mantieni la firma e supera i test.",
-        "alchemist": "Le pergamene si coprono di incisioni: conta quante volte ogni simbolo riappare, ignorando le macchie. Applica `letter_count(text)` per conteggiare solo lettere (in minuscolo), escludendo tutto il resto. Mantieni la firma e promuovi i test.",
-        "ranger": "Il vento sparge lettere nel fuoco da campo: riconosci i nomi e scarta la cenere. Implementa `letter_count(text)` per restituire le frequenze delle lettere minuscole, ignorando simboli e spazi. Mantieni la firma e attraversa i test."
+        "alchemist": "Le pergamene si coprono di incisioni: conta quante volte ogni simbolo riappare, ignorando le macchie. Applica `letter_count(text)` per conteggiare solo lettere in minuscolo, escludendo tutto il resto. Mantieni la firma e promuovi i test.",
+        "ranger": "Il vento sparge lettere nel fuoco da campo: riconosci i nomi e scarta la cenere. Implementa `letter_count(text)` per restituire le frequenze delle lettere in minuscolo, ignorando simboli e spazi. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Fra pochi passi seguirai percorsi annidati nelle pagine, pronto a recuperare un valore nascosto o accettare il silenzio.",
       "signature": "def letter_count(text: str) -> dict[str,int]:\n    ...",
@@ -426,14 +426,14 @@
     "c02_dicts_l5": {
       "name": "Bastone dei Sentieri",
       "prompt": {
-        "mage": "Il custode ti affida un bastone da viaggio: raggiungi ogni nodo dell'albero arcano seguendo sentieri annidati, o accetta il silenzio. Cammina con `deep_get(d, path, default)` seguendo chiavi e indici in `path` tra dizionari e liste; se un passo manca, restituisci `default`. Mantieni la firma e apri i test come portali.",
-        "rogue": "Una guida ti mostra percorsi annidati: seguili uno a uno e, se manca un passaggio, attiva il piano di riserva. Realizza `deep_get(d, path, default)` percorrendo `path` tra dizionari e liste; se fallisce, torna `default`. Mantieni la firma e scansa le trappole-test.",
-        "swordsman": "Per aprire l'armeria, percorri istruzioni annidate fino all'arma esatta. Usa `deep_get(d, path, default)` seguendo chiavi/indici; se il tragitto si interrompe, restituisci `default`. Mantieni la firma e vinci i test.",
-        "alchemist": "Nelle linee di distillazione annidate segui la mappa passo dopo passo, altrimenti ricorri alla dose di sicurezza. Implementa `deep_get(d, path, default)`, avanzando tra dizionari e liste e tornando `default` se un nodo manca. Mantieni la firma e supera i test.",
-        "ranger": "Tra alberi e radure segui istruzioni annidate fino al rifugio; se il sentiero scompare, fermati al valore di sicurezza. Esegui `deep_get(d, path, default)` muovendoti tra dizionari e liste; se un passo non esiste, torna `default`. Mantieni la firma e completa i test."
+        "mage": "Il custode ti affida un bastone da viaggio: raggiungi ogni nodo dell'albero arcano seguendo sentieri annidati, o accetta il silenzio. Cammina con `deep_get(d, path, default)` seguendo chiavi e indici in `path` tra dizionari e liste `d`; restituisci il passo ma, se manca, restituisci `default`. Mantieni la firma e apri i test come portali.",
+        "rogue": "Una guida ti mostra percorsi annidati: seguili uno a uno e, se manca un passaggio, attiva il piano di riserva. Realizza `deep_get(d, path, default)` percorrendo `path` tra dizionari e liste `d`; restituisci il percorso ma, se fallisce, torna `default`. Mantieni la firma e scansa le trappole-test.",
+        "swordsman": "Per aprire l'armeria, percorri istruzioni annidate fino all'arma esatta. Usa `deep_get(d, path, default)` seguendo chiavi e indici `path` tra dizionari e liste `d`; restituisci il tragitto, ma se si interrompe, restituisci `default`. Mantieni la firma e vinci i test.",
+        "alchemist": "Nelle linee di distillazione annidate segui la mappa passo dopo passo, altrimenti ricorri alla dose di sicurezza. Implementa `deep_get(d, path, default)`, avanzando tra dizionari e liste `d` seguendo `path`; restituisci il passo ma, se manca, ritorna `default`. Mantieni la firma e supera i test.",
+        "ranger": "Tra alberi e radure segui istruzioni annidate fino al rifugio; se il sentiero scompare, fermati al valore di sicurezza. Esegui `deep_get(d, path, default)` muovendoti tra dizionari e liste `d` seguendo `path`; restituisci il passo ma, se non esiste, ritorna `default`. Mantieni la firma e completa i test."
       },
       "next_intro": "Lasciati alle spalle i codici: nel capitolo dei set conterai essenze e incroci.",
-      "signature": "def deep_get(d, path: list, default=None):\n    ...",
+      "signature": "def deep_get(d: dict | list, path: list, default=None):\n    ...",
       "tests": [
         {
           "code": "data={'a':{'b':[10,20]}}; assert deep_get(data,['a','b',1])==20"

@@ -36,10 +36,10 @@ The project consists of:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r backend/requirements.txt
-uvicorn backend.app:app --reload --host 0.0.0.0 --port 8000
+uvicorn backend.app:app --reload --host 0.0.0.0 --port 5000
 ```
 
-Open the game at [http://localhost:8000](http://localhost:8000).  
+Open the game at [http://localhost:5000](http://localhost:5000).  
 
 ### Run with Docker
 ```bash
