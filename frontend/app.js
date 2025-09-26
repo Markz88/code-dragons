@@ -582,7 +582,7 @@ function exportSave(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "python-quest-save.pqs";
+  a.download = "code-dragons-save.pqs";
   a.click();
   URL.revokeObjectURL(url);
 }

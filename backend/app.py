@@ -16,7 +16,7 @@ CHARACTERS = {"characters":[{"name":"Ada"}], "fallback_lines":["Rivedi i requisi
 
 DEFAULT_BASE_XP = 10
 
-app = FastAPI(title="Python Quest", version=LEVELS["meta"]["version"])
+app = FastAPI(title="Code & Dragons", version=LEVELS["meta"]["version"])
 app.mount("/static", StaticFiles(directory=str(BASE.parent / "frontend")), name="static")
 
 class SubmitPayload(BaseModel):
