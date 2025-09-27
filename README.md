@@ -84,8 +84,8 @@ code&dragons/
 ---
 
 ## 🛤️ Roadmap
-- Add full English language support  
 - Expand avatar set: provide 10 different avatars per role
+- Add the ability to view the codes of completed levels
 - (Open to suggestions!)  
 
 ---
