@@ -8,6 +8,7 @@ h2{margin:12px 0}
 .card{background:#121938;border:1px solid #2a3361;border-radius:16px;padding:16px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,0.25)}
 .card.locked{opacity:.6}
 .card.passed{border-color:#30d158;box-shadow:0 8px 24px rgba(48,209,88,.25)}
+.language-switcher{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .editor{width:100%;height:180px;background:#0e142b;color:#e6e9f0;border:1px solid #2a3361;border-radius:12px;padding:12px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace}
 .actions{display:flex;gap:8px;margin-top:8px}
 .powerups{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}

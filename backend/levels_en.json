@@ -1,0 +1,2479 @@
+{
+  "meta": {
+    "title": "Code & Dragons",
+    "version": "2.0.0",
+    "passing_policy": "all",
+    "order": [
+      "c01_lists_l1",
+      "c01_lists_l2",
+      "c01_lists_l3",
+      "c01_lists_l4",
+      "c01_lists_l5",
+      "c02_dicts_l1",
+      "c02_dicts_l2",
+      "c02_dicts_l3",
+      "c02_dicts_l4",
+      "c02_dicts_l5",
+      "c03_sets_l1",
+      "c03_sets_l2",
+      "c03_sets_l3",
+      "c03_sets_l4",
+      "c03_sets_l5",
+      "c04_functions_l1",
+      "c04_functions_l2",
+      "c04_functions_l3",
+      "c04_functions_l4",
+      "c04_functions_l5",
+      "c05_loops_l1",
+      "c05_loops_l2",
+      "c05_loops_l3",
+      "c05_loops_l4",
+      "c05_loops_l5",
+      "c06_conditions_l1",
+      "c06_conditions_l2",
+      "c06_conditions_l3",
+      "c06_conditions_l4",
+      "c06_conditions_l5",
+      "c07_textio_l1",
+      "c07_textio_l2",
+      "c07_textio_l3",
+      "c07_textio_l4",
+      "c07_textio_l5",
+      "c08_json_l1",
+      "c08_json_l2",
+      "c08_json_l3",
+      "c08_json_l4",
+      "c08_json_l5",
+      "c09_try_l1",
+      "c09_try_l2",
+      "c09_try_l3",
+      "c09_try_l4",
+      "c09_try_l5",
+      "c10_classes_l1",
+      "c10_classes_l2",
+      "c10_classes_l3",
+      "c10_classes_l4",
+      "c10_classes_l5",
+      "c11_inheritance_l1",
+      "c11_inheritance_l2",
+      "c11_inheritance_l3",
+      "c11_inheritance_l4",
+      "c11_inheritance_l5",
+      "c12_abc_l1",
+      "c12_abc_l2",
+      "c12_abc_l3",
+      "c12_abc_l4",
+      "c12_abc_l5"
+    ],
+    "sidequests": [
+      {
+        "id": "sq_shadow_gallery",
+        "unlock_level": 3
+      },
+      {
+        "id": "sq_mirror_lagoon",
+        "unlock_level": 6
+      },
+      {
+        "id": "sq_astral_spire",
+        "unlock_level": 9
+      }
+    ]
+  },
+  "levels": {
+    "c01_lists_l1": {
+      "name": "Stream of Shards",
+      "prompt": {
+        "mage": "The gates of the Mirror Library swing open: numeric fragments orbit without balance. Gather them into a single stream to rekindle the foyer -- invoke `sum_list(nums)` so it returns the sum of the integers in `nums`; if `nums` is empty, return `0`. Keep this exact signature and make the tests click open like locks.",
+        "rogue": "You slip into the Veiled Citadel: sacks of numbers are spilled everywhere. Bundle the haul into one bag with `sum_list(nums)`, which must add every integer in `nums`; if `nums` is empty, return `0`. Keep the signature exact and pass each test as if raising iron grates.",
+        "swordsman": "At the School of the Blade the opening rhythm is broken. Restore it by counting each strike with `sum_list(nums)`: the function must return the sum of the integers; if the list is empty, return `0`. Honor the signature and prove your form by clearing the tests.",
+        "alchemist": "Inside the Royal Laboratory the reagents lie scattered. Measure the total quantity with `sum_list(nums)`, adding every integer in `nums`; if nothing is present, return `0`. Keep the signature intact and let the experiments -- the tests -- succeed.",
+        "ranger": "Across the Longwood the scouts' steps are scattered. Gather them with `sum_list(nums)`: it must return the sum of the integers in `nums`; if the list is empty, give back `0`. Keep the signature and treat the tests like fords across a river."
+      },
+      "next_intro": "As you set out again, the next gate demands that you isolate the surge hidden among the lists.",
+      "signature": "def sum_list(nums: list[int]) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert sum_list([1,2,3])==6"
+        },
+        {
+          "code": "assert sum_list([])==0"
+        },
+        {
+          "code": "assert sum_list([0,0,0])==0"
+        },
+        {
+          "code": "assert sum_list([-1,1,-2,2])==0"
+        },
+        {
+          "code": "assert sum_list([10])==10"
+        },
+        {
+          "code": "assert sum_list(list(range(5)))==10"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Start a total at 0 and add each number in the list; if you prefer you can return sum(nums), which already gives 0 for an empty list."
+        }
+      ]
+    },
+    "c01_lists_l2": {
+      "name": "List Apex",
+      "prompt": {
+        "mage": "With the foyer aglow, the glass columns reveal waves of power: the gate opens only at the proper crest. Isolate it with `max_or_none(nums)`, returning the greatest value in `nums` or `None` when it is empty. Hold the signature and satisfy the tests demanded by the rite.",
+        "rogue": "In the tribute hall you must pick out the most precious gem among the messy piles: call `max_or_none(nums)` to obtain the highest value, or `None` if the sack is empty. Keep the signature exact and avoid triggering the trap-tests.",
+        "swordsman": "The master asks for the highest strike in the series. Find it with `max_or_none(nums)`, which returns the peak or `None` if no blows were recorded. Keep the signature and let the tests attest to your skill.",
+        "alchemist": "Among the reassembled flasks seek the dominant concentration. Compute it with `max_or_none(nums)`: return the maximum, or `None` when there are no readings. Keep the signature and pass the tests like a perfect titration.",
+        "ranger": "On the clearing you study the signal spires: locate the tallest one with `max_or_none(nums)`, yielding `None` if no trace remains. Keep the signature and clear the tests like satisfied sentries."
+      },
+      "next_intro": "Ahead you will have to hush the echoes by keeping only the first trace of each number.",
+      "signature": "def max_or_none(nums: list[int]) -> int | None:\n    ...",
+      "tests": [
+        {
+          "code": "assert max_or_none([3,1,9,2])==9"
+        },
+        {
+          "code": "assert max_or_none([]) is None"
+        },
+        {
+          "code": "assert max_or_none([0,0])==0"
+        },
+        {
+          "code": "assert max_or_none([-5,-2,-9])==-2"
+        },
+        {
+          "code": "assert max_or_none([7])==7"
+        },
+        {
+          "code": "assert max_or_none([2,2,2])==2"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "If the list is empty return None; otherwise treat the first element as the current maximum and compare every later value, updating it whenever you find a larger number."
+        }
+      ]
+    },
+    "c01_lists_l3": {
+      "name": "Echo of Trails",
+      "prompt": {
+        "mage": "The third nave resounds with repeated echoes: to calm the reverberation, let only the first voice of each number speak. Do this with `dedup_stable(nums)`, which creates a new list without consecutive duplicates while preserving the order of the original list. Keep the signature and appease the tests.",
+        "rogue": "In the next corridor, traps are triggered by duplicates: let only the first footprints pass using `dedup_stable(nums)`, which returns a new list without consecutive duplicates while preserving the order of the original list. Keep the signature and slip past the tests.",
+        "swordsman": "During the next training, cut away the repetitions: in the kata only the first execution of each movement remains. Achieve this with `dedup_stable(nums)`, returning a new list without consecutive duplicates while preserving the order of the original list. Keep the signature and let the tests confirm the cleansing.",
+        "alchemist": "The alembics accumulate residue: separate each substance by keeping only the first appearance. Use `dedup_stable(nums)` to obtain a new list without consecutive duplicates, while preserving the order of the original list. Keep the signature and pass the tests like a successful filtering.",
+        "ranger": "The tracks in the mud repeat: record each species only at its first appearance along the path. Achieve this with `dedup_stable(nums)`, returning a new list without consecutive duplicates, while preserving the order of the original list. Keep the signature and move lightly among the tests."
+      },
+      "next_intro": "Soon you will be asked to pulse the power in regular segments.",
+      "signature": "def dedup_stable(nums: list[int]) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert dedup_stable([1,1,2,2,3,1])==[1,2,3,1]"
+        },
+        {
+          "code": "assert dedup_stable([])==[]"
+        },
+        {
+          "code": "assert dedup_stable([9,9,9])==[9]"
+        },
+        {
+          "code": "assert dedup_stable([1,2,3])==[1,2,3]"
+        },
+        {
+          "code": "assert dedup_stable([0,0,1,1,0])==[0,1,0]"
+        },
+        {
+          "code": "assert dedup_stable([5,4,4,5,5])==[5,4,5]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Track the values you have already seen in a set and build a new list by adding only the first occurrence of each element, so the original order stays intact."
+        }
+      ]
+    },
+    "c01_lists_l4": {
+      "name": "Ritual Segments",
+      "prompt": {
+        "mage": "The spectral scribes demand energy measured in regular segments for the rite. Divide the sequence with `chunk(lst, size)`, splitting `lst` into consecutive sublists of length `size` (the last block may be shorter). Keep the signature and satisfy the tests.",
+        "rogue": "The storeroom demands satchels of fixed size. Organize the haul with `chunk(lst, size)`, which breaks `lst` into blocks of `size` (the last one may be shorter). Keep the signature and do not trigger the tests.",
+        "swordsman": "To discipline the cadets, break the sequence into memorable groups. Do it with `chunk(lst, size)` creating sublists of length `size`; the final one may be smaller. Keep the signature and let the tests flow.",
+        "alchemist": "To stabilize the ritual, decant the reagents into vials of constant volume. Use `chunk(lst, size)` to obtain sublists of length `size` (the last may vary). Keep the signature and pass the tests like a steady titration.",
+        "ranger": "To guide the caravan, split the climbers into teams of consistent size. Achieve it with `chunk(lst, size)`, forming blocks of `size` with a possible shorter tail. Keep the signature and march through the tests in formation."
+      },
+      "next_intro": "The final gate of the lists demands that every weave be fused into a single line.",
+      "signature": "def chunk(lst: list[int], size: int) -> list[list[int]]:\n    ...",
+      "tests": [
+        {
+          "code": "assert chunk([1,2,3,4,5],2)==[[1,2],[3,4],[5]]"
+        },
+        {
+          "code": "assert chunk([1,2,3],3)==[[1,2,3]]"
+        },
+        {
+          "code": "assert chunk([],2)==[]"
+        },
+        {
+          "code": "assert chunk([1,2],1)==[[1],[2]]"
+        },
+        {
+          "code": "assert chunk([1,2,3,4],3)==[[1,2,3],[4]]"
+        },
+        {
+          "code": "assert chunk([7,8,9,10,11,12],2)==[[7,8],[9,10],[11,12]]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Iterate over the list in steps of `size` and use slicing or accumulation to build each block, making sure to include any remainder in the final segment."
+        }
+      ]
+    },
+    "c01_lists_l5": {
+      "name": "Linear Weave",
+      "prompt": {
+        "mage": "The last arch demands a single flow: merge the patterned segments into one rhythmic line with `flatten(lst)`, concatenating all sublists. Keep the signature and let the magic stream to clear the tests.",
+        "rogue": "The citadel's exit insists on a single cord of loot. Earn passage with `flatten(lst)`, which concatenates every sublist. Keep the signature exact and let the test scans find no cracks.",
+        "swordsman": "To close the chapter you must fuse every formation into one column. Call `flatten(lst)` to concatenate each sublist. Maintain the signature shape and show discipline in the tests.",
+        "alchemist": "The final crucible must receive a single pour. Use `flatten(lst)` to join all sublists and produce a steady stream. Keep the signature and pass the tests like a controlled fusion.",
+        "ranger": "To begin the march, channel every patrol into one line. Achieve it with `flatten(lst)`, concatenating the sublists. Keep the signature and stride through the tests in even step."
+      },
+      "next_intro": "The lists now bend to your will. Three thousand seals await your logic in the courts of dictionaries.",
+      "signature": "def flatten_once(nested: list[list[int]]) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert flatten_once([[1,2],[3],[4,5]])==[1,2,3,4,5]"
+        },
+        {
+          "code": "assert flatten_once([])==[]"
+        },
+        {
+          "code": "assert flatten_once([[],[1],[]])==[1]"
+        },
+        {
+          "code": "assert flatten_once([[0],[0,0]])==[0,0,0]"
+        },
+        {
+          "code": "assert flatten_once([[7,8]])==[7,8]"
+        },
+        {
+          "code": "assert flatten_once([[1],[2],[3]])==[1,2,3]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Create a new list and append every element from each sublist in order; avoid mutating the original list while you iterate."
+        }
+      ]
+    },
+    "c02_dicts_l1": {
+      "name": "Sought Seal",
+      "prompt": {
+        "mage": "In the Repertoire of Chords, a tome challenges you to find precise seals even when the pages seem empty. Invoke `get_or_default(d, k, default)`: return `d[k]` if it exists, otherwise `default`, without modifying `d`. Keep the signature and satisfy the tests as guardians.",
+        "rogue": "At the black market, you always get what you seek: if the stall is empty, use the spare. Do this with `get_or_default(d, k, default)`, which returns the value if present, otherwise `default`, without touching `d`. Keep the signature and slip through the tests.",
+        "swordsman": "In the courtyard of banners, retrieve the required symbol even when the squires have misplaced it. Use `get_or_default(d, k, default)` to obtain the value or fall back to `default` without changing `d`. Keep the signature and convince the tests.",
+        "alchemist": "In the annals of formulas, you seek an ingredient: if it’s missing from the shelves, take the intended substitute. Apply `get_or_default(d, k, default)` returning the value or `default` without altering `d`. Keep the signature and pass the tests.",
+        "ranger": "At the elders’ huts you ask for a rare herb: if you don’t find it in the pantry, use the substitute you carry with you. Implement `get_or_default(d, k, default)`, returning `d[k]` or `default` without modifications to `d`. Keep the signature and move on past the tests."
+      },
+      "next_intro": "As you advance, prepare the maps: you will have to merge rival atlases while preserving the freshest updates.",
+      "signature": "def get_or_default(d: dict, k, default=None):\n    ...",
+      "tests": [
+        {
+          "code": "assert get_or_default({'a':1},'a',9)==1"
+        },
+        {
+          "code": "assert get_or_default({},'x',7)==7"
+        },
+        {
+          "code": "assert get_or_default({'k':0},'k',-1)==0"
+        },
+        {
+          "code": "assert get_or_default({'w':3},'q',0)==0"
+        },
+        {
+          "code": "assert get_or_default({},'m',None) is None"
+        },
+        {
+          "code": "assert get_or_default({'t':2},'t',5)==2"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Check with `in` or with `dict.get` whether the key exists: if it does, return the value; otherwise return the default without modifying the original dictionary."
+        }
+      ]
+    },
+    "c02_dicts_l2": {
+      "name": "Fused Atlas",
+      "prompt": {
+        "mage": "Two rival atlases glitter on the lectern: merge the maps keeping only the most recent runes. Write `merge_overwrite(a, b)` to return a new dictionary where the values of `a` are overwritten by the updates in `b`. Keep the signature and satisfy the tests.",
+        "rogue": "Two palace maps must be merged: for each room, keep the most up-to-date layout. Use `merge_overwrite(a, b)` to create a new dictionary where `b` prevails over `a`. Keep the signature and unlock the tests.",
+        "swordsman": "Merge two tactical records, choosing for each entry the most recent information. Implement `merge_overwrite(a, b)`, where `b` overwrites `a` in a new map. Keep the signature and pass the tests.",
+        "alchemist": "Two recipe books overlap: merge them letting the most updated doses prevail. Implement `merge_overwrite(a, b)` creating a new dictionary where the values of `b` overwrite those of `a`. Keep the signature and pass the tests.",
+        "ranger": "Two maps of the land must become one, keeping the latest information for each path. Use `merge_overwrite(a, b)` to obtain a new map where `b` updates `a`. Keep the signature and pass the tests."
+      },
+      "next_intro": "The trial approaches where you will invert emblems and alliances without confusing them.",
+      "signature": "def merge_overwrite(a: dict, b: dict) -> dict:\n    ...",
+      "tests": [
+        {
+          "code": "assert merge_overwrite({'a':1},{'b':2})=={'a':1,'b':2}"
+        },
+        {
+          "code": "assert merge_overwrite({'a':1},{'a':9})=={'a':9}"
+        },
+        {
+          "code": "assert merge_overwrite({}, {'x':1})=={'x':1}"
+        },
+        {
+          "code": "assert merge_overwrite({'x':1},{})=={'x':1}"
+        },
+        {
+          "code": "assert merge_overwrite({'k':1},{'k':1,'q':2})=={'k':1,'q':2}"
+        },
+        {
+          "code": "assert merge_overwrite({'m':0},{'n':1})=={'m':0,'n':1}"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Create a copy of `a` (dict(a)) and then call `update(b)` on the copy, so that any keys in `b` overwrite those of `a`, and the result is a new dictionary."
+        }
+      ]
+    },
+    "c02_dicts_l3": {
+      "name": "Inverted Alliances",
+      "prompt": {
+        "mage": "The archons’ emblems demand faithful inversions: each symbol finds its bearer. Execute `invert_unique(d)`, which inverts keys and values assuming unique values. Keep the signature and satisfy the tests.",
+        "rogue": "To remain unnoticed, you use inverted codes: no symbol must be lost. Implement `invert_unique(d)` which inverts keys and values assuming unique values. Keep the signature and vanish among the tests.",
+        "swordsman": "The captain demands roles and formations inverted, so that each knows their counterpart. Implement `invert_unique(d)` which inverts keys and values assuming unique values. Keep the signature and convince the tests.",
+        "alchemist": "To avoid mistakes, invert the indices of the table: each value points back to the original essence. Use `invert_unique(d)` which inverts keys and values assuming unique values. Keep the signature and pass the tests.",
+        "ranger": "Reverse the roles between signals and positions, so each coordinate indicates the right scout. Implement `invert_unique(d)` which inverts keys and values assuming unique values. Keep the signature and pass the tests."
+      },
+      "next_intro": "As you set out again, the next ritual will overwhelm you with letters to count with alchemical precision.",
+      "signature": "def invert_unique(d: dict) -> dict:\n    ...",
+      "tests": [
+        {
+          "code": "assert invert_unique({'a':1,'b':2})=={1:'a',2:'b'}"
+        },
+        {
+          "code": "assert invert_unique({})=={}"
+        },
+        {
+          "code": "assert invert_unique({'x':0})=={0:'x'}"
+        },
+        {
+          "code": "assert invert_unique({'u':-1,'v':-2})=={-1:'u',-2:'v'}"
+        },
+        {
+          "code": "assert invert_unique({'k':1,'m':3})=={1:'k',3:'m'}"
+        },
+        {
+          "code": "assert invert_unique({'m':1})=={1:'m'}"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Iterate over the key/value pairs and for each assign out[val] = key; values are guaranteed unique so there’s no need to handle conflicts."
+        }
+      ]
+    },
+    "c02_dicts_l4": {
+      "name": "Rain of Letters",
+      "prompt": {
+        "mage": "A rain of letters falls from the ceiling: count the true whispers, ignoring the noise of lights and metal. Invoke `letter_count(text)` to return a dictionary with the occurrences of each alphabetical letter in lowercase, ignoring symbols, numbers, and spaces. Keep the signature and satisfy the tests.",
+        "rogue": "Secret letters fall on your cloak: count only the real messages, ignore the broken seals. Use `letter_count(text)` to map frequencies of lowercase letters only, discarding the rest. Keep the signature and leap past the tests.",
+        "swordsman": "From the stands, letters rain down: count how many times each cry resounds, ignoring clangs and whistles. Execute `letter_count(text)` returning a dictionary of occurrences in lowercase and ignoring non-letters. Keep the signature and pass the tests.",
+        "alchemist": "The parchments are covered with engravings: count how many times each symbol reappears, ignoring stains. Apply `letter_count(text)` to count only lowercase letters, excluding everything else. Keep the signature and pass the tests.",
+        "ranger": "The wind scatters letters into the campfire: recognize the names and discard the ashes. Implement `letter_count(text)` to return the frequencies of lowercase letters, ignoring symbols and spaces. Keep the signature and pass the tests."
+      },
+      "next_intro": "In a few steps you will follow nested paths in the pages, ready to retrieve a hidden value or accept silence.",
+      "signature": "def letter_count(text: str) -> dict[str,int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert letter_count('AaB!')=={'a':2,'b':1}"
+        },
+        {
+          "code": "assert letter_count('')=={}"
+        },
+        {
+          "code": "assert letter_count('Ccc?')=={'c':3}"
+        },
+        {
+          "code": "assert letter_count('A-b')=={'a':1,'b':1}"
+        },
+        {
+          "code": "assert letter_count('xyZ')=={'x':1,'y':1,'z':1}"
+        },
+        {
+          "code": "assert letter_count('abc')=={'a':1,'b':1,'c':1}"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Analyze each character in the text, consider only those that are alphabetic (isalpha()), convert them to lowercase, and update the count with res[c] = res.get(c, 0) + 1."
+        }
+      ]
+    },
+    "c02_dicts_l5": {
+      "name": "Staff of Paths",
+      "prompt": {
+        "mage": "The guardian entrusts you with a travel staff: reach every node of the arcane tree by following nested paths, or accept silence. Walk with `deep_get(d, path, default)` following keys and indices in `path` across dictionaries and lists `d`; return the step but, if missing, return `default`. Keep the signature and open the tests like portals.",
+        "rogue": "A guide shows you nested paths: follow them one by one, and if a passage is missing, trigger the fallback plan. Implement `deep_get(d, path, default)` traversing `path` across dictionaries and lists `d`; return the path but, if it fails, return `default`. Keep the signature and avoid the test traps.",
+        "swordsman": "To open the armory, traverse nested instructions to the exact weapon. Use `deep_get(d, path, default)` following keys and indices in `path` across dictionaries and lists `d`; return the route, but if interrupted, return `default`. Keep the signature and win the tests.",
+        "alchemist": "In the nested distillation lines, follow the map step by step, otherwise resort to the safety dose. Implement `deep_get(d, path, default)`, advancing through dictionaries and lists `d` following `path`; return the step but, if missing, return `default`. Keep the signature and pass the tests.",
+        "ranger": "Among trees and clearings, follow nested instructions to the refuge; if the path disappears, stop at the safety value. Execute `deep_get(d, path, default)` moving through dictionaries and lists `d` following `path`; return the step but, if nonexistent, return `default`. Keep the signature and complete the tests."
+      },
+      "next_intro": "Leave codes behind: in the chapter of sets you will count essences and intersections.",
+      "signature": "def deep_get(d: dict | list, path: list, default=None):\n    ...",
+      "tests": [
+        {
+          "code": "data={'a':{'b':[10,20]}}; assert deep_get(data,['a','b',1])==20"
+        },
+        {
+          "code": "assert deep_get({},['x'],7)==7"
+        },
+        {
+          "code": "data={'k':[{'z':5}]}; assert deep_get(data,['k',0,'z'],0)==5"
+        },
+        {
+          "code": "data=[{'a':1}]; assert deep_get(data,[0,'a'],None)==1"
+        },
+        {
+          "code": "data={'a':{'b':{'c':9}}}; assert deep_get(data,['a','b','c'])==9"
+        },
+        {
+          "code": "assert deep_get({'a':[1,2]},['a',1])==2"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Start from the initial dictionary and try to descend along each element of path; if an access fails or the object is not indexable, return default immediately, otherwise continue to the end."
+        }
+      ]
+    },
+    "c03_sets_l1": {
+      "name": "Census of Essences",
+      "prompt": {
+        "mage": "In the chambers of the Conclave of Sets the census must be perfect: count how many sparks are truly unique in the circle. Do it with `unique_count(nums)`, which returns the number of distinct integers present in `nums`. Keep the signature and let the tests record your count.",
+        "rogue": "The informants want to know how many contacts are truly different, with no duplicates. Answer with `unique_count(nums)`: return the quantity of distinct integers in `nums`. Keep the signature and pass the tests without being noticed.",
+        "swordsman": "In the tournament what matters is how many different stances you will face: determine the unique variants with `unique_count(nums)`, returning the number of distinct integers in `nums`. Keep the signature and prove it to the tests.",
+        "alchemist": "In the garden of essences you note how many truly distinct species have been collected. Use `unique_count(nums)` to return the count of unique integers in `nums`. Keep the signature and let the tests carry the scent of rigor.",
+        "ranger": "During the forest census you must count the species without repetitions. Compute `unique_count(nums)`, which returns the number of distinct integers in `nums`. Keep the signature and walk through the tests like well-trodden paths."
+      },
+      "next_intro": "As you set out again, the next confrontation will show you twin spheres from which to extract only what they share.",
+      "signature": "def unique_count(nums: list[int]) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert unique_count([1,1,2,2,3])==3"
+        },
+        {
+          "code": "assert unique_count([])==0"
+        },
+        {
+          "code": "assert unique_count([0,0,0])==1"
+        },
+        {
+          "code": "assert unique_count([5,6,5,6,7])==3"
+        },
+        {
+          "code": "assert unique_count([9])==1"
+        },
+        {
+          "code": "assert unique_count([1,2])==2"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Convert the list to a set to remove duplicates and return its length with len(set(nums))."
+        }
+      ]
+    },
+    "c03_sets_l2": {
+      "name": "Shared Crystals",
+      "prompt": {
+        "mage": "Before two twin spheres you must extract only what echoes in both. Invoke `intersection_sorted(a, b)` to return the **ordered** list of integers present in both `a` and `b`, without duplicates. Keep the signature and open the gate of the tests.",
+        "rogue": "Two stolen inventories contain goods in common: only the shared ones are needed. Implement `intersection_sorted(a, b)` returning the elements common to both lists, **ordered** and without repetitions. Keep the signature and slip through the tests.",
+        "swordsman": "Two repertories of techniques overlap: take only the movements present in both. Use `intersection_sorted(a, b)` to obtain an ordered list of the common values, without duplicates. Keep the signature and pass the tests with discipline.",
+        "alchemist": "Two recipe books show shared reagents. Distill them with `intersection_sorted(a, b)`, returning an ordered list of the integers present in both, without repetitions. Keep the signature and titrate the tests to perfection.",
+        "ranger": "Two trails cross: keep only the shared tracks. Implement `intersection_sorted(a, b)` which returns the common integers, ordered and unique. Keep the signature and pass the tests in silence."
+      },
+      "next_intro": "Prepare to unveil the symmetric difference that divides the two congregations.",
+      "signature": "def intersection_sorted(a: list[int], b: list[int]) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert intersection_sorted([1,2,2,3],[2,3,4])==[2,3]"
+        },
+        {
+          "code": "assert intersection_sorted([1],[2])==[]"
+        },
+        {
+          "code": "assert intersection_sorted([5,6,7],[7,8,9])==[7]"
+        },
+        {
+          "code": "assert intersection_sorted([],[])==[]"
+        },
+        {
+          "code": "assert intersection_sorted([3,3,3],[3])==[3]"
+        },
+        {
+          "code": "assert intersection_sorted([2,4],[4,6])==[4]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Compute the intersection between set(a) and set(b) and return the ordered list of common elements with sorted()."
+        }
+      ]
+    },
+    "c03_sets_l3": {
+      "name": "Divergent Sparks",
+      "prompt": {
+        "mage": "The two spheres now ask for what separates them: elements that vibrate in **only one** of the two. Conjure it with `symdiff_sorted(a, b)`, returning the **ordered** list of integers that appear in exactly one of the lists. Keep the signature and appease the tests.",
+        "rogue": "To confuse your pursuers, keep what belongs to only one inventory. Implement `symdiff_sorted(a, b)` to return the integers present in only one of the two lists, ordered and without duplicates. Keep the signature and pass the tests.",
+        "swordsman": "Between two rival styles, keep only the moves not shared. Use `symdiff_sorted(a, b)` and return the integers that appear in only one list, ordered. Keep the signature and convince the tests.",
+        "alchemist": "Two distillates reveal mutual impurities: record the exclusive components. With `symdiff_sorted(a, b)` return the integers that lie in only one list, in ascending order. Keep the signature and clarify the tests.",
+        "ranger": "Two packs leave different marks: note only the tracks belonging to just one of the two. Implement `symdiff_sorted(a, b)` returning the exclusive integers, ordered. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "Soon you will have to unmask anagrams and twin words in the next chambers.",
+      "signature": "def symdiff_sorted(a: list[int], b: list[int]) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert symdiff_sorted([1,2,3],[3,4])==[1,2,4]"
+        },
+        {
+          "code": "assert symdiff_sorted([1],[1])==[]"
+        },
+        {
+          "code": "assert symdiff_sorted([0,2],[2,4])==[0,4]"
+        },
+        {
+          "code": "assert symdiff_sorted([],[])==[]"
+        },
+        {
+          "code": "assert symdiff_sorted([5],[6])==[5,6]"
+        },
+        {
+          "code": "assert symdiff_sorted([2],[3])==[2,3]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Use the symmetric difference of the two sets (set(a) ^ set(b)) to obtain the excluded elements and sort the result before returning it."
+        }
+      ]
+    },
+    "c03_sets_l4": {
+      "name": "Twin Words",
+      "prompt": {
+        "mage": "Two inscriptions seem to be each other’s reflection. Verify the enchantment with `are_anagrams(a, b)`: return `True` if the two words/phrases use the **same letters** ignoring **spaces** and **case**, otherwise `False`. Keep the signature and satisfy the tests.",
+        "rogue": "Two coded messages appear on the wall: are they the same anagram? Solve with `are_anagrams(a, b)`, ignoring spaces and case differences; return `True` or `False`. Keep the signature and do not alert the tests.",
+        "swordsman": "The heralds hand you two mottos: do they have the same letters? Use `are_anagrams(a, b)`, comparing characters after removing spaces and lowercasing everything. Return a boolean. Keep the signature and honor the tests.",
+        "alchemist": "Two vial labels, mixed, might describe the same compound. Confirm it with `are_anagrams(a, b)` ignoring spaces and case. Return `True` if they match in letters, otherwise `False`. Keep the signature and clarify the tests.",
+        "ranger": "Do two smoke signals trace the same symbols? Determine it with `are_anagrams(a, b)`, which ignores spaces and case differences. Return `True`/`False`. Keep the signature and pass the tests."
+      },
+      "next_intro": "Before leaving this hall, you will calculate the vastness of the power contained in each set.",
+      "signature": "def are_anagrams(a: str, b: str) -> bool:\n    ...",
+      "tests": [
+        {
+          "code": "assert are_anagrams('listen','silent') is True"
+        },
+        {
+          "code": "assert are_anagrams('ab','aa') is False"
+        },
+        {
+          "code": "assert are_anagrams('evil','vile') is True"
+        },
+        {
+          "code": "assert are_anagrams('Dormitory','Dirty room') is True"
+        },
+        {
+          "code": "assert are_anagrams('a','b') is False"
+        },
+        {
+          "code": "assert are_anagrams('Stone','Tones') is True"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Remove spaces, lowercase both strings, and compare the sorted letters (or use Counter) to verify they have the same counts."
+        }
+      ]
+    },
+    "c03_sets_l5": {
+      "name": "Possible Futures",
+      "prompt": {
+        "mage": "Before a set of runes, compute how many combinations of power are possible. Utter `powerset_size(n)`: return the number of subsets of a set with `n` elements. Keep the signature and let the tests record the breadth of the possible.",
+        "rogue": "You gaze upon a lot of stolen keys: in how many combinations could you use them? Answer with `powerset_size(n)`, which returns the quantity of subsets of a set of `n` elements. Keep the signature and pass the tests.",
+        "swordsman": "Given `n` techniques, how many different formations can you compose? Calculate it with `powerset_size(n)` returning the number of subsets. Keep the signature and satisfy the tests.",
+        "alchemist": "You have `n` pure reagents: how many theoretical mixtures exist, considering all subsets? Implement `powerset_size(n)` and return that count. Keep the signature and perfect the tests.",
+        "ranger": "At base camp you arrange `n` signals: how many possible combinations of messages can you give? Use `powerset_size(n)` to return the number of subsets. Keep the signature and move on beyond the tests."
+      },
+      "next_intro": "As you advance, the doors of the sanctuary of functions open, where the spells are composed.",
+      "signature": "def powerset_size(n: int) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert powerset_size(0)==1"
+        },
+        {
+          "code": "assert powerset_size(5)==32"
+        },
+        {
+          "code": "assert powerset_size(1)==2"
+        },
+        {
+          "code": "assert powerset_size(3)==8"
+        },
+        {
+          "code": "assert powerset_size(2)==4"
+        },
+        {
+          "code": "assert powerset_size(4)==16"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Remember that a set with n elements has 2**n subsets; simply return that expression as an integer."
+        }
+      ]
+    },
+    "c04_functions_l1": {
+      "name": "Seal of Addition",
+      "prompt": {
+        "mage": "In the Sanctuary of Formulae, the first seal welds two flames into one: perform it with `add(x, y)`, which must return the sum of the two arguments and nothing else. Keep the exact signature and let the tests open like doors.",
+        "rogue": "In the gadget lab a quick trick joins two values without leaving traces: use `add(x, y)`, which must return the sum of the two arguments. Keep the signature and slip past the tests.",
+        "swordsman": "In the hall of numeric kata the basic move sums two opposing energies: complete it with `add(x, y)`, which returns `x + y`. Keep the signature and prove your form by passing the tests.",
+        "alchemist": "In the chamber of catalysts you mix two base reagents to create the first compound: implement `add(x, y)` so that it returns the sum of the two arguments. Keep the signature and let the experiments (the tests) succeed.",
+        "ranger": "In the glade of rituals join two currents of energy into a single flow: do it with `add(x, y)`, which must return the sum of the two arguments. Keep the signature and move on past the tests."
+      },
+      "next_intro": "A trial is coming that applies the same spell twice to test its steadiness.",
+      "signature": "def add(x, y):\n    ...",
+      "tests": [
+        {
+          "code": "assert add(2,3)==5"
+        },
+        {
+          "code": "assert add(-1,1)==0"
+        },
+        {
+          "code": "assert add(0,0)==0"
+        },
+        {
+          "code": "assert add(10,5)==15"
+        },
+        {
+          "code": "assert add(7,3)==10"
+        },
+        {
+          "code": "assert add(-5,-4)==-9"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "The function should simply return the sum of the two arguments, with no side effects."
+        }
+      ]
+    },
+    "c04_functions_l2": {
+      "name": "Arcane Bounce",
+      "prompt": {
+        "mage": "The masters want a spell to bounce twice off the same target to test its stability: let it resound with `apply_twice(fn, x)`, applying `fn` to `x` twice in a row and returning the final result. Keep the signature and satisfy the tests.",
+        "rogue": "For stubborn locks you need to repeat the same move twice: execute `apply_twice(fn, x)` by applying `fn` to `x` twice and returning the result. Keep the signature and don’t trigger the trap-tests.",
+        "swordsman": "To measure strength, repeat the same strike twice in succession: implement `apply_twice(fn, x)`, which applies `fn` to `x` twice and returns the outcome. Keep the signature and convince the tests.",
+        "alchemist": "Refine the solution by letting the filter act twice: use `apply_twice(fn, x)` applying `fn` to `x` twice in a row and returning the result. Keep the signature and pass the tests.",
+        "ranger": "Bless the same plant twice to certify its health: perform the action with `apply_twice(fn, x)` applying `fn` to `x` twice and returning the outcome. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "In the next room, the challenge will braid functions to create a single channel of power.",
+      "signature": "def apply_twice(fn, x):\n    ...",
+      "tests": [
+        {
+          "code": "def inc(y): return y+1\nassert apply_twice(inc,3)==5"
+        },
+        {
+          "code": "def d(y): return y*2\nassert apply_twice(d,2)==8"
+        },
+        {
+          "code": "def s(y): return y-1\nassert apply_twice(s,5)==3"
+        },
+        {
+          "code": "def f(y): return y\nassert apply_twice(f,9)==9"
+        },
+        {
+          "code": "def g(y): return y+10\nassert apply_twice(g,0)==20"
+        },
+        {
+          "code": "def h(y): return y+2\nassert apply_twice(h,1)==5"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Call fn once on x, keep the intermediate result, and apply fn again to that result before returning it."
+        }
+      ]
+    },
+    "c04_functions_l3": {
+      "name": "Interwoven Channel",
+      "prompt": {
+        "mage": "The diagrams intertwine formulae and ask for a channel where one spell flows into another: build `compose(f, g)`, returning a function that, when called with `x`, computes `g(x)` and then `f` of the result. Keep the signature and appease the tests.",
+        "rogue": "Your trap needs two stages: the second prepares, the first neutralizes. Write `compose(f, g)` so that the returned function, given `x`, runs `g(x)` first and then `f(...)`. Keep the signature and slip through the tests.",
+        "swordsman": "Combine two techniques: one sets the guard, the other closes the opening. Make `compose(f, g)` return a function that applies `g` first and then `f`. Keep the signature and honor the tests.",
+        "alchemist": "In the reactor the first reagent activates the next: implement `compose(f, g)` so the returned function computes `g(x)` first and then `f(...)`. Keep the signature and perfect the tests.",
+        "ranger": "Interweave two chants: the root’s chant prepares, the sky’s completes. Build `compose(f, g)` which, given `x`, invokes `g` and then `f`. Keep the signature and move on past the tests."
+      },
+      "next_intro": "With a single breath you will bind a constant into a gesture ready to always add the same force.",
+      "signature": "def compose(f, g):\n    ...",
+      "tests": [
+        {
+          "code": "def f(x): return x*2\ndef g(x): return x+3\nh=compose(f,g)\nassert h(4)==14"
+        },
+        {
+          "code": "def f(x): return x-1\ndef g(x): return x*x\nh=compose(f,g)\nassert h(3)==8"
+        },
+        {
+          "code": "def f(x): return x+1\ndef g(x): return x+1\nh=compose(f,g)\nassert h(1)==3"
+        },
+        {
+          "code": "def f(x): return x\ndef g(x): return x\nh=compose(f,g)\nassert h(7)==7"
+        },
+        {
+          "code": "def f(x): return x*3\ndef g(x): return x-2\nh=compose(f,g)\nassert h(5)==9"
+        },
+        {
+          "code": "def f(x): return x\ndef g(x): return x+5\nh=compose(f,g)\nassert h(0)==5"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Define and return an inner function that, given an argument x, first computes g(x) and passes the result to f."
+        }
+      ]
+    },
+    "c04_functions_l4": {
+      "name": "Bond of the Constant",
+      "prompt": {
+        "mage": "To open the Chamber of the Bond, imprison a constant in a gesture that extends every hand that invokes it: use `curry_add(n)` to return a function that adds `n` to the received value. Keep the signature and satisfy the tests.",
+        "rogue": "You need a ready-to-use powder that always adds the same offset to every stolen digit: prepare `curry_add(n)` so it returns a function that adds `n` to the input. Keep the signature and don’t alert the tests.",
+        "swordsman": "Embed a reserve of energy that, at each call, adds the same push to your offense: implement `curry_add(n)` returning a function that adds `n` to the given value. Keep the signature and pass the tests.",
+        "alchemist": "Seal a constant dose in a vial: each drop always adds the same amount. Implement `curry_add(n)` so it returns a function that adds `n` to the received value. Keep the signature and advance the tests.",
+        "ranger": "Store in a talisman a fixed bonus for every measurement: build `curry_add(n)` to return a function able to add `n` to its argument. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "At the summit of the sanctuary you will be asked to wield arcane memory to traverse the Fibonacci labyrinth.",
+      "signature": "def curry_add(n):\n    ...",
+      "tests": [
+        {
+          "code": "add5=curry_add(5)\nassert add5(7)==12"
+        },
+        {
+          "code": "inc=curry_add(1)\nassert inc(0)==1"
+        },
+        {
+          "code": "dec=curry_add(-1)\nassert dec(3)==2"
+        },
+        {
+          "code": "z=curry_add(0)\nassert z(9)==9"
+        },
+        {
+          "code": "a=curry_add(10)\nassert a(-5)==5"
+        },
+        {
+          "code": "b=curry_add(2)\nassert b(2)==4"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Return a function that captures n in the outer scope and, when invoked, returns the received value plus n."
+        }
+      ]
+    },
+    "c04_functions_l5": {
+      "name": "Fibonacci Labyrinth",
+      "prompt": {
+        "mage": "At the heart of the sanctuary winds the Fibonacci labyrinth: avoid retracing already-marked steps by invoking `fib_memo(n)`, which computes the nth number of the sequence with memory to avoid redoing calculations. Keep the signature and let the tests open.",
+        "rogue": "To mislead your pursuers you study the Fibonacci sequence while storing each stretch already traveled: implement `fib_memo(n)` so as to compute the requested value while avoiding useless recalculations. Keep the signature and slip past the tests.",
+        "swordsman": "To anticipate the opponent’s rhythm, follow the Fibonacci progression while preserving what you’ve already counted: implement `fib_memo(n)` to compute the nth number without repeating steps. Keep the signature and win the tests.",
+        "alchemist": "To awaken the Fibonacci golem, record partial results in a grimoire: use `fib_memo(n)` to obtain the nth number while avoiding the same steps again. Keep the signature and perfect the tests.",
+        "ranger": "To read the spiral of the seasons, preserve the memory of each turn: compute with `fib_memo(n)` the nth number, avoiding recalculations. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "When the formulae grow quiet, the corridors of loops await you: there, rhythm rules.",
+      "signature": "def fib_memo(n: int) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert fib_memo(0)==0"
+        },
+        {
+          "code": "assert fib_memo(1)==1"
+        },
+        {
+          "code": "assert fib_memo(2)==1"
+        },
+        {
+          "code": "assert fib_memo(5)==5"
+        },
+        {
+          "code": "assert fib_memo(7)==13"
+        },
+        {
+          "code": "assert fib_memo(10)==55"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Use a cache (for example a dictionary) to store fib(n); the base cases are 0 and 1, and fib(n) = fib(n-1) + fib(n-2)."
+        }
+      ]
+    },
+    "c05_loops_l1": {
+      "name": "Bridge of Spirals",
+      "prompt": {
+        "mage": "The Bridge of Spirals activates only when you sum the steps of the ritual without skipping one: utter `range_sum(n)` to return the sum of the numbers from `1` to `n` inclusive; if `n` is less than or equal to `0`, return `0`. Keep the signature and let the tests open like luminous arches.",
+        "rogue": "In the catacombs you count the steps to the hideout: use `range_sum(n)` to sum all numbers from `1` to `n`; if `n` ≤ `0`, return `0`. Keep the signature and slip past the tests without a sound.",
+        "swordsman": "During the training march you must keep the rhythm by counting every step: implement `range_sum(n)` which returns the sum from `1` to `n`; for `n` ≤ `0`, return `0`. Keep the signature and convince the tests with discipline.",
+        "alchemist": "In the hall of spirals you collect drops up to the last: implement `range_sum(n)` to sum from `1` to `n`; if the container (`n`) has no volume (≤ `0`), return `0`. Keep the signature and let the experiments (the tests) succeed.",
+        "ranger": "On patrol you count the steps to the summit: perform `range_sum(n)` to obtain the sum from `1` to `n`; if `n` ≤ `0`, return `0`. Keep the signature and traverse the tests like marked trails."
+      },
+      "next_intro": "As the next hall opens, the next challenge will ask you to count how many torches will emerge with even light.",
+      "signature": "def range_sum(n: int) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert range_sum(1)==1"
+        },
+        {
+          "code": "assert range_sum(5)==15"
+        },
+        {
+          "code": "assert range_sum(3)==6"
+        },
+        {
+          "code": "assert range_sum(0)==0"
+        },
+        {
+          "code": "assert range_sum(7)==28"
+        },
+        {
+          "code": "assert range_sum(2)==3"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "If n is less than 1 return 0; otherwise, sum with a loop all numbers from 1 up to and including n."
+        }
+      ]
+    },
+    "c05_loops_l2": {
+      "name": "Even Torches",
+      "prompt": {
+        "mage": "In the corridor of torches, only the even ones stay lit together: count how many by invoking `count_even(nums)`, which returns how many entries in the list are **even** (including `0`). Keep the signature and appease the tests.",
+        "rogue": "On the perimeter you see sentries at regular intervals: calculate how many occupy even positions with `count_even(nums)`, which counts the **even** integers in the list (including `0`). Keep the signature and pass the tests without alarms.",
+        "swordsman": "On the training path the even stances matter: implement `count_even(nums)` which returns the number of **even** elements in the list. `0` is considered even. Keep the signature and honor the tests.",
+        "alchemist": "To calibrate the bench you need measurements with perfect parity: use `count_even(nums)` to count how many values are **even** (including `0`). Keep the signature and advance the tests.",
+        "ranger": "Among the footprints in the mud, mark those with an even stride: implement `count_even(nums)` which returns how many are **even**. Treat `0` as even. Keep the signature and pass the tests."
+      },
+      "next_intro": "Further on you will follow the beat of multiples of three and five up to the edge of the drum.",
+      "signature": "def count_even(nums: list[int]) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert count_even([1,2,3,4,6])==3"
+        },
+        {
+          "code": "assert count_even([])==0"
+        },
+        {
+          "code": "assert count_even([2,2,2])==3"
+        },
+        {
+          "code": "assert count_even([1,3,5])==0"
+        },
+        {
+          "code": "assert count_even([7,8])==1"
+        },
+        {
+          "code": "assert count_even([0])==1"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Initialize a counter at 0 and increment it every time x % 2 == 0, remembering that 0 is considered even."
+        }
+      ]
+    },
+    "c05_loops_l3": {
+      "name": "Drum of Multiples",
+      "prompt": {
+        "mage": "A bronze drum beats rhythms of three and five; the gate responds to their sum: invoke `sum_multiples(limit)` to return the sum of all numbers **less than** `limit` divisible by `3` **or** `5`. If `limit` ≤ `0`, return `0`. Keep the signature and satisfy the tests.",
+        "rogue": "To elude the guards you must follow the steps marked 3 or 5: implement `sum_multiples(limit)` by summing all values **< limit** divisible by `3` or `5`; for `limit` ≤ `0`, return `0`. Keep the signature and slip through the tests.",
+        "swordsman": "Your combined kata follows beats of three and five: implement `sum_multiples(limit)` which sums the numbers **below** `limit` that are multiples of `3` or `5`. If `limit` is not positive, return `0`. Keep the signature and win the tests.",
+        "alchemist": "The reactor responds to frequencies 3 and 5: use `sum_multiples(limit)` to sum all readings **< limit** divisible by `3` or `5`. For `limit` ≤ `0`, return `0`. Keep the signature and perfect the tests.",
+        "ranger": "In the canyon, only the calls on the third and fifth step echo: perform `sum_multiples(limit)` by summing the numbers **less than** `limit` that are multiples of `3` or `5`; if `limit` is ≤ `0`, return `0`. Keep the signature and pass the tests."
+      },
+      "next_intro": "In a few steps the walls will ask you to list every gem up to the threshold.",
+      "signature": "def sum_multiples(limit: int) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert sum_multiples(10)==23"
+        },
+        {
+          "code": "assert sum_multiples(1)==0"
+        },
+        {
+          "code": "assert sum_multiples(16)==60"
+        },
+        {
+          "code": "assert sum_multiples(3)==0"
+        },
+        {
+          "code": "assert sum_multiples(6)==8"
+        },
+        {
+          "code": "assert sum_multiples(5)==3"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Sum all numbers strictly less than limit that are multiples of 3 or of 5."
+        }
+      ]
+    },
+    "c05_loops_l4": {
+      "name": "Prime Slots",
+      "prompt": {
+        "mage": "The walls have sockets for **prime** gems: you must list them all. Forge `primes_up_to(n)` to return the list of prime numbers **≤ n** in ascending order; if `n` < `2`, return `[]`. Keep the signature and open the tests.",
+        "rogue": "The safes require prime keys in sequence: use `primes_up_to(n)` to produce all primes **≤ n** in order; if there are none (`n` < `2`), return `[]`. Keep the signature and pass the tests.",
+        "swordsman": "The list of challenges admits only prime opponents: implement `primes_up_to(n)` which returns all primes **≤ n** in order; if `n` < `2`, `[]`. Keep the signature and convince the tests.",
+        "alchemist": "To separate noble metals, catalogue the prime numbers up to the threshold. Implement `primes_up_to(n)` returning all primes **≤ n** in order; for `n` < `2`, `[]`. Keep the signature and advance the tests.",
+        "ranger": "In the circles of sacred stones only prime numbers count: build `primes_up_to(n)` to list the primes **≤ n** in order; if `n` < `2`, `[]`. Keep the signature and traverse the tests."
+      },
+      "next_intro": "At the last hall of loops you must be ready to compress melodies into compact sequences.",
+      "signature": "def primes_up_to(n: int) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert primes_up_to(10)==[2,3,5,7]"
+        },
+        {
+          "code": "assert primes_up_to(2)==[2]"
+        },
+        {
+          "code": "assert primes_up_to(1)==[]"
+        },
+        {
+          "code": "assert primes_up_to(3)==[2,3]"
+        },
+        {
+          "code": "assert primes_up_to(5)==[2,3,5]"
+        },
+        {
+          "code": "assert primes_up_to(7)==[2,3,5,7]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Generate the numbers from 2 to n and keep those that have no divisors other than 1 and themselves; you can try divisors up to the square root of the number."
+        }
+      ]
+    },
+    "c05_loops_l5": {
+      "name": "Compressed Melody",
+      "prompt": {
+        "mage": "The final hall sings repeated notes: you must compress them without losing the motif. Intone `rle(s)` to return the run-length encoding as a list of tuples `(character, count)` by scanning `s`; if `s` is empty, `[]`. Keep the signature and appease the tests.",
+        "rogue": "To send secure messages, compress sequences without redundancy: implement `rle(s)` which produces `[(char, n), ...]` by grouping consecutive characters; for an empty string, `[]`. Keep the signature and pass the tests.",
+        "swordsman": "In the hall of chronicles you must record repeated combos in compact form: implement `rle(s)` returning tuples `(character, count)` in order; if there’s nothing to count, `[]`. Keep the signature and honor the tests.",
+        "alchemist": "To document a reaction, record compressed series of symbols: use `rle(s)` building a list of `(character, count)` for consecutive groups; if `s` is empty, `[]`. Keep the signature and perfect the tests.",
+        "ranger": "In the bestiary of tracks, compact repetitions without losing the route: perform `rle(s)` which returns `[(char, n), ...]` for each consecutive group; with an empty string, `[]`. Keep the signature and cross the tests."
+      },
+      "next_intro": "Once you pass the chamber, you will encounter the trials of conditions, ruled by judgment.",
+      "signature": "def rle(s: str) -> list[tuple[str,int]]:\n    ...",
+      "tests": [
+        {
+          "code": "assert rle('aaabbc')==[('a',3),('b',2),('c',1)]"
+        },
+        {
+          "code": "assert rle('')==[]"
+        },
+        {
+          "code": "assert rle('a')==[('a',1)]"
+        },
+        {
+          "code": "assert rle('abb')==[('a',1),('b',2)]"
+        },
+        {
+          "code": "assert rle('abc')==[('a',1),('b',1),('c',1)]"
+        },
+        {
+          "code": "assert rle('xxxy')==[('x',3),('y',1)]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Scan the string keeping track of the current character and how many times it repeats; when it changes (or you reach the end) append a tuple (character, count)."
+        }
+      ]
+    },
+    "c06_conditions_l1": {
+      "name": "Hall of Balance",
+      "prompt": {
+        "mage": "In the Hall of Balance every digit is judged: dark, neutral, or bright. Keep the verdict with `sign(n)`: return `-1` if `n` is negative, `0` if it is zero, `1` if it is positive. Keep the exact signature and let the tests open the passage.",
+        "rogue": "At the secret entrance, every step is weighed: do you retreat, stand still, or advance? Decide with `sign(n)`, returning `-1` for negative numbers, `0` for `0`, `1` for positives. Keep the signature and slip past the tests.",
+        "swordsman": "The Mistress of Judgment evaluates your strikes: regression, stalemate, or momentum. Answer with `sign(n)`: `-1` if `n` < `0`, `0` if `n` == `0`, `1` if `n` > `0`. Keep the signature and honor the tests.",
+        "alchemist": "The council classifies each reagent: corrosive, inert, or tonic. Formulate `sign(n)` so it returns `-1` for negatives, `0` for zero, and `1` for positives. Keep the signature and pass the tests.",
+        "ranger": "The sages of the forest read the wind: headwind, still, or tailwind. Interpret with `sign(n)`: return `-1`, `0`, or `1` according to the value of `n`. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "Soon you will have to assign fair grades to the examiners’ scrolls.",
+      "signature": "def sign(n: int) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert sign(-2)==-1"
+        },
+        {
+          "code": "assert sign(0)==0"
+        },
+        {
+          "code": "assert sign(3)==1"
+        },
+        {
+          "code": "assert sign(5)==1"
+        },
+        {
+          "code": "assert sign(-1)==-1"
+        },
+        {
+          "code": "assert sign(7)==1"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Handle the three cases with if/elif: negative numbers should return -1, zero 0, and positives 1."
+        }
+      ]
+    },
+    "c06_conditions_l2": {
+      "name": "Judges’ Scrolls",
+      "prompt": {
+        "mage": "The Judges’ Scrolls await your seal: assign the correct grade with `grade(score)`, using **descending** thresholds: `A` for `score >= 90`, then `B` `>= 80`, `C` `>= 70`, `D` `>= 60`, otherwise `F`. Keep the signature and satisfy the tests.",
+        "rogue": "The Master of Masks demands clear ranks. Classify with `grade(score)`: `A` if `>= 90`, then `B` `>= 80`, `C` `>= 70`, `D` `>= 60`, otherwise `F`. Keep the signature and don’t trigger the trap-tests.",
+        "swordsman": "At the delivery of trials, each score receives its banner. Raise it with `grade(score)`: `A` (>=90), `B` (>=80), `C` (>=70), `D` (>=60), otherwise `F`. Keep the signature and win the tests.",
+        "alchemist": "You assess the purity of crystals. Apply `grade(score)` with the thresholds: `A` (>=90), `B` (>=80), `C` (>=70), `D` (>=60), otherwise `F`. Keep the signature and perfect the tests.",
+        "ranger": "From the sky you measure the intensity of the rain. Assign with `grade(score)`: `A` if `>=90`, then `B`,`C`,`D` as per thresholds, otherwise `F`. Keep the signature and traverse the tests."
+      },
+      "next_intro": "In the next room, the challenge demands safe divisions with a fallback value.",
+      "signature": "def grade(score: int) -> str:\n    ...",
+      "tests": [
+        {
+          "code": "assert grade(95)=='A'"
+        },
+        {
+          "code": "assert grade(59)=='F'"
+        },
+        {
+          "code": "assert grade(85) in 'AB'"
+        },
+        {
+          "code": "assert grade(70) in 'CD'"
+        },
+        {
+          "code": "assert isinstance(grade(10),str)"
+        },
+        {
+          "code": "assert grade(100)=='A'"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Apply standard thresholds: scores >=90 give 'A', >=80 'B', >=70 'C', >=60 'D', and everything else is 'F'."
+        }
+      ]
+    },
+    "c06_conditions_l3": {
+      "name": "Mercury Fountain",
+      "prompt": {
+        "mage": "A fountain of mercury tests your discernment: pour only if it’s safe. Implement `safe_div(a, b, default=None)` returning `default` when `b == 0`, otherwise `a/b` as a **float**. Keep the signature and appease the tests.",
+        "rogue": "A pact asks for a share only if the risk isn’t zero. Implement `safe_div(a, b, default=None)`: return `default` if `b` is `0`, otherwise the quotient `a/b` as a **float**. Keep the signature and slip through the tests.",
+        "swordsman": "In the duel of numbers do not strike the void: if the divisor is zero, choose the safe path. Write `safe_div(a, b, default=None)` returning `default` if `b==0`, otherwise `float(a)/b`. Keep the signature and honor the tests.",
+        "alchemist": "In the reactor’s channels avoid impossible divisions. Use `safe_div(a, b, default=None)`: if `b` equals `0`, return `default`; otherwise return the result in **floating point**. Keep the signature and perfect the tests.",
+        "ranger": "At the ford, if the level is zero, do not enter. With `safe_div(a, b, default=None)` return `default` when `b==0`, otherwise `a/b` as a float. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "Further on you will be asked to contain energies within parallel mirrors.",
+      "signature": "def safe_div(a: float, b: float, default=None):\n    ...",
+      "tests": [
+        {
+          "code": "assert safe_div(6,3)==2.0"
+        },
+        {
+          "code": "assert safe_div(1,0,7)==7"
+        },
+        {
+          "code": "assert safe_div(0,5)==0"
+        },
+        {
+          "code": "assert safe_div(5,0,None) is None"
+        },
+        {
+          "code": "assert safe_div(9,3)==3.0"
+        },
+        {
+          "code": "assert safe_div(2,2)==1.0"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Check whether the divisor equals zero: in that case return the default. Otherwise return a/b, converting the result to float."
+        }
+      ]
+    },
+    "c06_conditions_l4": {
+      "name": "Parallel Mirrors",
+      "prompt": {
+        "mage": "Between Parallel Mirrors, energy must neither exceed nor fall short. Contain it with `clamp(x, lo, hi)`, returning `x` limited to the interval `[lo, hi]`. Keep the signature and satisfy the tests.",
+        "rogue": "Two crossed blades set your bounds: do not cross them. Implement `clamp(x, lo, hi)` which brings `x` back into the range `[lo, hi]`. Keep the signature and don’t alert the tests.",
+        "swordsman": "During practice, your strength must stay within the proper range. Use `clamp(x, lo, hi)` to bring `x` within `[lo, hi]`. Keep the signature and win the tests.",
+        "alchemist": "Keep the crucible’s temperature between the low and high thresholds. Implement `clamp(x, lo, hi)` returning the value limited to `[lo, hi]`. Keep the signature and perfect the tests.",
+        "ranger": "In the field, keep the heat between the two fires. With `clamp(x, lo, hi)` return `x` constrained to `[lo, hi]`. Keep the signature and traverse the tests."
+      },
+      "next_intro": "Before leaving this hall, you will optimize the tribute of shining coins.",
+      "signature": "def clamp(x: float, lo: float, hi: float) -> float:\n    ...",
+      "tests": [
+        {
+          "code": "assert clamp(5,0,3)==3"
+        },
+        {
+          "code": "assert clamp(-1,0,3)==0"
+        },
+        {
+          "code": "assert clamp(2,0,3)==2"
+        },
+        {
+          "code": "assert clamp(0,0,0)==0"
+        },
+        {
+          "code": "assert clamp(10,1,9)==9"
+        },
+        {
+          "code": "assert clamp(1,0,2)==1"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "To limit x between lo and hi, first ensure it doesn’t drop below lo (max) and then that it doesn’t exceed hi (min)."
+        }
+      ]
+    },
+    "c06_conditions_l5": {
+      "name": "Optimal Treasury",
+      "prompt": {
+        "mage": "At the Optimal Treasury, every tribute must be minimized. Compute with `min_coins(amount, coins)`: return the **minimum number** of coins to obtain `amount`; if impossible, return `1000000000`. Keep the signature and let the tests open.",
+        "rogue": "When paying the informant, choose the least conspicuous tribute. Implement `min_coins(amount, coins)` returning the minimum coin count, or `1000000000` if the amount cannot be composed. Keep the signature and slip past the tests.",
+        "swordsman": "For the Offering of Honor, serve the exact amount with the fewest pieces. Use `min_coins(amount, coins)`: minimum number of coins, or `1000000000` if it isn’t possible. Keep the signature and win the tests.",
+        "alchemist": "For apprentices, measure the most efficient outlay. Implement `min_coins(amount, coins)` returning the minimum count, or `1000000000` when not composable. Keep the signature and perfect the tests.",
+        "ranger": "In the tribal tribute distribute the fewest coins. With `min_coins(amount, coins)` return the minimum, or `1000000000` if the amount is unreachable. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "As you advance, the text galleries await you, where you’ll count and search lines and tales.",
+      "signature": "def min_coins(amount: int, coins: list[int]) -> int:\n    ...",
+      "tests": [
+        {
+          "code": "assert min_coins(11,[1,2,5])==3"
+        },
+        {
+          "code": "assert min_coins(0,[1,2,5])==0"
+        },
+        {
+          "code": "assert min_coins(3,[2])==1000000000"
+        },
+        {
+          "code": "assert min_coins(6,[1,3,4])==2"
+        },
+        {
+          "code": "assert min_coins(7,[1,2,5])==2"
+        },
+        {
+          "code": "assert min_coins(2,[2])==1"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Build a dp table of length amount+1 initialized to a large value, set dp[0]=0, and update dp[target] = min(dp[target], dp[target-coin] + 1) for each coin."
+        }
+      ]
+    },
+    "c07_textio_l1": {
+      "name": "Faithful Scriptorium",
+      "prompt": {
+        "mage": "In the Scriptorium of Echoes every scroll is engraved and then heard again: `write_and_read(lines)` must return the faithful echo of the notes in the order in which they were recorded. First the words are delivered to a tome called `textio_write_and_read.txt`. Then, when the tome is reopened, each line emerges from silence, purified from end-of-line markers, and is gathered into a new list that preserves the memory of the rite.",
+        "rogue": "In the lair every message undergoes a double trial: `write_and_read(lines)` must return the sequence of phrases exactly as they were written and re-checked. First they are engraved in the shadows of `textio_write_and_read.txt`. Then, reopening the secret ledger, the rogue scans each mark, removes the superfluous end-of-line traces, and rebuilds a parallel list, ready to be stolen from the fire.",
+        "swordsman": "In the dojo the master dictates and demands rigor: `write_and_read(lines)` must return a perfect copy of the received sequence. The orders are entrusted to the scroll `textio_write_and_read.txt`, sealed with discipline. Later, when the scroll is reopened, each line is read carefully, stripped of end-of-line marks, and gathered into a new list, testimony of the disciple’s fidelity.",
+        "alchemist": "On the workbench of experiments every signal must be fixed and re-checked: `write_and_read(lines)` must return the complete series of transcriptions, in the exact order in which they were recorded. First all observations condense into a grimoire called `textio_write_and_read.txt`. Then, upon rereading, each line is distilled without the impurities of end-of-line markers and poured into a new list, which becomes the final distillate.",
+        "ranger": "Around the fire the explorers recite their reports twice: `write_and_read(lines)` must return the list of lines just as they were transcribed and then read again. First they are laid down in a diary named `textio_write_and_read.txt`. Then, leafing again through the diary in the glow of embers, each line is freed from the superfluous end-of-line marks and added to a distinct list, ready to be passed down."
+      },
+      "next_intro": "As you resume your journey, the next station will ask you to count each line of the transcribed scrolls.",
+      "signature": "def write_and_read(lines: list[str]) -> list[str]:\n    filename = 'textio_write_and_read.txt'\n    ...",
+      "tests": [
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha', 'beta']\nresult = write_and_read(lines)\nassert result == lines and result is not lines\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = []\nresult = write_and_read(lines)\nassert result == []\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['solo']\nresult = write_and_read(lines)\nassert result == ['solo'] and result is not lines\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2', '3']\nwrite_and_read(lines)\nlog = list(_sandbox_open_log)\nassert len(log) >= 2\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['k']\nres1 = write_and_read(lines)\nres2 = write_and_read(lines)\nassert res1 == ['k'] and res2 == ['k']\nlog = list(_sandbox_open_log)\nassert sum(1 for entry in log if 'w' in entry['mode']) >= 2\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha', 'beta']\na = write_and_read(lines)\nb = write_and_read(lines)\nassert a == b == lines\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in _sandbox_open_log)\n"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Return a new list with the same lines received (use list(lines) or slicing) without modifying the original."
+        }
+      ]
+    },
+    "c07_textio_l2": {
+      "name": "Count of the Scrolls",
+      "prompt": {
+        "mage": "In the Scriptorium’s archive every scroll must be recorded and the keeper keeps count of the entries: `count_lines(lines)` must return that number. First the rolls are placed in a tome called `textio_count.txt`. Then, when the tome is reopened, the scribe goes through it line by line, mentally noting each echo encountered. At the end of the path, the total gathered is the answer.",
+        "rogue": "In the stash every hidden message is counted like a treasure: `count_lines(lines)` must reveal how many entries are truly stored. First the secrets are sealed in a ledger named `textio_count.txt`. Then the rogue, reopening it in the shadows, walks through each line silently, letting the number grow sign by sign until he knows the exact amount.",
+        "swordsman": "In the dojo the master allows no hesitation: every command given must be counted like a sword strike. Thus `count_lines(lines)` must return the number of orders issued. First the disciple entrusts each word to the scroll called `textio_count.txt`. Then, reopening it with discipline, he traverses all lines one after another, accumulating in his heart the total, which becomes the measure of his obedience.",
+        "alchemist": "At the workbench every reagent must be recorded and numbered carefully: `count_lines(lines)` must say how many formulas were noted. The notes are distilled into the grimoire `textio_count.txt`. Once sealed and reopened, each line is an ingredient counted one by one until the calculation reveals the exact number of entries stored.",
+        "ranger": "In the outposts every report gathered is a trace that must not be lost: `count_lines(lines)` must return the total of the delivered lines. For this reason the scout entrusts all the news to the diary `textio_count.txt`. When he reopens it by the fire’s light, he reads through each line like a step taken on the path, and only by adding up all the marks does he reach the final number."
+      },
+      "next_intro": "Next you will have to track down an exact phrase among the accumulated records.",
+      "signature": "def count_lines(lines: list[str]) -> int:\n    filename = 'textio_count.txt'\n    ...",
+      "tests": [
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['a', 'b', 'c']\ncount = count_lines(lines)\nassert count == 3\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = []\ncount = count_lines(lines)\nassert count == 0\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['x']\nassert count_lines(lines) == 1\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2']\nassert count_lines(lines) == 2\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['r', 's', 't']\nvalue = count_lines(lines)\nassert isinstance(value, int) and value == len(lines)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['shadow']\ncount_lines(lines)\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "The function should simply return len(lines)."
+        }
+      ]
+    },
+    "c07_textio_l3": {
+      "name": "Hidden Phrase",
+      "prompt": {
+        "mage": "In the catalog of echoes not every verse answers, but only the one that exists among the scrolls: `contains_line(lines, needle)` must reveal with a yes or no whether the invoked line is truly present. First each echo is engraved in a register called `textio_contains.txt`. Then the tome is reopened and leafed through word by word: each mark is purified from end-of-line signs and compared with the sought formula. If an echo matches, the response is affirmative; otherwise silence brings denial.",
+        "rogue": "In the lair of passwords not all survive the test of time: `contains_line(lines, needle)` must unmask whether the spoken one is still valid. First the rogue hides all phrases in a secret register, `textio_contains.txt`. Then, stealthily reopening the volume, he walks through it in silence: each formula is cleared of the dust of end-of-line marks and compared with the requested key. If he finds it, entry is granted; if not, the door remains closed.",
+        "swordsman": "In the chronicles of training every command must be sought like a precise strike: `contains_line(lines, needle)` returns the truth – the command exists or not. First the dictates are entrusted to a scroll called `textio_contains.txt`. Then, reopened with discipline, the scroll is scanned line by line: each mark is stripped of superfluous end-of-line signs and compared with the sought order. If the command appears, the answer is yes; if it stays hidden, the answer is no.",
+        "alchemist": "Among the lab notes not every reagent is available: `contains_line(lines, needle)` must reveal if the desired formula has already been transcribed. First all notes are distilled into a grimoire called `textio_contains.txt`. Then the grimoire is reopened and analyzed: each formula, freed from the dross of end-of-line marks, is compared with the sought reagent. If the marks match, the experiment can begin; if not, it remains incomplete.",
+        "ranger": "In the log of trails not every mark leads to the right path: `contains_line(lines, needle)` must indicate if the requested track has been recorded. First the wanderer entrusts each step to a diary named `textio_contains.txt`. Then, leafing through it again, he examines each line, stripped of end-of-line traces, and compares it with the sought path. If the mark appears, the way is confirmed; if it’s missing, the search continues in the void."
+      },
+      "next_intro": "The next trial tests your skill in creating independent copies of lists.",
+      "signature": "def contains_line(lines: list[str], needle: str) -> bool:\n    filename = 'textio_contains.txt'\n    ...",
+      "tests": [
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['sun', 'moon']\nassert contains_line(lines, 'moon') is True\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['sun', 'moon']\nassert contains_line(lines, 'star') is False\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = []\nassert contains_line(lines, 'anything') is False\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha']\nassert contains_line(lines, 'alpha') is True\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha']\nassert contains_line(lines, 'beta') is False\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['k', 'l']\ncontains_line(lines, 'k')\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "You can use the in operator to check whether needle appears in the list; return a boolean."
+        }
+      ]
+    },
+    "c07_textio_l4": {
+      "name": "Duplicated Chronicle",
+      "prompt": {
+        "mage": "In the Scriptorium every scroll is first entrusted to an archive and then transcribed in a second tome: `copy_list(lines)` must return a twin list without touching the original. First a trace is left in a scroll called `textio_source.txt`. Later, that scroll is reopened and read word by word, while a new tome, `textio_copy.txt`, receives the same transcription. Each verse, once cleansed of end-of-line signs, also enters a secret list that will be the only reward of the enchanter.",
+        "rogue": "In the lair no message survives if it has no duplicate: `copy_list(lines)` must return a list with a faithful copy of the entrusted lines. First the content is engraved in a hidden register, `textio_source.txt`. Then that register is carefully leafed through, and for each phrase, cleaned of the dust of end-of-line marks, a trace is preserved both in a new register, `textio_copy.txt`, and in a list to carry away. The original remains in the shadows, intact, while the rogue flees with the copy.",
+        "swordsman": "In the dojo the master demands that the disciple transcribe every order and report it in a second manuscript: `copy_list(lines)` must return a twin list without touching the initial one. The words are first deposited in a scroll called `textio_source.txt`. Then, in an act of discipline, the scroll is reopened, and each command, purified of end-of-line marks, is engraved again in `textio_copy.txt` and stored in a separate list. Only this list, in the end, becomes proof of the disciple’s loyalty.",
+        "alchemist": "At the workbench no reagent is used without having its formula written down in duplicate: `copy_list(lines)` must return a new list identical to the original. For this reason each note is first sealed in a grimoire called `textio_source.txt`. Then, reopening those pages, each mark, freed from the dross of end-of-line signs, is transcribed in a second book, `textio_copy.txt`, and distilled into a separate list. This list is what the alchemist will guard as the final distillate.",
+        "ranger": "Explorers know their diaries may burn in the campfire, so they always make a duplicate: `copy_list(lines)` must return a distinct but identical list to the original. First the diary is given to a register named `textio_source.txt`. Then, reopening that register, each line, cleared of end-of-line traces, is written again in a second register, `textio_copy.txt`, and at the same time collected in a list that the ranger will keep. Thus the original remains buried, but the copy survives in the silence of the forest."
+      },
+      "next_intro": "Before leaving this hall, closing the scriptorium, you will extract the first lines to be delivered in haste.",
+      "signature": "def copy_list(src: list[str]) -> list[str]:\n    source_file = 'textio_source.txt'\n    copy_file = 'textio_copy.txt'\n    ...",
+      "tests": [
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['north', 'south']\ncopy = copy_list(lines)\nassert copy == lines and copy is not lines\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['only']\nresult = copy_list(lines)\nassert result == ['only']\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = []\nresult = copy_list(lines)\nassert result == []\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2']\nfirst = copy_list(lines)\nsecond = copy_list(lines)\nassert first == second == lines\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha', 'beta']\ncopy_list(lines)\nlog = list(_sandbox_open_log)\nassert sum(1 for entry in log if 'w' in entry['mode']) >= 1\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['mirror']\ncopy_list(lines)\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Create and return an independent copy of the list, e.g., with list(src) or src[:]."
+        }
+      ]
+    },
+    "c07_textio_l5": {
+      "name": "Vanguard Extract",
+      "prompt": {
+        "mage": "In the Scriptorium, when a scroll is too long, the keeper reads only the opening verses: `head(lines, n)` must return at most `n` lines, in the order they appear. The marks are entrusted to a tome called `textio_head.txt`. Then, if the requested measure is positive, the tome is reopened and read from the beginning: the first marks are gathered, purified of end-of-line folds, and preserved in a new list. If the invoked number is zero or less, nothing is gathered.",
+        "rogue": "In the lair not all the papers are ever consulted, but only the initial clues: `head(lines, n)` must provide the first traces up to `n`. First the phrases are engraved in a register called `textio_head.txt`. Then, if the request is valid, the rogue opens the register and reads only the first entries. Each line is stripped of end-of-line dross and inserted into a secret list. If the steps end before the expected number, he stops anyway.",
+        "swordsman": "In the dojo the master grants the disciple only the necessary instructions to begin: `head(lines, n)` returns the first `n` phrases, or all if the list is shorter. The commands are first entrusted to a scroll called `textio_head.txt`. Then the scroll is reopened, and the disciple reads line by line only up to the imposed limit. Each word is freed from end-of-line marks and inserted into a list that becomes the training guide.",
+        "alchemist": "In the laboratory only a few samples are needed to start an experiment: `head(lines, n)` must return only the first `n` recorded lines. The notes are poured into a grimoire called `textio_head.txt`. If the requested number is positive, the grimoire is leafed through from the start: each formula read, purified of end-of-line marks, enters a flask-list until the desired amount is reached or until the text ends.",
+        "ranger": "In the forest the wanderer needs only the first signs of the route: `head(lines, n)` must report the first `n` available traces. First the explorers deposit every waypoint in a diary named `textio_head.txt`. Then, reopening the diary, only the first entries are read, cleansed of end-of-journey marks. The collection stops when the requested number is reached or when the traces run out, and the obtained list guides the next steps."
+      },
+      "next_intro": "Prepare for the deposit of living diagrams and the secrets of JSON style.",
+      "signature": "def head(lines: list[str], n: int) -> list[str]:\n    filename = 'textio_head.txt'\n    ...",
+      "tests": [
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['a', 'b', 'c', 'd']\nres = head(lines, 2)\nassert res == ['a', 'b']\nlog = list(_sandbox_open_log)\nassert any('r' in entry['mode'] for entry in log)\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['x']\nassert head(lines, 5) == ['x']\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = []\nassert head(lines, 1) == []\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2', '3']\nassert head(lines, 0) == []\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['r', 's']\nassert head(lines, 1) == ['r']\n"
+        },
+        {
+          "code": "_sandbox_open_log.clear()\nlines = ['k', 'l']\nresult = head(lines, 2)\nassert result == ['k', 'l']\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Return the first n lines using slicing (lines[:n]); if n is greater than the length you will still get all available lines."
+        }
+      ]
+    },
+    "c08_json_l1": {
+      "name": "Repository of Diagrams",
+      "prompt": {
+        "mage": "In the Repository of Structured Scrolls, not every fragment is trustworthy. Weave order into the tale: implement `is_valid_record(x)` returning `True` only if **x is a dictionary** (even empty or nested), otherwise `False`. Keep the signature and pass the tests.",
+        "rogue": "Among the stolen records some files are fakes: `is_valid_record(x)` must say **True** only for dictionaries; everything else is scrap. Keep the signature and slip past the tests.",
+        "swordsman": "In the archives dojo, you first recognize the format. Write `is_valid_record(x)` that returns **True** if and only if `x` is a `dict`. Keep the signature and honor the tests.",
+        "alchemist": "In the titration room, only samples with the right label pass. With `is_valid_record(x)` return **True** only for `dict`, otherwise **False**. Keep the signature and perfect the tests.",
+        "ranger": "In the field, some reports are just rumors. `is_valid_record(x)` must confirm **True** only when `x` is a dictionary; otherwise **False**. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "The next step requires extracting only the keys requested by the council.",
+      "signature": "def is_valid_record(x: dict | list | str | None) -> bool:\n    ...",
+      "tests": [
+        {
+          "code": "assert is_valid_record({'a':1}) is True"
+        },
+        {
+          "code": "assert is_valid_record([1,2]) is False"
+        },
+        {
+          "code": "assert is_valid_record({'x':0,'y':1}) is True"
+        },
+        {
+          "code": "assert is_valid_record({'a':{'b':2}}) is True"
+        },
+        {
+          "code": "assert is_valid_record('x') is False"
+        },
+        {
+          "code": "assert is_valid_record({}) is True"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Verify that `x` is a dictionary and that each key is of type str; a simple scan over the keys with isinstance is enough."
+        }
+      ]
+    },
+    "c08_json_l2": {
+      "name": "Council Keys",
+      "prompt": {
+        "mage": "In front of an immense ledger you must extract only the required runes. Make the story ask for it: `pick(d, keys)` returns a **new** dictionary with **only** the keys listed in `keys` that are present in `d` (without modifying `d`). Keep the signature and appease the tests.",
+        "rogue": "In the loot take only what’s needed: `pick(d, keys)` must create a new dict with the requested `keys` that are already present in `d`, without touching the original. Keep the signature and slip past the tests.",
+        "swordsman": "In the dojo notes you underline only the key passages. Implement `pick(d, keys)` so that it returns a new dictionary filtered on the `keys` present in `d`, leaving `d` untouched. Keep the signature and win the tests.",
+        "alchemist": "At the separation bench, retain only the indicated components. With `pick(d, keys)` create a new dictionary with the requested `keys` that are present in `d`, without altering `d`. Keep the signature and title the tests.",
+        "ranger": "In the field report include only the useful data. `pick(d, keys)` returns a new dict with the requested `keys` that are present in `d`, leaving `d` as it is. Keep the signature and make it through the tests."
+},
+      "next_intro": "Further on you will have to sum the numeric energy that pulses through nested structures.",
+      "signature": "def pick(d: dict, keys: list[str]) -> dict:\n    ...",
+      "tests": [
+        {
+          "code": "assert pick({'a':1,'b':2},['b'])=={'b':2}"
+        },
+        {
+          "code": "assert pick({},['a'])=={}"
+        },
+        {
+          "code": "assert pick({'x':1},['x','y'])=={'x':1}"
+        },
+        {
+          "code": "assert pick({'a':1,'b':2},[])=={}"
+        },
+        {
+          "code": "assert pick({'k':9},['k'])=={'k':9}"
+        },
+        {
+          "code": "assert pick({'m':1,'n':2},['n'])=={'n':2}"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Build a new dictionary inserting only the requested keys that are present in the original, leaving the other values unchanged."
+        }
+      ]
+    },
+    "c08_json_l3": {
+      "name": "Pulsing Globe",
+      "prompt": {
+        "mage": "A data tree hides numbers in deep cavities. With `sum_numbers(obj)` you must traverse this structure and return the total sum. The function must be **recursive**: if `obj` is an integer or a float, return it directly; if it is a list or a tuple, call `sum_numbers` on each element and sum the results; if it is a dictionary, call `sum_numbers` on each value and sum the results; if it is another type, return 0. This way all numbers, even those hidden in nested structures, are included in the calculation. Keep the signature and make sure it passes the tests.",
+        "rogue": "In the loot some values are hidden deep inside the chests. `sum_numbers(obj)` must retrieve all the numbers, wherever they are. The function must be **recursive**: if `obj` is an integer or a float, return it directly; if it is a list or a tuple, call `sum_numbers` on each element and sum the results; if it is a dictionary, call `sum_numbers` on each value and sum the results; if it is another type, return 0. This way all numbers, step by step, are included in the calculation. Keep the signature and make sure it passes the tests.",
+        "swordsman": "In the training logs strength is found only by going through every level. Implement `sum_numbers(obj)` in a **recursive** way: if `obj` is an integer or a float, return it directly; if it is a list or a tuple, call `sum_numbers` on each element and sum the results; if it is a dictionary, call `sum_numbers` on each value and sum the results; if it is another type, return 0. This way all numbers, even those hidden in nested structures, are included in the calculation. Keep the signature and make sure it passes the tests.",
+        "alchemist": "In the lattice of measurements, numbers appear everywhere. Implement `sum_numbers(obj)` in a **recursive** way: if `obj` is an integer or a float, return it directly; if it is a list or a tuple, call `sum_numbers` on each element and sum the results; if it is a dictionary, call `sum_numbers` on each value and sum the results; if it is another type, return 0. This way all numbers, step by step, are included in the calculation. Keep the signature and make sure it passes the tests.",
+        "ranger": "In the tangle of the data-forest, every clearing may hide precious numbers. Implement `sum_numbers(obj)` in a **recursive** way: if `obj` is an integer or a float, return it directly; if it is a list or a tuple, call `sum_numbers` on each element and sum the results; if it is a dictionary, call `sum_numbers` on each value and sum the results; if it is another type, return 0. This way all numbers, even those hidden in nested structures, are included in the calculation. Keep the signature and make sure it passes the tests."
+      },
+      "next_intro": "The following hall asks you to merge projections without shattering the originals.",
+      "signature": "def sum_numbers(obj: int | float | list | tuple | dict) -> float:\n    ...",
+      "tests": [
+        {
+          "code": "data={'a':1,'b':[2,{'c':3}], 'd':'x'}\nassert sum_numbers(data)==6"
+        },
+        {
+          "code": "assert sum_numbers([])==0"
+        },
+        {
+          "code": "assert sum_numbers({'x':[1,2,3]})==6"
+        },
+        {
+          "code": "assert sum_numbers({'a':{'b':2.5}})==2.5"
+        },
+        {
+          "code": "assert sum_numbers(7)==7"
+        },
+        {
+          "code": "assert sum_numbers({'m':0})==0"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "If `obj` is a number, return it. If it is a list, tuple, or dictionary, recursively visit its elements: sum the numbers (int or float), ignore other types, and add up the partial results."
+        }
+      ]
+    },
+    "c08_json_l4": {
+      "name": "Overlapping Cities",
+      "prompt": {
+        "mage": "Two discordant records must become a single truth. The tale requires it: `merge_struct(a, b)` returns a **shallow merge** of the two dictionaries, where `b` prevails in case of conflict; other types remain unchanged. Keep the signature and pass the tests.",
+        "rogue": "Two versions of the same file must be reconciled: `merge_struct(a, b)` creates a new dict where values from `b` overwrite those of `a` on the same keys. Keep the signature and slip through the tests.",
+        "swordsman": "Two training reports must be united, choosing the latest valid one. Write `merge_struct(a, b)` with a **shallow** merge and priority to `b` on conflicts. Keep the signature and win the tests.",
+        "alchemist": "Unite two partial analyses: with `merge_struct(a, b)` produce a dictionary that copies `a` and updates with `b`’s fields on conflicts. Keep the signature and perfect the tests.",
+        "ranger": "Reconcile two trail maps: `merge_struct(a, b)` returns a new dictionary where `b` updates `a` key by key. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "Before leaving this hall, you will have to transform every record into lines ready for the automata.",
+      "signature": "def merge_struct(a: dict, b: dict) -> dict:\n    ...",
+      "tests": [
+        {
+          "code": "assert merge_struct({'a':1},{'a':2,'b':3})=={'a':2,'b':3}"
+        },
+        {
+          "code": "assert merge_struct({}, {'x':1})=={'x':1}"
+        },
+        {
+          "code": "assert merge_struct({'x':1},{})=={'x':1}"
+        },
+        {
+          "code": "assert merge_struct({'a':1},{'a':1})=={'a':1}"
+        },
+        {
+          "code": "assert merge_struct({'k':1},{'k':2,'q':3})=={'k':2,'q':3}"
+        },
+        {
+          "code": "assert merge_struct({'m':0},{'n':1})=={'m':0,'n':1}"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Copy dictionary a and then overwrite/add the pairs coming from b (dict(a); out.update(b)); recursion isn’t needed in this exercise."
+        }
+      ]
+    },
+    "c08_json_l5": {
+      "name": "Lines for the Automata",
+      "prompt": {
+        "mage": "To archive reports as lines, each record must be etched onto a line. Weave the request into the tale: `to_json_lines(records)` returns a **list** of JSON strings, one for each dictionary in `records`. Keep the signature and satisfy the tests.",
+        "rogue": "To smuggle the data, package them line by line: `to_json_lines(records)` must produce a list of JSON lines (one per record). Keep the signature and slip past the tests.",
+        "swordsman": "In the dojo, the daily log goes one line each. Implement `to_json_lines(records)` which returns a list of JSON strings, one for every dict. Keep the signature and honor the tests.",
+        "alchemist": "When the solution is ready, transcribe it into separate lines. `to_json_lines(records)` must create a list of strings obtained by serializing each dictionary. Keep the signature and perfect the tests.",
+        "ranger": "In the field, each event ends up on a line of the journal. `to_json_lines(records)` returns a list of JSON strings, one per record. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "As you advance, you cross the corridor of uncertain possibilities, where try and exceptions reign.",
+      "signature": "def to_json_lines(records: list[dict]) -> list[str]:\n    ...",
+      "tests": [
+        {
+          "code": "import json\nout = to_json_lines([{'a': 1}, {'b': 2}])\nassert isinstance(out, list) and len(out) == 2\nfor s in out:\n    assert isinstance(s, str)\n    assert isinstance(json.loads(s), dict)"
+        },
+        {
+          "code": "assert to_json_lines([]) == []"
+        },
+        {
+          "code": "import json\nsrc = [{'x': 1}, {'y': 2, 'z': 3}]\nout = to_json_lines(src)\nparsed = [json.loads(s) for s in out]\nassert parsed == src"
+        },
+        {
+          "code": "import json\nout = to_json_lines([{'x': 1}])\nassert out and out[0].lstrip().startswith('{')\njson.loads(out[0])"
+        },
+        {
+          "code": "import json\nout = to_json_lines([{'k': 9}])\nassert len(out) == 1 and isinstance(out[0], str)\nassert json.loads(out[0]) == {'k': 9}"
+        },
+        {
+          "code": "import json\nsrc = [{'a': 'è'}, {'b': [1, 2]}, {'c': {'d': 3}}]\nout = to_json_lines(src)\nassert [json.loads(s) for s in out] == src"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "For each dictionary in the list, generate the JSON string with json.dumps and return the list of produced strings."
+        }
+      ]
+    },
+    "c09_try_l1": {
+      "name": "Uncertain Corridor",
+      "prompt": {
+        "mage": "In the Corridor of Uncertain Possibilities, some figures are real and others mere mirages. To avoid breaking the rite, try the conversion and, if it fails, entrust the result to a fallback value: implement `to_int(x, default=0)` by attempting `int(x)` and returning `default` in case of `ValueError` or `TypeError`. Handle strings like `'10'` or `'-1'` and numbers like `3.2` (which become `3`). Keep the signature and pass the tests.",
+        "rogue": "Among stolen scrolls, some numbers are rigged. Without setting off alarms, apply `to_int(x, default=0)`: try `int(x)` and, if the input is invalid or missing, return `default`. Numeric strings and floats must convert correctly (e.g., `3.2 → 3`). Keep the signature and slip past the tests.",
+        "swordsman": "In the Dojo of Variable Skies the reports are uncertain: some values can be read, others not. Execute `to_int(x, default=0)`: attempt `int(x)` and, if you get `ValueError` or `TypeError`, return `default`. Integer strings (including negatives) and floats must work. Keep the signature and honor the tests.",
+        "alchemist": "In the chamber of turbulent solutions, some samples yield a measure, others vanish. Distill with `to_int(x, default=0)`: try `int(x)` and when extraction fails (`ValueError`/`TypeError`) return `default`. Accept numeric strings and decimal numbers (`3.2 → 3`). Keep the signature and perfect the tests.",
+        "ranger": "In the passage through rocks, the faded runes don’t always speak clearly. Implement `to_int(x, default=0)`: convert with `int(x)`, but if reading fails return `default`. Support integer strings (including with sign) and floats rounded down by `int`. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "As the next hall opens, the next mission demands safe reads even when the message fades.",
+      "signature": "def to_int(x, default=0):\n    ...",
+      "tests": [
+        {
+          "code": "assert to_int('10')==10"
+        },
+        {
+          "code": "assert to_int('x',7)==7"
+        },
+        {
+          "code": "assert to_int(None)==0"
+        },
+        {
+          "code": "assert to_int(3.2)==3"
+        },
+        {
+          "code": "assert to_int('0')==0"
+        },
+        {
+          "code": "assert to_int('-1')==-1"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Try to convert x with int(x) inside a try; in case of ValueError or TypeError return the default value."
+        }
+      ]
+    },
+    "c09_try_l2": {
+      "name": "Faded Messages",
+      "prompt": {
+        "mage": "Faded messages drift in the Scriptorium: sometimes the text is there, other times it vanishes into nothing. Write `read_safe(text: str | None, default: str = '') -> str` returning **`text` as is** when it is not `None`, otherwise `default`. Do not normalize, do not convert: if `text` is `''`, return `''`. Keep the signature and appease the tests.",
+        "rogue": "Some missives arrive broken or are missing altogether. With `read_safe(text, default='')` return the content if present; if `text` is `None`, deliver `default`. Do not change the text (even if empty). Keep the signature and pass the tests.",
+        "swordsman": "When the courier doesn’t arrive, you must still give a signal. Execute `read_safe(text, default='')`: if `text` is not `None`, return it unchanged; if it is `None`, return `default`. Respect empty strings. Keep the signature and win the tests.",
+        "alchemist": "If the indicator prints nothing, pour the safety buffer. Implement `read_safe(text, default='')` returning `text` if it exists, otherwise `default`. No trimming, no conversion. Keep the signature and perfect the tests.",
+        "ranger": "In the field journal some pages are blank. With `read_safe(text, default='')` return the text when it’s there, and `default` only when `text` is `None`. Do not touch empty strings. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "Soon you will filter stained lists, saving only authentic numbers.",
+      "signature": "def read_safe(text: str | None, default: str = '') -> str:\n    ...",
+      "tests": [
+        {
+          "code": "assert read_safe('x')=='x'"
+        },
+        {
+          "code": "assert read_safe(None)==''"
+        },
+        {
+          "code": "assert read_safe(None,'?')=='?'"
+        },
+        {
+          "code": "assert read_safe('', '-')==''"
+        },
+        {
+          "code": "assert isinstance(read_safe('r'), str)"
+        },
+        {
+          "code": "assert read_safe('k')=='k'"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "If text is None return the provided default, otherwise return text itself (which is already a string)."
+        }
+      ]
+    },
+    "c09_try_l3": {
+      "name": "Stained Scrolls",
+      "prompt": {
+        "mage": "In the Hall of Incomplete Echoes, a message lists digits and sighs. Interpret only what is numeric: implement `safe_parse_int_list(s)` by splitting `s` on commas, calling `strip()` on each part, and **keeping only** those you can convert with `int(...)` inside a `try` (errors are **ignored**). Return the list of integers in order of appearance. Keep the signature and satisfy the tests.",
+        "rogue": "In the stolen ledger there are numbers and noise: separate them without alarms. With `safe_parse_int_list(s)` split by commas, trim spaces and try `int(...)`: if it fails, **skip** that piece. Return only the integers found. Keep the signature and slip past the tests.",
+        "swordsman": "Among the patrol reports, keep only valid counts. Implement `safe_parse_int_list(s)`: split on `,`, `strip()` each part, `try: int(...)` — if it works, add it; if it fails, **ignore** it. Preserve order. Keep the signature and honor the tests.",
+        "alchemist": "In the chromatogram there are peaks and artifacts: extract only reliable values. `safe_parse_int_list(s)` must split on commas, trim, and add to the list **only** tokens convertible with `int(...)`; discard the others silently. Keep the signature and perfect the tests.",
+        "ranger": "On the trail you find good numbers and indecipherable scratches. With `safe_parse_int_list(s)` separate by commas, remove edges and keep only tokens that `int(...)` accepts; leave the others in the dust. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "The next trial asks for cautious divisions, ready to return the agreed fallback.",
+      "signature": "def safe_parse_int_list(s: str) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert safe_parse_int_list('1,2,x,3')==[1,2,3]"
+        },
+        {
+          "code": "assert safe_parse_int_list('')==[]"
+        },
+        {
+          "code": "assert safe_parse_int_list('4,5')==[4,5]"
+        },
+        {
+          "code": "assert safe_parse_int_list('a')==[]"
+        },
+        {
+          "code": "assert safe_parse_int_list('0')==[0]"
+        },
+        {
+          "code": "assert safe_parse_int_list('7, ,8')==[7,8]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Split the string on commas, try converting each piece with int, and add it to the result only if the conversion succeeds."
+        }
+      ]
+    },
+    "c09_try_l4": {
+      "name": "Unstable Oracle",
+      "prompt": {
+        "mage": "In the Chamber of Balance, division is allowed only when the flow doesn’t break. Write `divide_safe(a, b, default=None)` returning `a/b` when `b != 0`, otherwise the received `default` (without raising exceptions). Keep the signature and satisfy the tests.",
+        "rogue": "To open the safe you need equal parts — but never with a zero divisor. Implement `divide_safe(a, b, default=None)` returning `a/b` if possible, otherwise `default`. No alarms. Keep the signature and pass the tests.",
+        "swordsman": "In the kata of measurement, division is performed only with an open guard. `divide_safe(a, b, default=None)` must return `a/b` when `b` is non-zero, otherwise `default`. Keep the signature and win the tests.",
+        "alchemist": "If the solvent is null, the reaction doesn’t start: use the buffer. With `divide_safe(a, b, default=None)` return `a/b` if `b` ≠ `0`, otherwise `default`. Keep the signature and perfect the tests.",
+        "ranger": "At the ford, if the water doesn’t flow (`b==0`), take the service bridge. `divide_safe(a, b, default=None)` returns `a/b` or `default` if `b` is zero. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "Before the grand finale you must denounce every false symbol by raising the exception.",
+      "signature": "def divide_safe(a, b, default=None):\n    ...",
+      "tests": [
+        {
+          "code": "assert divide_safe(6,3)==2"
+        },
+        {
+          "code": "assert divide_safe(1,0,'?')=='?'"
+        },
+        {
+          "code": "assert divide_safe(0,5)==0"
+        },
+        {
+          "code": "assert divide_safe(5,0,None) is None"
+        },
+        {
+          "code": "assert divide_safe(9,3)==3"
+        },
+        {
+          "code": "assert divide_safe(2,2)==1"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Check whether b is zero: in that case return the default; otherwise perform the division a/b."
+        }
+      ]
+    },
+    "c09_try_l5": {
+      "name": "Inflexible Council",
+      "prompt": {
+        "mage": "Before the Inflexible Council every figure must be impeccable. Implement `parse_int_list_strict(s)` by splitting `s` on commas, trimming each part and **converting them all** with `int(...)`: if **even a single** conversion fails (including empty or non-numeric tokens), **raise `ValueError`**. The empty string produces `[]`. Keep the signature and appease the tests.",
+        "rogue": "In the final assault no errors are allowed: either everything is a number, or the alarm goes off. With `parse_int_list_strict(s)` split on `,`, `strip()` and attempt `int(...)` for **every** piece; at the first failure, **raise `ValueError`**. If `s` is empty, return `[]`. Keep the signature and pass the tests.",
+        "swordsman": "In the tribunal of techniques, every item in the list must pass the exam. Implement `parse_int_list_strict(s)`: separate by commas, trim, and convert all tokens; if one is not a valid integer (even if it’s just space), **raise `ValueError`**. For `''` return `[]`. Keep the signature and honor the tests.",
+        "alchemist": "In the final titration, a single impurity invalidates the entire batch. `parse_int_list_strict(s)` must convert **all** tokens to integers after `strip()`; as soon as one fails, **throw `ValueError`**. Base case: empty string → `[]`. Keep the signature and perfect the tests.",
+        "ranger": "During the council, if even a single signal is corrupted, stop the rite. With `parse_int_list_strict(s)` divide on commas, trim, and convert each part; at the first error, **`ValueError`**. If there’s nothing to read, return `[]`. Keep the signature and make your way through the tests."
+      },
+      "next_intro": "When the sky clears, the forge of classes awaits you to give life to new forms.",
+      "signature": "def parse_int_list_strict(s: str) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "ok=False\ntry:\n    parse_int_list_strict('1,2,x')\nexcept ValueError:\n    ok=True\nassert ok"
+        },
+        {
+          "code": "assert parse_int_list_strict('1,2')==[1,2]"
+        },
+        {
+          "code": "assert parse_int_list_strict('')==[]"
+        },
+        {
+          "code": "ok=False\ntry:\n    parse_int_list_strict(' , ')\nexcept ValueError:\n    ok=True\nassert ok"
+        },
+        {
+          "code": "assert parse_int_list_strict('0')==[0]"
+        },
+        {
+          "code": "assert parse_int_list_strict('7,8')==[7,8]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Split the string on commas and try converting each part with int; if any conversion fails you must immediately raise ValueError."
+        }
+      ]
+    },
+    "c10_classes_l1": {
+      "name": "Counting Companion",
+      "prompt": {
+        "mage": "At the Forge of Living Forms you need a companion that marks every beat of the ritual. Weave the request into the spell: build the `Counter` class with an initial count of **0**, a method `inc()` that increases by **1** at each invocation, and `value()` that returns the current total. Keep the given signature and make all automated tests pass.",
+        "rogue": "In the hideout you work with the lights off: you must count the steps without leaving traces. Let the tale itself demand the tool: create `Counter` with an initial value of **0**, `inc()` that increases by **1`, and `value()` that reports the count. Keep the given signature and make all automated tests pass.",
+        "swordsman": "In the dojo you record every kata cycle. Turn the chronicle into action: define `Counter` that starts at **0**, provides `inc()` to add **1**, and `value()` to read the total. Keep the given signature and make all automated tests pass.",
+        "alchemist": "At the distillation bench you need a flawless log. Let the procedure speak: implement `Counter` with a base of **0**, method `inc()` that increments by **1**, and `value()` that returns the number of completed trials. Keep the given signature and make all automated tests pass.",
+        "ranger": "On the trail you count the patrol’s steps. Integrate the tool into the report: build `Counter` that starts at **0**, `inc()` adds **1**, and `value()` reads the total. Keep the given signature and make all automated tests pass."
+      },
+      "next_intro": "As you set out again, the next task forges an arcane account able to accept deposits and repel abuse.",
+      "signature": "class Counter:\n    ...",
+      "tests": [
+        {
+          "code": "c=Counter(); c.inc(); c.inc(); assert hasattr(c,'value') and c.value()==2"
+        },
+        {
+          "code": "c=Counter(); assert isinstance(c.value(), int)"
+        },
+        {
+          "code": "c=Counter(); c.inc(); assert c.value()==1"
+        },
+        {
+          "code": "c=Counter(); assert c.value()==0"
+        },
+        {
+          "code": "c=Counter(); [c.inc() for _ in range(3)]; assert c.value()==3"
+        },
+        {
+          "code": "c=Counter(); assert hasattr(c,'inc')"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Keep an internal attribute starting at 0; inc increments by 1 and value returns the current total."
+        }
+      ]
+    },
+    "c10_classes_l2": {
+      "name": "Disciplined Strongbox",
+      "prompt": {
+        "mage": "The tale leads you to carve a strongbox that accepts tributes and guards them with discipline. Encode the rule in the pact: define `BankAccount` with an optional initial balance (`balance`), `deposit(amount)` that **increases** the balance, and `withdraw(amount)` that **deducts** the amount or raises **`ValueError`** if funds are insufficient. Keep the given signature and make all automated tests pass.",
+        "rogue": "In the shadow market you keep a purse that rejects reckless withdrawals. The order comes from the story itself: `BankAccount` with optional initial `balance`, `deposit(amount)` that adds, and `withdraw(amount)` that subtracts or raises **`ValueError`** if the balance is insufficient. Keep the given signature and make all automated tests pass.",
+        "swordsman": "In the armory you need a chest that records tributes and expenses without slips. Follow the edict: implement `BankAccount` with optional initial balance, `deposit(amount)` that increases, and `withdraw(amount)` that deducts or raises **`ValueError`** if funds are lacking. Keep the given signature and make all automated tests pass.",
+        "alchemist": "In the lab you need an account for precious reagents. Let the procedure declare it: `BankAccount` with optional `balance`, `deposit(amount)` that increases, and `withdraw(amount)` that reduces or raises **`ValueError`** if the balance is not enough. Keep the given signature and make all automated tests pass.",
+        "ranger": "For the company, build a common chest that doesn’t yield to abuse. Write the rule into the journal: `BankAccount` with optional initial balance, `deposit(amount)` that adds, and `withdraw(amount)` that removes or raises **`ValueError`** if funds are insufficient. Keep the given signature and make all automated tests pass."
+      },
+      "next_intro": "In a few steps you will sketch equivalent rectangles that, comparison after comparison, reveal their area.",
+      "signature": "class BankAccount:\n    ...",
+      "tests": [
+        {
+          "code": "b=BankAccount(10); b.deposit(5); ok=False\ntry:\n    b.withdraw(20)\nexcept ValueError:\n    ok=True\nassert ok and isinstance(b.balance, (int,float))"
+        },
+        {
+          "code": "b=BankAccount(); b.deposit(1); assert b.balance>=1"
+        },
+        {
+          "code": "b=BankAccount(0); ok=False\ntry:\n    b.withdraw(1)\nexcept ValueError:\n    ok=True\nassert ok"
+        },
+        {
+          "code": "b=BankAccount(5); b.withdraw(5); assert b.balance==0"
+        },
+        {
+          "code": "b=BankAccount(2); b.deposit(3); b.withdraw(4); assert b.balance==1"
+        },
+        {
+          "code": "b=BankAccount(1); assert isinstance(b.balance,(int,float))"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Store the balance as a number; deposit adds positive amounts, withdraw subtracts only if the balance is sufficient, otherwise raises ValueError."
+        }
+      ]
+    },
+    "c10_classes_l3": {
+      "name": "Twin Floors",
+      "prompt": {
+        "mage": "Two floors glide in sync only if equal in **substance**. Let the story impose the criterion: implement `Rectangle(w, h)` saving width and height, with `area()` and `perimeter()`, and define `__eq__` so that two rectangles are **equal if their area matches**. Keep the given signature and make all automated tests pass.",
+        "rogue": "To confuse pursuers you prepare equivalent floor plans. Let the request be in the text: `Rectangle(w, h)` with `area()`, `perimeter()`, and equality `__eq__` based on **area**. Keep the given signature and make all automated tests pass.",
+        "swordsman": "In the dojo you measure halls different in shape but equal in extent. Turn the report into a rule: `Rectangle(w, h)` with `area()`, `perimeter()`, and `__eq__` that evaluates **area**. Keep the given signature and make all automated tests pass.",
+        "alchemist": "You compare reaction vats: yield (area) and rim (perimeter) matter. Write `Rectangle(w, h)` with `area()`, `perimeter()`, and `__eq__` based on **area**. Keep the given signature and make all automated tests pass.",
+        "ranger": "You map clearings with the same surfaces but different boundaries. Carve the rule into the chronicle: `Rectangle(w, h)` with `area()`, `perimeter()`, and `__eq__` on **area**. Keep the given signature and make all automated tests pass."
+      },
+      "next_intro": "The next challenge erects a disciplined stack ready to return the last weapon.",
+      "signature": "class Rectangle:\n    ...",
+      "tests": [
+        {
+          "code": "r1=Rectangle(2,3); r2=Rectangle(1,6)\nassert r1.area()==6 and r1.perimeter()==10 and (r1==r2) is True"
+        },
+        {
+          "code": "r=Rectangle(1,1); assert r.area()==1"
+        },
+        {
+          "code": "r=Rectangle(2,2); assert r.perimeter()==8"
+        },
+        {
+          "code": "a=Rectangle(3,4); b=Rectangle(6,2); assert (a==b) is True"
+        },
+        {
+          "code": "r=Rectangle(2,5); assert r.area()==10"
+        },
+        {
+          "code": "r=Rectangle(1,2); assert r.perimeter()==6"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Store width and height. area returns w*h, perimeter 2*(w+h), and two rectangles are == if the area is the same."
+        }
+      ]
+    },
+    "c10_classes_l4": {
+      "name": "Stack Arsenal",
+      "prompt": {
+        "mage": "A living arsenal always hands back the **last** blade stored. Let the tale say how to use it: build `Stack` with an internal structure, `push(x)` to add, `pop()` that removes and returns the last element (raising **`IndexError`** if the stack is empty), and `is_empty()` that signals emptiness. Keep the given signature and make all automated tests pass.",
+        "rogue": "In the secret passages you need a stack ready to yield the last hidden tool. The request is within the scene: `Stack` with `push(x)`, `pop()` (raise **`IndexError`** if empty), and `is_empty()`. Keep the given signature and make all automated tests pass.",
+        "swordsman": "In the armory the order is LIFO: last sword in, first out. Engrave the rule into training: `Stack` with `push(x)`, `pop()` (raise **`IndexError`** if empty), and `is_empty()`. Keep the given signature and make all automated tests pass.",
+        "alchemist": "On the bench, vials must be retrieved in the reverse order of insertion. Make the text command it: `Stack` with `push(x)`, `pop()` (raise **`IndexError`** if empty), and `is_empty()`. Keep the given signature and make all automated tests pass.",
+        "ranger": "In your pack tools are stacked: the last stowed is the first to come out. Put the rule in the journal: `Stack` with `push(x)`, `pop()` (raise **`IndexError`** if empty), and `is_empty()`. Keep the given signature and make all automated tests pass."
+      },
+      "next_intro": "Before leaving this hall, the forge will animate a runic polynomial that answers every invocation.",
+      "signature": "class Stack:\n    ...",
+      "tests": [
+        {
+          "code": "s=Stack(); s.push(1); s.push(2); assert s.pop()==2 and s.pop()==1 and s.is_empty() is True"
+        },
+        {
+          "code": "s=Stack(); assert s.is_empty() is True"
+        },
+        {
+          "code": "s=Stack(); s.push('x'); assert s.pop()=='x'"
+        },
+        {
+          "code": "s=Stack(); s.push(1); s.push(2); assert s.is_empty() is False"
+        },
+        {
+          "code": "s=Stack(); [s.push(i) for i in [1,2,3]]; assert s.pop()==3"
+        },
+        {
+          "code": "s=Stack(); s.push(0); assert s.is_empty() is False"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Implement the stack with a list: push uses append, pop removes and returns the last element, and is_empty checks whether the list is empty."
+        }
+      ]
+    },
+    "c10_classes_l5": {
+      "name": "Polynomial Talisman",
+      "prompt": {
+        "mage": "At the climax of the forge you enchant a talisman that responds to **every** numeric invocation. Let the formula be spoken by the tale: define `Polynomial(coeffs)` with coefficients **from the constant term upward** and a method `evaluate(x)` that computes the sum `coeff[i] * (x**i)` for all indices. Keep the given signature and make all automated tests pass.",
+        "rogue": "To open a shifting lock you need a polynomial that always yields the right value. Let the text command it: `Polynomial(coeffs)` (coefficients starting from the **constant** term) and `evaluate(x)` that computes `∑ coeff[i] * x**i`. Keep the given signature and make all automated tests pass.",
+        "swordsman": "In the final training, the signal runs like a formula. Carve the instruction into the chronicle: `Polynomial(coeffs)` with the list of coefficients starting from the **constant** term, and `evaluate(x)` that calculates `∑ coeff[i] * x**i`. Keep the given signature and make all automated tests pass.",
+        "alchemist": "A runic polynomial must respond to concentrations with precision. Let the request be part of the protocol: `Polynomial(coeffs)` with coefficients from the **constant** term, and `evaluate(x)` that sums `coeff[i] * x**i`. Keep the given signature and make all automated tests pass.",
+        "ranger": "In the field, the route depends on a numeric talisman. Write the rule in the report: `Polynomial(coeffs)` (from the **constant** term onward) and `evaluate(x)` that computes `∑ coeff[i] * x**i`. Keep the given signature and make all automated tests pass."
+      },
+      "next_intro": "As you leave the forge, the Gallery of Lineages opens: it is time for inheritance.",
+      "signature": "class Polynomial:\n    ...",
+      "tests": [
+        {
+          "code": "p=Polynomial([1,0,2]); assert p.evaluate(3)==19"
+        },
+        {
+          "code": "p=Polynomial([0]); assert p.evaluate(10)==0"
+        },
+        {
+          "code": "p=Polynomial([2,1]); assert p.evaluate(3)==5"
+        },
+        {
+          "code": "p=Polynomial([1,1,1]); assert p.evaluate(1)==3"
+        },
+        {
+          "code": "p=Polynomial([5]); assert p.evaluate(-2)==5"
+        },
+        {
+          "code": "p=Polynomial([0,1]); assert p.evaluate(4)==4"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "The coefficients are ordered from the constant term: for evaluate(x) compute the sum of coeff[i] * (x**i)."
+        }
+      ]
+    },
+    "c11_inheritance_l1": {
+      "name": "Proto-Animal and Sentinel",
+      "prompt": {
+        "mage": "In the Gallery of Lineages, the chronicle calls for a primordial language. Let the tale itself guide you: define the `Animal` class with a `speak(self)` method that for now **does not speak** (raises `NotImplementedError`), then train the sentinel `Dog(Animal)` so that, when invoked, it **replies `'woof'`**. Keep the signature **exactly** as given and pass the tests.",
+        "rogue": "In the clan, signals must be clear: create the archetype `Animal` with `speak(self)` that currently stays silent (raises `NotImplementedError`) and the subclass `Dog` that inherits and, when called, emits **`'woof'`**. Respect the provided signature and slip past the tests.",
+        "swordsman": "In the pavilion of lineages, each technique has its voice. Establish `Animal` with `speak(self)` **not implemented** (raise `NotImplementedError`) and the disciple `Dog(Animal)` that overrides `speak` returning **`'woof'`**. Keep the signature and honor the tests.",
+        "alchemist": "In the laboratory of living forms you need a prototype and a specimen. Define `Animal` with `speak(self)` that **raises `NotImplementedError`**, then synthesize `Dog(Animal)` that implements `speak` returning **`'woof'`**. Signature intact, tests satisfied.",
+        "ranger": "Among the totems of the pack a common call must be carved. Create `Animal` with `speak(self)` still mute (raises `NotImplementedError`) and the guide `Dog` that, inheriting, at your signal **says `'woof'`**. Respect the signature and make it through the tests."
+      },
+      "next_intro": "As you set out again, the next gate shapes the base vehicle and the cart capable of accelerating.",
+      "signature": "class Animal:\n    ...\n\nclass Dog(Animal):\n    ...",
+      "tests": [
+        {
+          "code": "d=Dog(); assert isinstance(d,Animal) and d.speak()=='woof'"
+        },
+        {
+          "code": "d=Dog(); assert hasattr(d,'speak')"
+        },
+        {
+          "code": "d=Dog(); assert isinstance(d, Animal)"
+        },
+        {
+          "code": "d=Dog(); assert d.speak()=='woof'"
+        },
+        {
+          "code": "d=Dog(); assert callable(d.speak)"
+        },
+        {
+          "code": "d=Dog(); assert isinstance(d,Animal)"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Have Animal define a speak method that raises NotImplementedError; Dog must inherit and return the string 'woof'."
+        }
+      ]
+    },
+    "c11_inheritance_l2": {
+      "name": "Chariot of Tradition",
+      "prompt": {
+        "mage": "Among the celestial caravaneers, a base vehicle holds the impetus and a carriage amplifies it. Build `Vehicle` initializing `speed` to **0**; then `Car(Vehicle)` with a method `accelerate(delta)` that **adds** `delta` to the speed (also accept negative values). Keep the signature and let the tests see the trail.",
+        "rogue": "In the hidden workshop, prepare a chassis and its tuned model. Define `Vehicle` with initial `speed` **0** and `Car(Vehicle)` with `accelerate(delta)` that **updates** the speed by adding `delta` (even negative). Signature unchanged, tests passed.",
+        "swordsman": "In the training stables, the run starts from a standstill. Create `Vehicle` with `speed = 0` and `Car(Vehicle)` that provides `accelerate(delta)` to add `delta` to the speed. Respect the signature and win the tests.",
+        "alchemist": "On the engine bench, the base compound is zero velocity. Implement `Vehicle` with `speed` at **0** and `Car(Vehicle)` with `accelerate(delta)` that increases or decreases speed by adding `delta`. Signature intact, tests promoted.",
+        "ranger": "On the patrol track you start from zero and accelerate on command. Define `Vehicle` with `speed=0` and the subclass `Car` with `accelerate(delta)` that adds `delta` to `speed` (negatives allowed). Keep the signature and make it through the tests."
+      },
+      "next_intro": "Further on you will carve hereditary shapes that know their area.",
+      "signature": "class Vehicle:\n    ...\n\nclass Car(Vehicle):\n    ...",
+      "tests": [
+        {
+          "code": "c=Car(); c.accelerate(5); c.accelerate(2); assert hasattr(c,'speed') and c.speed==7"
+        },
+        {
+          "code": "c=Car(); assert c.speed==0"
+        },
+        {
+          "code": "c=Car(); c.accelerate(1); assert c.speed==1"
+        },
+        {
+          "code": "c=Car(); c.accelerate(0); assert c.speed==0"
+        },
+        {
+          "code": "c=Car(); c.accelerate(3); c.accelerate(-1); assert c.speed==2"
+        },
+        {
+          "code": "c=Car(); assert hasattr(c,'accelerate')"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Vehicle can initialize speed to 0; Car inherits and provides accelerate that adds the increment to the speed."
+        }
+      ]
+    },
+    "c11_inheritance_l3": {
+      "name": "Ancestral Silhouettes",
+      "prompt": {
+        "mage": "The Ancestral Silhouettes ask for measurement. Define the base `Shape` with an **abstract** method `area(self)` (raises `NotImplementedError`). Then `Circle(Shape)` with a radius and `area()` equal to `π * r**2` (use `3.141592653589793`), and `Rect(Shape)` with `width` and `height` and `area()` equal to `w*h`. Keep the signature and let the tests draw the circle.",
+        "rogue": "The craftsmen want figures that know their own surface. Create `Shape` with `area()` not implemented (`NotImplementedError`), then `Circle(r)` and `Rect(w,h)` that compute area as `π*r**2` and `w*h`, respectively. Signature unchanged, tests in the bag.",
+        "swordsman": "In the ceremony of forms, each gesture measures its own space. Define `Shape.area()` as abstract (raise `NotImplementedError`), then `Circle(r)` with area `π*r**2` and `Rect(w,h)` with area `w*h`. Keep the signature and convince the tests.",
+        "alchemist": "In the crucible of geometries, distill pure essences. Implement `Shape` with abstract `area()` (`NotImplementedError`); `Circle(r)` uses `3.141592653589793*r*r`, and `Rect(w,h)` uses `w*h`. Signature unchanged, tests promoted.",
+        "ranger": "On the field maps, clearings must be measured. Create `Shape` with `area()` not implemented; `Circle(r)` calculates `3.141592653589793*(r**2)` and `Rect(w,h)` calculates `w*h`. Respect the signature and pass the tests."
+      },
+      "next_intro": "The next stop organizes the workers under the guidance of a careful manager.",
+      "signature": "class Shape:\n    ...\n\nclass Circle(Shape):\n    ...\n\nclass Rect(Shape):\n    ...",
+      "tests": [
+        {
+          "code": "assert Circle(1).area()==3.141592653589793"
+        },
+        {
+          "code": "assert Rect(2,3).area()==6"
+        },
+        {
+          "code": "assert isinstance(Circle(2).area(), float)"
+        },
+        {
+          "code": "assert Rect(1,1).area()==1"
+        },
+        {
+          "code": "assert Circle(0).area()==0"
+        },
+        {
+          "code": "assert Rect(2,2).area()==4"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Define Shape with an abstract area method (it can raise NotImplementedError); Circle computes pi*r^2 and Rect computes width*height."
+        }
+      ]
+    },
+    "c11_inheritance_l4": {
+      "name": "Order of Commanders",
+      "prompt": {
+        "mage": "In the Hall of Commanders, found the order: a leader and their squad. Define `Employee(name)` that stores the name; then `Manager(Employee)` that initializes an **empty** list `team` and provides `add_member(name)` to **add** a member. Keep the signature and let the tests take roll.",
+        "rogue": "In the corridors of command a clear chain is needed. Create `Employee(name)` that saves the name and `Manager(Employee)` with `team=[]` at the start and `add_member(name)` that appends to the squad. Signature intact, tests passed.",
+        "swordsman": "In the corps of veterans, the captain leads the platoon. Define `Employee(name)` to store the name; `Manager(Employee)` starts with an empty `team` and `add_member(name)` adds an element. Keep the signature and win the tests.",
+        "alchemist": "In the lab, the lead coordinates the assistants. Implement `Employee(name)` that records the name; `Manager(Employee)` starts `team` as an empty list and `add_member(name)` inserts new members. Signature unchanged, tests promoted.",
+        "ranger": "In the tribe, the chief gathers companions. Create `Employee(name)` to keep the name; `Manager(Employee)` with `team=[]` and `add_member(name)` that adds to the list. Keep the signature and pass the tests."
+      },
+      "next_intro": "Before leaving this hall, changing chapters, you will create a chronicler who stores every message.",
+      "signature": "class Employee:\n    ...\n\nclass Manager(Employee):\n    ...",
+      "tests": [
+        {
+          "code": "m=Manager('Ada'); m.add_member('Linus'); assert 'Linus' in m.team"
+        },
+        {
+          "code": "m=Manager('A'); assert isinstance(m.team, list)"
+        },
+        {
+          "code": "m=Manager('B'); m.add_member('X'); m.add_member('Y'); assert len(m.team)==2"
+        },
+        {
+          "code": "m=Manager('C'); assert hasattr(m,'add_member')"
+        },
+        {
+          "code": "m=Manager('D'); m.add_member('R'); assert m.team[0]=='R'"
+        },
+        {
+          "code": "m=Manager('E'); assert m.team==[]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Employee can store the name, while Manager inherits and maintains an empty team list on which add_member appends new members."
+        }
+      ]
+    },
+    "c11_inheritance_l5": {
+      "name": "Chronicler of Memory",
+      "prompt": {
+        "mage": "To close the Gallery, a chronicler is needed. Define the interface `Logger` with methods `write(self, msg)` and `records(self)` **not implemented** (raise `NotImplementedError`). Then `MemoryLogger(Logger)` that maintains an internal list of messages: `write(msg)` **adds** the message and `records()` **returns** the collected list. Signature unchanged, tests satisfied.",
+        "rogue": "In the shadow network, every passage must be recorded. Create `Logger` with abstract `write`/`records` (`NotImplementedError`) and `MemoryLogger` that stores messages in memory: `write` appends them, `records` returns them. Respect the signature and slip past the tests.",
+        "swordsman": "In the book of discipline, every strike must be logged. Define `Logger` with `write` and `records` not implemented and `MemoryLogger` that stores logs in a list: `write(msg)` adds, `records()` returns. Keep the signature and honor the tests.",
+        "alchemist": "In the lab ledger, every measurement remains. Implement abstract `Logger` (`write`/`records` with `NotImplementedError`) and `MemoryLogger` that accumulates messages in an internal list; `write` adds, `records` returns. Signature intact, tests promoted.",
+        "ranger": "Among the campfires, a chronicler guards the voices. Create `Logger` with abstract methods and `MemoryLogger` that stores messages: `write` appends each event, `records` reports the list. Keep the signature and pass the tests."
+      },
+      "next_intro": "From genealogies you climb to the Pinnacle of Interfaces: abstract classes and clear pacts await you.",
+      "signature": "class Logger:\n    ...\n\nclass MemoryLogger(Logger):\n    ...",
+      "tests": [
+        {
+          "code": "l=MemoryLogger(); l.write('x'); l.write('y'); assert l.records()==['x','y']"
+        },
+        {
+          "code": "l=MemoryLogger(); assert isinstance(l.records(), list)"
+        },
+        {
+          "code": "l=MemoryLogger(); l.write('a'); assert l.records()==['a']"
+        },
+        {
+          "code": "l=MemoryLogger(); l.write(''); assert l.records()[0]==''"
+        },
+        {
+          "code": "l=MemoryLogger(); [l.write('r') for _ in range(2)]; assert len(l.records())==2"
+        },
+        {
+          "code": "l=MemoryLogger(); assert l.records()==[]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Logger should define write/records raising NotImplementedError; MemoryLogger stores messages in an internal list and returns them with records()."
+        }
+      ]
+    },
+    "c12_abc_l1": {
+      "name": "Primordial Source",
+      "prompt": {
+        "mage": "On the Pinnacle of abstract Interfaces, the ritual demands a source that speaks only when truly invoked. Weave the directive into the tale: define the `DataSource` class with a **not implemented** `read(self)` method (raise `NotImplementedError`), then create `StringSource(DataSource)` which receives a text in its constructor and, when you call `read()`, **returns exactly that text**. Keep the signature and let the tests open like seals.",
+        "rogue": "On the top floor of the hideout you need a source that won’t speak until you signal it. The request is in the scene: implement `DataSource` with an **abstract** `read(self)` (`NotImplementedError`) and the subclass `StringSource` that stores the initial message and **returns it unchanged** with `read()`. Keep the signature and avoid triggering the trap-tests.",
+        "swordsman": "On the dojo terrace each technique has a voice, but the master first imposes silence. Establish `DataSource` with **not implemented** `read(self)` (raise `NotImplementedError`) and `StringSource(DataSource)` that keeps the initial text and **returns it as is** when you call `read()`. Keep the signature and honor the tests.",
+        "alchemist": "In the observatory of pure forms, the source stays mute until it is titled. Define `DataSource` with an **abstract** `read(self)`, then distill `StringSource(DataSource)` that takes an input text and **returns it identically** via `read()`. Keep the signature and pass the tests.",
+        "ranger": "On the windy ridge, the chronicler points to the source: it speaks only on command. Engrave `DataSource` with `read(self)` that **raises `NotImplementedError`**, then `StringSource(DataSource)` that saves the initial message and **returns it exactly** with `read()`. Keep the signature and make it through the tests."
+      },
+      "next_intro": "The next trial asks you to model the Platonic silhouette of the perfect circle.",
+      "signature": "class DataSource:\n    ...\n\nclass StringSource(DataSource):\n    ...",
+      "tests": [
+        {
+          "code": "s=StringSource('hi'); assert s.read()=='hi'"
+        },
+        {
+          "code": "s=StringSource(''); assert s.read()==''"
+        },
+        {
+          "code": "s=StringSource('x'); assert isinstance(s.read(), str)"
+        },
+        {
+          "code": "s=StringSource('1'); assert s.read()=='1'"
+        },
+        {
+          "code": "s=StringSource('r'); assert s.read().startswith('r')"
+        },
+        {
+          "code": "s=StringSource('k'); assert s.read()=='k'"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "DataSource defines read as an abstract method; StringSource must store the provided text and return it exactly when read() is called."
+        }
+      ]
+    },
+    "c12_abc_l2": {
+      "name": "Platonic Silhouette",
+      "prompt": {
+        "mage": "In the temple of Forms, area is not a drawing—it’s a **pact**. Let the story impose it: create `AbsShape` with an **abstract** `area(self)` (raise `NotImplementedError`), then `AbsCircle(AbsShape)` that stores the radius and, when invoked, **returns `π * r * r`** using `3.141592653589793`. Keep the signature and let the tests close the circle.",
+        "rogue": "Under the marble vault you must leave a perfect imprint without a sound. Define `AbsShape` with **not implemented** `area()` and `AbsCircle(AbsShape)` that stores the radius and computes **`3.141592653589793 * r * r`**. Keep the signature and slip past the tests.",
+        "swordsman": "In the dojo of figures, the measure of a circle proves discipline. Implement `AbsShape.area()` as abstract (raise `NotImplementedError`) and `AbsCircle` that keeps the radius and computes the area as **`π * r**2`** with `3.141592653589793`. Keep the signature and win the tests.",
+        "alchemist": "In the geometric crucible, yield is area. Formulate `AbsShape` with an **abstract** `area()` and `AbsCircle` that, given the radius, returns **`3.141592653589793 * r * r`**. Keep the signature and pass the tests.",
+        "ranger": "On the field map you draw a circle that must speak for itself. Establish `AbsShape` with **not implemented** `area()` and `AbsCircle` that stores the radius and returns **`3.141592653589793 * r * r`**. Keep the signature and get through the tests."
+      },
+      "next_intro": "The following hall forges a serializer worthy of the stars.",
+      "signature": "class AbsShape:\n    ...\n\nclass AbsCircle(AbsShape):\n    ...",
+      "tests": [
+        {
+          "code": "assert AbsCircle(2).area()==3.141592653589793*4"
+        },
+        {
+          "code": "assert AbsCircle(0).area()==0"
+        },
+        {
+          "code": "assert isinstance(AbsCircle(1).area(), float)"
+        },
+        {
+          "code": "assert AbsCircle(3).area()==3.141592653589793*9"
+        },
+        {
+          "code": "assert AbsCircle(1).area()>3.14"
+        },
+        {
+          "code": "assert AbsCircle(1).area()==3.141592653589793"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "AbsShape represents an abstract figure with area to be implemented; AbsCircle stores the radius and computes pi*r*r."
+        }
+      ]
+    },
+    "c12_abc_l3": {
+      "name": "Stellar Grammar",
+      "prompt": {
+        "mage": "In the firmament of languages you need a faithful translator between scrolls and thought. Encode the order in the tale: create `Serializer` with **abstract** methods `dumps(self, obj)` and `loads(self, s)` (raise `NotImplementedError`), then `JsonSerializer(Serializer)` that uses the `json` module to **serialize** dictionaries into strings and **deserialize** strings into dictionaries. Keep the signature and let the tests shine.",
+        "rogue": "To move data between two worlds you need a discreet go-between. Define `Serializer` with **abstract** `dumps`/`loads` and `JsonSerializer` that employs `json.dumps` and `json.loads` to go from dict to string and back. Keep the signature and slip past the tests.",
+        "swordsman": "In the dojo of rules the kata is: encode, then decode. Implement `Serializer` with **not implemented** `dumps` and `loads`, and `JsonSerializer` that uses `json.dumps`/`json.loads` for dictionaries. Keep the signature and honor the tests.",
+        "alchemist": "To fix a solution in the grimoire you need a stable script. Implement `Serializer` with **abstract** `dumps`/`loads`, then `JsonSerializer` that uses `json.dumps`/`json.loads` to transform between dict and text. Keep the signature and pass the tests.",
+        "ranger": "In the field, reports must travel compact and return readable. Create `Serializer` with **abstract** `dumps`/`loads` and `JsonSerializer` that uses the `json` module to make the round-trip between dictionaries and strings. Keep the signature and get through the tests."
+      },
+      "next_intro": "Further on you will give voice to different creatures bound by the same pact.",
+      "signature": "class Serializer:\n    ...\n\nclass JsonSerializer(Serializer):\n    ...",
+      "tests": [
+        {
+          "code": "js=JsonSerializer(); d={'a':1}; s=js.dumps(d); assert isinstance(s,str)"
+        },
+        {
+          "code": "js=JsonSerializer(); assert isinstance(js.loads('{\"a\":1}'), dict)"
+        },
+        {
+          "code": "js=JsonSerializer(); s=js.dumps({'x':2}); assert isinstance(s,str)"
+        },
+        {
+          "code": "js=JsonSerializer(); t=js.dumps({'a':1}); assert isinstance(js.loads(t), dict)"
+        },
+        {
+          "code": "js=JsonSerializer(); assert isinstance(js.loads('{}'), dict)"
+        },
+        {
+          "code": "js=JsonSerializer(); assert isinstance(js.dumps({}), str)"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Serializer exposes abstract dumps/loads; JsonSerializer can delegate to json.dumps and json.loads to convert dictionaries to/from strings."
+        }
+      ]
+    },
+    "c12_abc_l4": {
+      "name": "Pact of Voices",
+      "prompt": {
+        "mage": "In the amphitheater of echoes every creature must speak its sign. Let the tale command it: define `AnimalBase` with **abstract** `speak(self)` (raise `NotImplementedError`); then `Cat(AnimalBase)` that returns **`'meow'`** and `Dog(AnimalBase)` that returns **`'woof'`**. Keep the signature and appease the tests.",
+        "rogue": "In the underpass, companions recognize each other by a whisper. Create `AnimalBase` with **not implemented** `speak()`, then `Cat` → `'meow'` and `Dog` → `'woof'`. Keep the signature and move past the tests.",
+        "swordsman": "In the kata of voices each style has its kiai. Implement `AnimalBase.speak()` as abstract; `Cat.speak()` returns `'meow'`, `Dog.speak()` `'woof'`. Keep the signature and honor the tests.",
+        "alchemist": "In the laboratory bestiary each species has a pure signal. Define `AnimalBase` with **abstract** `speak()`; `Cat` yields `'meow'`, `Dog` yields `'woof'`. Keep the signature and pass the tests.",
+        "ranger": "In the field, at sundown, allies answer the call. Establish `AnimalBase` with **abstract** `speak()`; `Cat` says `'meow'`, `Dog` says `'woof'`. Keep the signature and get through the tests."
+      },
+      "next_intro": "As the final challenge you will weave commands into a harmonious pipeline.",
+      "signature": "class AnimalBase:\n    ...\n\nclass Cat(AnimalBase):\n    ...\n\nclass Dog(AnimalBase):\n    ...",
+      "tests": [
+        {
+          "code": "assert Cat().speak()=='meow'"
+        },
+        {
+          "code": "assert Dog().speak()=='woof'"
+        },
+        {
+          "code": "assert isinstance(Cat().speak(), str)"
+        },
+        {
+          "code": "c=Cat(); d=Dog(); assert c.speak()!='' and d.speak()!=''"
+        },
+        {
+          "code": "assert Dog().speak().startswith('wo')"
+        },
+        {
+          "code": "assert Cat().speak()!=''"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "AnimalBase defines speak as an abstract method (NotImplementedError); Cat must return 'meow' and Dog 'woof'."
+        }
+      ]
+    },
+    "c12_abc_l5": {
+      "name": "Table of Commands",
+      "prompt": {
+        "mage": "At the end of the pilgrimage compose a **chain of commands** that act on a single context. Carve the request into the spell: define `Command` with **abstract** `execute(self, ctx)`; then `Add(key, amount)` which, when invoked, **adds** `amount` to `ctx[key]`, `Mul(key, factor)` which **multiplies** `ctx[key]` by `factor`, and `Pipeline(steps)` which, when `execute(ctx)` is called, **executes in order** all commands in the `steps` list on the same dictionary. Keep the signature and let the tests flow like runes.",
+        "rogue": "For the final strike you need a silent pipeline: `Command` with **abstract** `execute(ctx)`, `Add` that adds to `ctx[key]`, `Mul` that multiplies it, and `Pipeline` that runs the received steps in sequence on the **same** context. Keep the signature and pass the tests.",
+        "swordsman": "In the final dojo the form is a sequence: command after command. Implement **abstract** `Command.execute`; implement `Add(key, amount)` that increments `ctx[key]`, `Mul(key, factor)` that multiplies it, and `Pipeline(steps)` that applies them in order. Keep the signature and win the tests.",
+        "alchemist": "In the reaction chamber, chain operations on the same vessel. Define abstract `Command`, then `Add` that **adds** and `Mul` that **multiplies** a value in `ctx`, then `Pipeline` that iterates the list and invokes each `execute(ctx)`. Keep the signature and pass the tests.",
+        "ranger": "In the final report the steps must follow the set trail. Create `Command` with **abstract** `execute`; `Add` increments `ctx[key]`, `Mul` multiplies it, and `Pipeline` applies the commands in order on the same dictionary. Keep the signature and get through the tests."
+      },
+      "next_intro": "Chapter complete: catch your breath and prepare your tools for the next endeavor.",
+      "signature": "class Command:\n    ...\n\nclass Add(Command):\n    ...\n\nclass Mul(Command):\n    ...\n\nclass Pipeline(Command):\n    ...",
+      "tests": [
+        {
+          "code": "ctx={'x':2}; Pipeline([Add('x',3),Mul('x',5)]).execute(ctx); assert ctx['x']==25"
+        },
+        {
+          "code": "ctx={}; Pipeline([]).execute(ctx) if hasattr(Pipeline,'execute') else None; assert isinstance(ctx,dict)"
+        },
+        {
+          "code": "ctx={'y':1}; Add('y',2).execute(ctx); assert ctx['y']==3"
+        },
+        {
+          "code": "ctx={'z':2}; Mul('z',3).execute(ctx); assert ctx['z']==6"
+        },
+        {
+          "code": "ctx={'x':1}; Pipeline([Add('x',1),Add('x',1)]).execute(ctx); assert ctx['x']==3"
+        },
+        {
+          "code": "ctx={'k':0}; Add('k',5).execute(ctx); assert ctx['k']==5"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Command exposes an abstract execute; Add and Mul modify the dictionary by adding to or multiplying its values, and Pipeline executes the commands in sequence in the given order."
+        }
+      ]
+    },
+    "sq_shadow_gallery": {
+      "name": "Shadow Gallery",
+      "prompt": {
+        "mage": "In the Shadow Gallery, reflections double and confuse the rite. Let the tale ask it of you: traverse the row of runes from left to right and, as soon as one reappears, speak its name. Implement `first_duplicate(nums)` returning **the first value you encounter for the **second** time**; if no duplicate exists, return `None`. Keep the signature and appease the tests.",
+        "rogue": "Among paintings and secret passages perfect copies appear: find the **first** duplicate without a sound. Write `first_duplicate(nums)` scanning the list in order and returning the first number that shows up again; if none do, return `None`. Keep the signature and slip past the tests.",
+        "swordsman": "In the dojo of mirrors count the strikes: when a move repeats, stop and declare it. Implement `first_duplicate(nums)` reading left to right and returning the first value that occurs **for the second time**; if there are none, `None`. Keep the signature and honor the tests.",
+        "alchemist": "In the laboratory of halos some reagents recrystallize twice. Formulate `first_duplicate(nums)`: walk through the sequence and **as soon as** a value reappears, return it; if no recurrence happens, return `None`. Keep the signature and pass the tests.",
+        "ranger": "In the dark corridor follow the tracks: when you see a footprint already marked, that’s the answer. Implement `first_duplicate(nums)` returning the **first** element you encounter for the second time; if no track repeats, `None`. Keep the signature and make it through the tests."
+      },
+      "next_intro": "From the Shadow Gallery you slip toward the Mirror Lagoon: there you will learn to sum the echo of blocks.",
+      "signature": "def first_duplicate(nums: list[int]) -> int | None:\n    ...",
+      "tests": [
+        {
+          "code": "assert first_duplicate([2,3,1,2,4])==2"
+        },
+        {
+          "code": "assert first_duplicate([1,2,3]) is None"
+        },
+        {
+          "code": "assert first_duplicate([]) is None"
+        },
+        {
+          "code": "assert first_duplicate([5,5,5])==5"
+        },
+        {
+          "code": "assert first_duplicate([1,2,3,2,3,1])==2"
+        },
+        {
+          "code": "assert first_duplicate([7]) is None"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Keep a set of already-seen values: the first element encountered twice is the duplicate to return; otherwise return None."
+        }
+      ]
+    },
+    "sq_mirror_lagoon": {
+      "name": "Mirror Lagoon",
+      "prompt": {
+        "mage": "At the Mirror Lagoon the energy gathers in **waves of constant amplitude**. Integrate the request into the ritual: implement `chunk_sums(nums, size)` by splitting `nums` into consecutive blocks of length `size` (the last block may be shorter) and **returning the sum** of each block in a new list. Keep the signature and satisfy the tests.",
+        "rogue": "On the still water you must tally the spoils in regular **sacks**. Write `chunk_sums(nums, size)`: traverse the list in steps of `size`, sum each contiguous group, and put the totals in a new list (the last group may be incomplete). Keep the signature and don’t trigger the trap-tests.",
+        "swordsman": "In the kata of waves, each sequence has beats of equal breath. Implement `chunk_sums(nums, size)` creating consecutive blocks of width `size` and returning the **sum** of each block; the last may be shorter. Keep the signature and win the tests.",
+        "alchemist": "In the settling basin you collect measurements in equal lots and record their yield. Implement `chunk_sums(nums, size)`: split `nums` into contiguous blocks of `size` and return the list of their **sums** (with the last lot possibly smaller). Keep the signature and pass the tests.",
+        "ranger": "Along the shore distribute the patrol into regular squads and tally the forces. With `chunk_sums(nums, size)` break `nums` into consecutive groups of `size` (the last may be short) and return the sum of each group. Keep the signature and get through the tests."
+      },
+      "next_intro": "From the Mirror Lagoon climb to the Astral Spire: rotate the constellations until the gate opens.",
+      "signature": "def chunk_sums(nums: list[int], size: int) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert chunk_sums([1,2,3,4,5],2)==[3,7,5]"
+        },
+        {
+          "code": "assert chunk_sums([5,5,5],1)==[5,5,5]"
+        },
+        {
+          "code": "assert chunk_sums([],3)==[]"
+        },
+        {
+          "code": "assert chunk_sums([10,20,30],5)==[60]"
+        },
+        {
+          "code": "assert chunk_sums([1,2,3,4],3)==[6,4]"
+        },
+        {
+          "code": "assert chunk_sums([0,0,0,0],2)==[0,0]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "Traverse the list in steps of size, compute the sum of each consecutive block, and collect the sums in a new list; the last block may be shorter."
+        }
+      ]
+    },
+    "sq_astral_spire": {
+      "name": "Astral Spire",
+      "prompt": {
+        "mage": "On the Astral Spire the constellations rotate until the seals align. Let the spell ask it plainly: `rotate_right(nums, k)` must **rotate to the right** by `k` positions (if the list is empty it stays so; otherwise use `k` modulo length) and return the new list. Keep the signature and let the tests shine.",
+        "rogue": "To open the vault you must shift the star tiles without leaving traces. Implement `rotate_right(nums, k)` by rotating the list to the right by `k` steps (use `k % len(nums)` when needed) and return the rotated list; with an empty list, change nothing. Keep the signature and slip past the tests.",
+        "swordsman": "In the celestial kata the formation steps one to the right at each call. Write `rotate_right(nums, k)` that rotates right by `k` positions (reduce `k` modulo the length if necessary) and returns the new arrangement. Empty list → empty list. Keep the signature and honor the tests.",
+        "alchemist": "In the alchemical planetarium, a single rotation aligns the stars. Implement `rotate_right(nums, k)` returning the list rotated to the right by `k` positions; if there are no elements, return `[]`; otherwise use `k` reduced modulo `len(nums)`. Keep the signature and pass the tests.",
+        "ranger": "From the summit you watch the stars change guard: the last moves to the front. With `rotate_right(nums, k)` rotate the list to the right by `k` (apply modulo by the length when needed) and return the new formation; an empty list stays as is. Keep the signature and get through the tests."
+      },
+      "next_intro": "Optional missions complete: whenever you wish, return to the main path to continue the journey.",
+      "signature": "def rotate_right(nums: list[int], k: int) -> list[int]:\n    ...",
+      "tests": [
+        {
+          "code": "assert rotate_right([1,2,3,4],1)==[4,1,2,3]"
+        },
+        {
+          "code": "assert rotate_right([1,2,3,4],3)==[2,3,4,1]"
+        },
+        {
+          "code": "assert rotate_right([],5)==[]"
+        },
+        {
+          "code": "assert rotate_right([7],10)==[7]"
+        },
+        {
+          "code": "assert rotate_right([1,2,3,4,5],5)==[1,2,3,4,5]"
+        },
+        {
+          "code": "assert rotate_right([9,8,7],4)==[7,9,8]"
+        }
+      ],
+      "hints": [
+        {
+          "if": "",
+          "say": "If the list isn’t empty, reduce k modulo the length and combine tail and head with slicing: nums[-k:] + nums[:-k]."
+        }
+      ]
+    }
+  }
+}

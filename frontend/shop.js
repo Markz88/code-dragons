@@ -1,23 +1,53 @@
+const I18N = window.I18N;
+const tr = (key, fallback, params) => I18N ? I18N.t(key, fallback, params) : (fallback ?? key);
+const currentLanguage = () => (I18N ? I18N.getLanguage() : 'it');
+
+function withLang(path){
+  if(!path || typeof path !== 'string') return path;
+  try{
+    const url = new URL(path, window.location.origin);
+    if(!url.searchParams.has('lang')){
+      url.searchParams.set('lang', currentLanguage());
+    }
+    return url.pathname + url.search;
+  }catch{
+    return path;
+  }
+}
+
+async function api(path, opts){
+  const finalPath = withLang(path);
+  const res = await fetch(finalPath, opts);
+  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
 const SHOP_ITEMS = [
   {
     id: 'hint_token',
     name: 'Pergamena di Suggerimento',
+    nameKey: 'shop.item.hint.name',
     description: 'Consuma per ottenere un suggerimento bonus su un livello fallito.',
+    descriptionKey: 'shop.item.hint.description',
     price: 15,
     icon: '/static/assets/items/suggestion-scroll.png'
   },
   {
     id: 'reveal_test',
     name: 'Lente Rivelatrice',
+    nameKey: 'shop.item.reveal.name',
     description: 'Consuma per rivelare i dettagli dei test falliti dopo un tentativo.',
+    descriptionKey: 'shop.item.reveal.description',
     price: 20,
     icon: '/static/assets/items/revealing-lens.png'
   },
   {
     id: 'reveal_suite',
     name: 'Specchio Onnisciente',
+    nameKey: 'shop.item.mirror.name',
     description: 'Consuma dopo un tentativo fallito per rivelare l\'intera suite di test disponibile.',
-    price: 35,
+    descriptionKey: 'shop.item.mirror.description',
+    price: 30,
     icon: '/static/assets/items/omniscent-mirror.png'
   }
 ];
@@ -236,9 +266,9 @@ function renderProfile(){
   if(!target) return;
   const p = store.profile;
   if(!p){
-    target.innerHTML = '<em>Nessun profilo</em>';
+    target.innerHTML = `<em>${tr('ui.noProfile', 'Nessun profilo')}</em>`;
     const xpBar = document.getElementById('xpBar');
-    if(xpBar) xpBar.innerHTML = '<div class="xpbar"><div class="fill" style="width:0%"></div></div><div class="xptext">0/50 XP</div>';
+    if(xpBar) xpBar.innerHTML = `<div class="xpbar"><div class="fill" style="width:0%"></div></div><div class="xptext">${tr('ui.xpStatus', '0/50 XP (mancano 50)', { current: 0, remaining: 50 })}</div>`;
     return;
   }
   const lvl = playerLevel(store.xp);
@@ -251,10 +281,10 @@ function renderProfile(){
   });
   upgradeAvatarElement(img, av.role, av.variant);
   const info = el('div', {class:'profileInfo'},
-    el('div', {html:`<strong>Nome:</strong> ${p.name}`}),
-    el('div', {html:`<strong>Ruolo:</strong> ${roleName}`}),
-    el('div', {html:`<strong>Livello:</strong> ${lvl}`}),
-    el('div', {html:`<strong>Monete d'oro:</strong> ${store.gold}`})
+    el('div', {html:`<strong>${tr('ui.profileName', 'Nome')}:</strong> ${p.name}`}),
+    el('div', {html:`<strong>${tr('ui.profileRole', 'Ruolo')}:</strong> ${roleName}`}),
+    el('div', {html:`<strong>${tr('ui.profileLevel', 'Livello')}:</strong> ${lvl}`}),
+    el('div', {html:`<strong>${tr('ui.profileGold', "Monete d'oro")}:</strong> ${store.gold}`})
   );
   const box = el('div', {class:'avatarBox'}, img, info);
   target.innerHTML = '';
@@ -269,7 +299,7 @@ function renderXP(){
   const inLvl = xpInLevel(xp);
   const need = xpNeeded(xp);
   const pct = Math.round((inLvl/50)*100);
-  bar.innerHTML = `<div class="xpbar"><div class="fill" style="width:${pct}%"></div></div><div class="xptext">${inLvl}/50 XP (mancano ${need})</div>`;
+  bar.innerHTML = `<div class="xpbar"><div class="fill" style="width:${pct}%"></div></div><div class="xptext">${tr('ui.xpStatus', `${inLvl}/50 XP (mancano ${need})`, { current: inLvl, remaining: need })}</div>`;
 }
 
 function renderInventory(){
@@ -279,18 +309,18 @@ function renderInventory(){
   const inv = store.inventory;
   const entries = Object.entries(inv);
   if(entries.length === 0){
-    target.appendChild(el('li', {class:'muted'}, 'Nessun consumabile in inventario.'));
+    target.appendChild(el('li', {class:'muted'}, tr('shop.inventory.empty', 'Nessun consumabile in inventario.')));
     return;
   }
   entries.forEach(([id, count]) => {
     const item = SHOP_ITEMS.find(it => it.id === id);
-    const name = item ? item.name : id;
+    const name = item ? tr(item.nameKey || '', item.name || id) : id;
     const icon = item && item.icon ? el('img', {class:'item-icon inventory-icon', src: item.icon, alt: name}) : null;
     const label = el('div', {class:'inventory-label'},
       el('span', {class:'inventory-name'}, name),
       el('span', {class:'inventory-count'}, `×${count}`)
     );
-    const sellBtn = el('button', {class:'secondary sell-btn'}, 'Vendi');
+    const sellBtn = el('button', {class:'secondary sell-btn'}, tr('shop.button.sell', 'Vendi'));
     sellBtn.onclick = (ev) => {
       ev.preventDefault();
       sellItem(id);
@@ -307,23 +337,26 @@ function renderShop(){
   list.innerHTML = '';
   const profile = store.profile;
   if(!profile){
-    list.appendChild(el('p', {class:'muted'}, 'Nessun oggetto disponibile senza un personaggio attivo.'));
+    setShopMessage(tr('ui.merchantNoProfileMessage', 'Crea un personaggio nella pagina principale per affrontare le missioni opzionali.'));
+    list.appendChild(el('p', {class:'muted'}, tr('ui.merchantNoProfileTitle', 'Nessun oggetto disponibile senza un personaggio attivo.')));
     return;
   }
   SHOP_ITEMS.forEach(item => {
+    const name = tr(item.nameKey || '', item.name || item.id);
+    const description = tr(item.descriptionKey || '', item.description || '');
     const card = el('div', {class:'card shop-item'},
       el('div', {class:'shop-item-header'},
-        item.icon ? el('img', {class:'item-icon', src: item.icon, alt: item.name}) : null,
-        el('h3', {}, item.name)
+        item.icon ? el('img', {class:'item-icon', src: item.icon, alt: name}) : null,
+        el('h3', {}, name)
       ),
-      el('p', {class:'muted'}, item.description),
-      el('p', {html:`<strong>Prezzo:</strong> ${item.price} monete`})
+      el('p', {class:'muted'}, description),
+      el('p', {html:`<strong>${tr('shop.priceLabel', 'Prezzo:')}</strong> ${item.price} ${tr('shop.priceSuffix', 'monete')}`})
     );
     const owned = inventoryCount(item.id);
     if(owned){
-      card.appendChild(el('p', {class:'muted'}, `In inventario: ${owned}`));
+      card.appendChild(el('p', {class:'muted'}, tr('shop.inventory.inStock', `In inventario: ${owned}`, { count: owned })));
     }
-    const buyBtn = el('button', {}, 'Compra');
+    const buyBtn = el('button', {}, tr('shop.button.buy', 'Compra'));
     buyBtn.onclick = () => buyItem(item);
     if(store.gold < item.price){ buyBtn.disabled = true; }
     card.appendChild(buyBtn);
@@ -340,12 +373,13 @@ function setShopMessage(msg, success=false){
 
 function buyItem(item){
   if(store.gold < item.price){
-    setShopMessage('Non hai abbastanza monete.');
+    setShopMessage(tr('shop.message.noGold', 'Non hai abbastanza monete.'));
     return;
   }
   store.gold = store.gold - item.price;
   adjustInventory(item.id, 1);
-  setShopMessage(`Acquisto riuscito: ${item.name}`, true);
+  const name = tr(item.nameKey || '', item.name || item.id);
+  setShopMessage(tr('shop.message.purchase', `Acquisto riuscito: ${name}`, { item: name }), true);
   renderShop();
 }
 
@@ -353,16 +387,17 @@ function sellItem(id){
   const count = inventoryCount(id);
   const item = SHOP_ITEMS.find(it => it.id === id);
   if(!item){
-    setShopMessage('Questo oggetto non può essere rivenduto.');
+    setShopMessage(tr('shop.message.cannotSell', 'Questo oggetto non può essere rivenduto.'));
     return;
   }
   if(count <= 0){
-    setShopMessage('Non hai copie di questo consumabile da rivendere.');
+    setShopMessage(tr('shop.message.noneToSell', 'Non hai copie di questo consumabile da rivendere.'));
     return;
   }
   adjustInventory(id, -1);
   store.gold = store.gold + item.price;
-  setShopMessage(`Vendita riuscita: ${item.name} (+${item.price} monete)`, true);
+  const name = tr(item.nameKey || '', item.name || item.id);
+  setShopMessage(tr('shop.message.sale', `Vendita riuscita: ${name} (+${item.price} monete)`, { item: name, gold: item.price }), true);
   renderShop();
 }
 
@@ -375,8 +410,13 @@ function initButtons(){
 
 async function main(){
   initButtons();
+  if(I18N){
+    const selector = document.getElementById('languageSelect');
+    I18N.initLanguageSelector(selector);
+    I18N.applyTranslations(document);
+  }
   try{
-    const rolesData = await fetch('/api/roles').then(r => r.ok ? r.json() : {labels:{}});
+    const rolesData = await api('/api/roles');
     ROLE_LABELS = { ...ROLE_LABELS, ...(rolesData.labels || {}) };
   }catch{}
   renderProfile();
@@ -386,3 +426,19 @@ async function main(){
 }
 
 document.addEventListener('DOMContentLoaded', main);
+
+window.addEventListener('pq-language-changed', async () => {
+  try{
+    const rolesData = await api('/api/roles');
+    ROLE_LABELS = { ...ROLE_LABELS, ...(rolesData.labels || {}) };
+  }catch{}
+  if(I18N){
+    const selector = document.getElementById('languageSelect');
+    if(selector) selector.value = currentLanguage();
+    I18N.applyTranslations(document);
+  }
+  renderProfile();
+  renderXP();
+  renderInventory();
+  renderShop();
+});

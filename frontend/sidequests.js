@@ -1,5 +1,23 @@
+const I18N = window.I18N;
+const tr = (key, fallback, params) => I18N ? I18N.t(key, fallback, params) : (fallback ?? key);
+const currentLanguage = () => (I18N ? I18N.getLanguage() : 'it');
+
+function withLang(path){
+  if(!path || typeof path !== 'string') return path;
+  try{
+    const url = new URL(path, window.location.origin);
+    if(!url.searchParams.has('lang')){
+      url.searchParams.set('lang', currentLanguage());
+    }
+    return url.pathname + url.search;
+  }catch{
+    return path;
+  }
+}
+
 async function api(path, opts) {
-  const res = await fetch(path, opts);
+  const finalPath = withLang(path);
+  const res = await fetch(finalPath, opts);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
@@ -34,6 +52,191 @@ let ROLE_LABELS = {
   ranger: 'Ranger'
 };
 const REPORT_EMAIL = 'support@example.com';
+
+const ACHIEVEMENT_CATALOGS = {};
+const ACHIEVEMENT_LABEL_LOOKUP = {};
+
+function achievementKey(entry){
+  if(entry === null || entry === undefined) return null;
+  if(typeof entry === 'string') return entry;
+  if(typeof entry !== 'object') return null;
+  if(entry.id) return entry.id;
+  if(entry.level_id){
+    const role = entry.role ?? '';
+    return role ? `${entry.level_id}:${role}` : entry.level_id;
+  }
+  if(entry.label) return entry.label;
+  return null;
+}
+
+function buildAchievementLookup(lang, catalog){
+  const lookup = {};
+  ['by_chapter', 'sidequests'].forEach(section => {
+    const source = catalog[section] || {};
+    Object.entries(source).forEach(([levelId, value]) => {
+      if(value && typeof value === 'object' && !Array.isArray(value)){
+        Object.entries(value).forEach(([role, label]) => {
+          if(typeof label === 'string'){
+            lookup[label.trim().toLowerCase()] = { level_id: levelId, role, lang };
+          }
+        });
+      } else if(typeof value === 'string'){
+        lookup[value.trim().toLowerCase()] = { level_id: levelId, role: null, lang };
+      }
+    });
+  });
+  ACHIEVEMENT_LABEL_LOOKUP[lang] = lookup;
+}
+
+async function ensureAchievementCatalog(lang){
+  const key = (typeof lang === 'string' && lang) ? lang : currentLanguage();
+  if(ACHIEVEMENT_CATALOGS[key]) return ACHIEVEMENT_CATALOGS[key];
+  try{
+    const data = await api(`/api/achievements?lang=${encodeURIComponent(key)}`);
+    const catalog = {
+      by_chapter: (data && data.by_chapter) || {},
+      sidequests: (data && data.sidequests) || {}
+    };
+    ACHIEVEMENT_CATALOGS[key] = catalog;
+    buildAchievementLookup(key, catalog);
+    return catalog;
+  }catch{
+    const empty = { by_chapter: {}, sidequests: {} };
+    ACHIEVEMENT_CATALOGS[key] = empty;
+    ACHIEVEMENT_LABEL_LOOKUP[key] = {};
+    return empty;
+  }
+}
+
+async function loadAchievementCatalogs(){
+  const lang = currentLanguage();
+  await ensureAchievementCatalog(lang);
+  if(lang !== 'it'){
+    await ensureAchievementCatalog('it');
+  }
+}
+
+function achievementLabelFromCatalog(levelId, role, lang = currentLanguage()){
+  if(!levelId) return null;
+  const catalog = ACHIEVEMENT_CATALOGS[lang];
+  if(!catalog) return null;
+  const source = (catalog.by_chapter && catalog.by_chapter[levelId])
+    || (catalog.sidequests && catalog.sidequests[levelId]);
+  if(!source) return null;
+  if(typeof source === 'string') return source;
+  if(role && typeof source === 'object'){
+    const label = source[role];
+    if(typeof label === 'string') return label;
+  }
+  if(typeof source === 'object'){
+    const values = Object.values(source).filter(v => typeof v === 'string');
+    if(values.length === 1) return values[0];
+  }
+  return null;
+}
+
+function lookupAchievementByLabel(label){
+  if(typeof label !== 'string') return null;
+  const needle = label.trim().toLowerCase();
+  if(!needle) return null;
+  for(const [lang, mapping] of Object.entries(ACHIEVEMENT_LABEL_LOOKUP)){
+    const match = mapping[needle];
+    if(match){
+      const id = match.role ? `${match.level_id}:${match.role}` : match.level_id;
+      return { id, level_id: match.level_id, role: match.role, lang };
+    }
+  }
+  return null;
+}
+
+function normalizeAchievementEntry(entry){
+  if(entry === null || entry === undefined) return null;
+  if(typeof entry === 'string'){
+    const info = lookupAchievementByLabel(entry);
+    if(info){
+      const localized = achievementLabelFromCatalog(info.level_id, info.role) || entry;
+      return {
+        id: info.id,
+        level_id: info.level_id,
+        role: info.role,
+        label: localized,
+        lang: localized === entry ? info.lang : currentLanguage()
+      };
+    }
+    return entry;
+  }
+  if(typeof entry !== 'object') return null;
+  const levelId = entry.level_id || entry.levelId || null;
+  const role = entry.role ?? entry.player_role ?? null;
+  let id = entry.id || entry.key || null;
+  if(!id && levelId){
+    id = role ? `${levelId}:${role}` : levelId;
+  }
+  let label = typeof entry.label === 'string' ? entry.label : null;
+  let lang = typeof entry.lang === 'string' ? entry.lang : null;
+  const catalogLabel = achievementLabelFromCatalog(levelId, role);
+  if(catalogLabel){
+    label = catalogLabel;
+    lang = currentLanguage();
+  }
+  const normalized = {};
+  if(id) normalized.id = id;
+  if(levelId) normalized.level_id = levelId;
+  if(role) normalized.role = role;
+  if(label) normalized.label = label;
+  if(lang) normalized.lang = lang;
+  return Object.keys(normalized).length ? normalized : null;
+}
+
+function normalizeAchievementList(list){
+  if(!Array.isArray(list)) return [];
+  const seen = new Set();
+  const out = [];
+  list.forEach(item => {
+    const normalized = normalizeAchievementEntry(item);
+    if(normalized === null || normalized === undefined) return;
+    const key = achievementKey(normalized) ?? `anon-${out.length}`;
+    if(seen.has(key)) return;
+    seen.add(key);
+    out.push(normalized);
+  });
+  return out;
+}
+
+function hasAchievement(list, entry){
+  if(!entry || !Array.isArray(list)) return false;
+  const key = achievementKey(entry);
+  if(!key) return false;
+  return list.some(item => achievementKey(item) === key);
+}
+
+function presentAchievement(entry){
+  if(!entry) return '';
+  if(typeof entry === 'string'){
+    const normalized = normalizeAchievementEntry(entry);
+    if(normalized && typeof normalized !== 'string'){
+      return presentAchievement(normalized);
+    }
+    return entry;
+  }
+  if(typeof entry !== 'object') return '';
+  return entry.label || achievementLabelFromCatalog(entry.level_id, entry.role) || entry.id || '';
+}
+
+function achievementIconFor(label){
+  if(typeof label !== 'string') return '🏅';
+  const lower = label.toLowerCase();
+  if(lower.includes('sigillo') || lower.includes('sigil') || lower.includes('seal')) return '🏵️';
+  return '🏅';
+}
+
+function normalizeStoredAchievements(){
+  try{
+    const raw = JSON.parse(localStorage.getItem('pq_achievements') || '[]');
+    const normalized = normalizeAchievementList(raw);
+    localStorage.setItem('pq_achievements', JSON.stringify(normalized));
+  }catch{}
+}
 
 function canonicalRole(role){
   try {
@@ -143,14 +346,15 @@ function reportLinkForLevel(level){
   if(!level) return null;
   const email = REPORT_EMAIL;
   if(!email) return null;
-  const subjectBase = level.name || level.id || 'Livello';
-  const subject = encodeURIComponent(`[Segnalazione] ${subjectBase}`);
+  const subjectBase = level.name || level.id || tr('ui.levelFallback', 'Missione');
+  const subjectTemplate = tr('report.subjectPrefix', `[Segnalazione] {level}`, { level: subjectBase });
+  const subject = encodeURIComponent(subjectTemplate);
   const bodyLines = [
-    'Ciao,',
+    tr('report.greeting', 'Ciao,'),
     '',
-    `Sto riscontrando un problema con la missione "${subjectBase}" (ID: ${level.id || 'sconosciuto'}).`,
+    tr('report.problem', `Sto riscontrando un problema con la missione "${subjectBase}" (ID: ${level.id || 'sconosciuto'}).`, { level: subjectBase, id: level.id || 'sconosciuto' }),
     '',
-    'Dettagli:',
+    tr('report.details', 'Dettagli:'),
     ''
   ];
   const body = encodeURIComponent(bodyLines.join('\n'));
@@ -158,8 +362,8 @@ function reportLinkForLevel(level){
   return el('a', {
     class: 'report-link',
     href,
-    title: `Segnala un problema per ${subjectBase}`
-  }, 'Segnala problema');
+    title: tr('report.linkTitle', `Segnala un problema per ${subjectBase}`, { level: subjectBase })
+  }, tr('report.linkLabel', 'Segnala problema'));
 }
 
 function enableEditorTabSupport(editor){
@@ -211,10 +415,19 @@ const store = {
     renderAchievements();
   },
   get achievements(){
-    try { return JSON.parse(localStorage.getItem('pq_achievements') || '[]'); }
-    catch { return []; }
+    try {
+      const data = JSON.parse(localStorage.getItem('pq_achievements') || '[]');
+      return Array.isArray(data) ? data : [];
+    } catch {
+      return [];
+    }
   },
-  set achievements(v){ localStorage.setItem('pq_achievements', JSON.stringify(v)); renderAchievements(); },
+  set achievements(v){
+    const list = Array.isArray(v) ? v : [];
+    const normalized = normalizeAchievementList(list);
+    localStorage.setItem('pq_achievements', JSON.stringify(normalized));
+    renderAchievements();
+  },
   get xp(){ return Number(localStorage.getItem("pq_xp")||"0"); },
   set xp(v){ localStorage.setItem("pq_xp", String(v)); renderXP(); renderProfile(); },
   get gold(){ return Number(localStorage.getItem('pq_gold')||'0'); },
@@ -247,26 +460,47 @@ function inventoryCount(id){
 const POWERUP_META = {
   hint_token: {
     label: 'Usa Pergamena di Suggerimento',
+    labelKey: 'powerups.hint.label',
     activating: 'Pergamena attiva…',
+    activatingKey: 'powerups.hint.activating',
     name: 'Pergamena di Suggerimento',
+    nameKey: 'powerups.hint.name',
     icon: '/static/assets/items/suggestion-scroll.png'
   },
   reveal_test: {
     label: 'Usa Lente Rivelatrice',
+    labelKey: 'powerups.reveal.label',
     activating: 'Lente attiva…',
+    activatingKey: 'powerups.reveal.activating',
     name: 'Lente Rivelatrice',
+    nameKey: 'powerups.reveal.name',
     icon: '/static/assets/items/revealing-lens.png'
   },
   reveal_suite: {
     label: 'Usa Specchio Onnisciente',
+    labelKey: 'powerups.mirror.label',
     activating: 'Specchio attivo…',
+    activatingKey: 'powerups.mirror.activating',
     name: 'Specchio Onnisciente',
+    nameKey: 'powerups.mirror.name',
     icon: '/static/assets/items/omniscent-mirror.png'
   }
 };
 
 function powerupMeta(id){
   return POWERUP_META[id] || {};
+}
+
+function powerupLabel(meta){
+  return tr(meta.labelKey || '', meta.label || tr('ui.useItem', 'Usa Oggetto'));
+}
+
+function powerupName(meta){
+  return tr(meta.nameKey || '', meta.name || powerupLabel(meta));
+}
+
+function powerupActivating(meta){
+  return tr(meta.activatingKey || '', meta.activating || powerupLabel(meta));
 }
 
 function setPowerupButtonContent(btn, id){
@@ -283,11 +517,11 @@ function setPowerupButtonContent(btn, id){
     const img = el('img', {
       class: 'powerup-icon',
       src: meta.icon,
-      alt: iconOnly ? '' : (meta.name || meta.label || id)
+      alt: iconOnly ? '' : (powerupName(meta) || powerupLabel(meta) || id)
     });
     btn.appendChild(img);
   }
-  const labelText = meta.label || 'Usa Oggetto';
+  const labelText = powerupLabel(meta);
   const textContent = iconOnly ? labelText : `${labelText} (${count})`;
   const textSpan = el('span', {class: 'powerup-text'}, textContent);
   btn.appendChild(textSpan);
@@ -300,7 +534,9 @@ function setPowerupButtonContent(btn, id){
     btn._powerupBadge = null;
   }
   btn.dataset.count = String(count);
-  const countLabel = count === 1 ? '1 uso disponibile' : `${count} usi disponibili`;
+  const countLabel = count === 1
+    ? tr('ui.powerupSingleUse', '1 uso disponibile')
+    : tr('ui.powerupMultipleUse', `${count} usi disponibili`, { count });
   btn.title = `${labelText} — ${countLabel}`;
   btn.setAttribute('aria-label', `${labelText}. ${countLabel}`);
 }
@@ -349,16 +585,20 @@ function refreshPowerupButton(btn, id, hasFailed){
   updatePowerupButton(btn, id);
   const meta = powerupMeta(id);
   if(requireFailure && !hasFailed){
-    const msg = meta.lockedLabel || `${meta.label || 'Oggetto'} (disponibile dopo un fallimento)`;
+    const fallbackName = meta.label || tr('ui.useItem', 'Oggetto');
+    const msg = meta.lockedLabel || tr('ui.itemAvailableAfterFail', `${fallbackName} (disponibile dopo un fallimento)`, { name: fallbackName });
     btn.disabled = true;
     btn.title = msg;
     btn.setAttribute('aria-label', msg);
   } else {
     btn.disabled = false;
     const count = parseInt(btn.dataset.count || '0', 10);
-    const countLabel = count === 1 ? '1 uso disponibile' : `${count} usi disponibili`;
-    btn.title = `${meta.label || 'Usa Oggetto'} — ${countLabel}`;
-    btn.setAttribute('aria-label', `${meta.label || 'Usa Oggetto'}. ${countLabel}`);
+    const labelText = powerupLabel(meta);
+    const countLabel = count === 1
+      ? tr('ui.powerupSingleUse', '1 uso disponibile')
+      : tr('ui.powerupMultipleUse', `${count} usi disponibili`, { count });
+    btn.title = `${labelText} — ${countLabel}`;
+    btn.setAttribute('aria-label', `${labelText}. ${countLabel}`);
   }
   syncPowerupButtonState(btn);
   return btn;
@@ -373,7 +613,7 @@ function renderProfile(){
   const p = store.profile;
   const lvl = playerLevel(store.xp);
   if(!target) return;
-  if(!p){ target.innerHTML = "<em>Nessun profilo</em>"; return; }
+  if(!p){ target.innerHTML = `<em>${tr('ui.noProfile', 'Nessun profilo')}</em>`; return; }
   const av = (p.avatar && typeof p.avatar.variant === 'number') ? p.avatar : {role:p.role, variant:0};
   const imgSrc = avatarDataUrl(av.role, av.variant);
   target.innerHTML = "";
@@ -382,10 +622,10 @@ function renderProfile(){
   const img = el('img',{class:'avatar', src: imgSrc, alt: roleName});
   upgradeAvatarElement(img, av.role, av.variant);
   const info = el('div', {class:'profileInfo'},
-    el('div', {html:`<strong>Nome:</strong> ${p.name}`}),
-    el('div', {html:`<strong>Ruolo:</strong> ${roleName}`}),
-    el('div', {html:`<strong>Livello:</strong> ${lvl}`}),
-    el('div', {html:`<strong>Monete d'oro:</strong> ${store.gold}`})
+    el('div', {html:`<strong>${tr('ui.profileName', 'Nome')}:</strong> ${p.name}`}),
+    el('div', {html:`<strong>${tr('ui.profileRole', 'Ruolo')}:</strong> ${roleName}`}),
+    el('div', {html:`<strong>${tr('ui.profileLevel', 'Livello')}:</strong> ${lvl}`}),
+    el('div', {html:`<strong>${tr('ui.profileGold', "Monete d'oro")}:</strong> ${store.gold}`})
   );
   box.appendChild(img);
   box.appendChild(info);
@@ -399,7 +639,7 @@ function renderXP(){
   const inLvl = xpInLevel(xp);
   const need = xpNeeded(xp);
   const pct = Math.round((inLvl/50)*100);
-  bar.innerHTML = `<div class=\"xpbar\"><div class=\"fill\" style=\"width:${pct}%\"></div></div><div class=\"xptext\">${inLvl}/50 XP (mancano ${need})</div>`;
+  bar.innerHTML = `<div class=\"xpbar\"><div class=\"fill\" style=\"width:${pct}%\"></div></div><div class=\"xptext\">${tr('ui.xpStatus', `${inLvl}/50 XP (mancano ${need})`, { current: inLvl, remaining: need })}</div>`;
 }
 
 function renderAchievements(){
@@ -408,12 +648,13 @@ function renderAchievements(){
   const achievements = store.achievements;
   ul.innerHTML = "";
   if(achievements.length === 0){
-    ul.appendChild(el("li", {class:"muted"}, "Vuoto (nessuna conquista)."));
+    ul.appendChild(el("li", {class:"muted"}, tr('ui.noAchievements', 'Vuoto (nessuna conquista).')));
   } else {
-    achievements.forEach(it => {
-      const isSigil = typeof it === 'string' && it.toLowerCase().startsWith('sigillo');
-      const icon = isSigil ? '🏵️' : '🏅';
-      const li = el("li", { class: isSigil ? 'sigil' : '' }, `${icon} ${it}`);
+    achievements.forEach(item => {
+      const label = presentAchievement(item);
+      if(!label) return;
+      const icon = achievementIconFor(label);
+      const li = el("li", { class: icon === '🏵️' ? 'sigil' : '' }, `${icon} ${label}`);
       ul.appendChild(li);
     });
   }
@@ -438,7 +679,9 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
   card.appendChild(prompt);
 
   const wasCompleted = completed;
-  const isSidequest = (lv.id || '').startsWith('sq_');
+  const levelId = lv.id || '';
+  const baseLevelId = levelId.includes('__') ? levelId.split('__')[0] : levelId;
+  const isSidequest = baseLevelId.startsWith('sq_');
   const powerupsUsed = { hint: false, reveal: false, mirror: false };
   let hintBtn = null;
   let revealBtn = null;
@@ -462,15 +705,15 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
   };
 
   if(completed){
-    card.appendChild(el("p", {class:"muted"}, "✅ Missione completata"));
+    card.appendChild(el("p", {class:"muted"}, tr('sidequests.completed', '✅ Missione completata')));
     if(lv.next_intro){
-      card.appendChild(el("p", {class:"bubble"}, "Prossimo: " + lv.next_intro));
+      card.appendChild(el("p", {class:"bubble"}, `${tr('ui.nextIntroPrefix', 'Prossimo:')} ${lv.next_intro}`));
     }
     return card;
   }
 
   if(!unlocked){
-    card.appendChild(el("p", {}, "Completa altri capitoli per sbloccare questa missione."));
+    card.appendChild(el("p", {}, tr('sidequests.unlockHint', 'Completa altri capitoli per sbloccare questa missione.')));
     return card;
   }
 
@@ -503,7 +746,8 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
       }
       deselectOtherButtons(id);
       applyUsageSelection(id);
-      const activating = powerupMeta(id).activating || powerupMeta(id).label || 'Oggetto attivo…';
+      const metaInfo = powerupMeta(id);
+      const activating = powerupActivating(metaInfo);
       showPowerupStatus(btn, id, activating);
     };
     pow.appendChild(btn);
@@ -518,12 +762,12 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
   editor.value = lv.signature;
   enableEditorTabSupport(editor);
 
-  const bubble = el("div", {class:"bubble"}, "Pronto quando lo sei tu!");
-  const btn = el("button", {}, "Esegui Test");
+  const bubble = el("div", {class:"bubble"}, tr('ui.readyPrompt', 'Pronto quando lo sei tu!'));
+  const btn = el("button", {}, tr('ui.runTests', 'Esegui Test'));
   const actions = el("div", {class:"actions"}, btn);
 
   btn.addEventListener("click", async () => {
-    bubble.textContent = "Esecuzione in corso...";
+    bubble.textContent = tr('ui.loading', 'Esecuzione in corso...');
     try{
       const profile = store.profile || {};
       const consumed = [];
@@ -534,7 +778,7 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
       const res = await api(`/api/submit`, {
         method: "POST",
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({level_id: lv.id, code: editor.value, player_role: profile.role, player_name: profile.name, items_used: consumed})
+        body: JSON.stringify({level_id: lv.id, code: editor.value, player_role: profile.role, player_name: profile.name, items_used: consumed, language: currentLanguage()})
       });
       const isStub = res.is_stub === true;
       consumed.forEach(id => adjustInventory(id, -1));
@@ -555,11 +799,13 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
         bubble.appendChild(list);
       }
       if(res.extra_hint){
-        bubble.appendChild(el('p', {class:'muted'}, 'La pergamena suggerisce:'));
+        bubble.appendChild(el('p', {class:'muted'}, tr('ui.extraHintPrefix', 'La pergamena suggerisce:')));
         bubble.appendChild(el('p', {class:'extra-hint'}, res.extra_hint));
       }
       if(res.reveal_details && res.reveal_details.length){
-        const revealLabel = revealSource === 'mirror' ? 'Lo specchio rivela:' : 'La lente rivela:';
+        const revealLabel = revealSource === 'mirror'
+          ? tr('ui.mirrorReveal', 'Lo specchio rivela:')
+          : tr('ui.lensReveal', 'La lente rivela:');
         bubble.appendChild(el('p', {class:'muted'}, revealLabel));
         const list = el('ul', {class:'powerup-details'});
         res.reveal_details.forEach(msg => list.appendChild(el('li', {}, msg)));
@@ -567,11 +813,24 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
       }
       if(res.passed){
         onProgress(lv.id, true);
+        let rewardAchievementLabel = '';
         if (res.achievement){
-          const ach = store.achievements;
-          if(!ach.includes(res.achievement)){
-            ach.push(res.achievement);
-            store.achievements = ach;
+          const normalizedAchievement = normalizeAchievementEntry(res.achievement);
+          const currentAchievements = store.achievements;
+          if(normalizedAchievement && typeof normalizedAchievement !== 'string'){
+            if(!hasAchievement(currentAchievements, normalizedAchievement)){
+              currentAchievements.push(normalizedAchievement);
+              store.achievements = currentAchievements;
+            } else {
+              store.achievements = currentAchievements;
+            }
+            rewardAchievementLabel = presentAchievement(normalizedAchievement);
+          } else {
+            if(!hasAchievement(currentAchievements, res.achievement)){
+              currentAchievements.push(res.achievement);
+              store.achievements = currentAchievements;
+            }
+            rewardAchievementLabel = presentAchievement(res.achievement);
           }
         }
         const before = store.xp;
@@ -580,23 +839,24 @@ function renderLevel(lv, idx, unlocked, completed, onProgress){
         const lvlBefore = 1 + Math.floor(before / 50);
         const lvlAfter = 1 + Math.floor(store.xp / 50);
         let goldGain = isSidequest ? 3 : 2;
-        if(!wasCompleted && !isSidequest && /_l5$/.test(lv.id || '')) goldGain += 10;
+        if(!wasCompleted && !isSidequest && /_l5$/.test(baseLevelId)) goldGain += 5;
         const goldBefore = store.gold;
         store.gold = goldBefore + goldGain;
-        let html = `<h3>Ricompensa</h3>`;
-        if(res.achievement){
-          html += `<div class="award"><span class="medal">🏅</span><span class="text">${res.achievement}</span></div>`;
+        let html = `<h3>${tr('ui.rewardTitle', 'Ricompensa')}</h3>`;
+        if(rewardAchievementLabel){
+          const rewardIcon = achievementIconFor(rewardAchievementLabel);
+          html += `<div class="award"><span class="medal">${rewardIcon}</span><span class="text">${rewardAchievementLabel}</span></div>`;
         }
-        if(gained) html += `<p><strong>XP guadagnati:</strong> +${gained}</p>`;
-        if(goldGain) html += `<p><strong>Monete d'oro:</strong> +${goldGain}</p>`;
+        if(gained) html += `<p><strong>${tr('ui.xpGained', 'XP guadagnati')}:</strong> +${gained}</p>`;
+        if(goldGain) html += `<p><strong>${tr('ui.goldGained', "Monete d'oro")}:</strong> +${goldGain}</p>`;
         if(res.narration) html += `<p>${res.narration}</p>`;
-        if(res.next_intro) html += `<p><em>Prossimo:</em> ${res.next_intro}</p>`;
-        if(lvlAfter > lvlBefore) html += `<p><strong>Level Up!</strong> Ora sei livello ${lvlAfter}.</p>`;
+        if(res.next_intro) html += `<p><em>${tr('ui.nextPrompt', 'Prossimo')}:</em> ${res.next_intro}</p>`;
+        if(lvlAfter > lvlBefore) html += `<p><strong>${tr('ui.levelUpShort', 'Level Up!')}</strong> ${tr('ui.levelUpMessage', 'Ora sei livello {level}.', { level: lvlAfter })}</p>`;
         showRewardDialog(html);
         renderSidequests();
       }
     }catch(e){
-      bubble.innerHTML = "Errore di rete. Riprova.";
+      bubble.innerHTML = tr('ui.networkError', 'Errore di rete. Riprova.');
       if(powerupsUsed.hint && hintBtn){
         hintBtn = refreshPowerupButton(hintBtn, 'hint_token', hasFailed);
         powerupButtons['hint_token'] = hintBtn;
@@ -638,18 +898,18 @@ async function renderSidequests(){
   const intro = document.getElementById('sidequestIntro');
   if(!profile){
     container.innerHTML = '';
-    if(intro) intro.textContent = 'Crea un personaggio nella pagina principale per affrontare le missioni opzionali.';
+    if(intro) intro.textContent = tr('sidequests.noProfile', 'Crea un personaggio nella pagina principale per affrontare le missioni opzionali.');
     return;
   }
   const lvl = playerLevel(store.xp);
-  if(intro) intro.textContent = `Completa queste missioni per ottenere sigilli e XP extra.`;
+  if(intro) intro.textContent = tr('sidequests.callToAction', 'Completa queste missioni per ottenere sigilli e XP extra.');
   const role = profile.role ? canonicalRole(profile.role) : null;
   const query = `/api/sidequests?player_level=${lvl}${role ? `&role=${role}` : ''}`;
   try{
     const quests = await api(query);
     container.innerHTML = '';
     if(!Array.isArray(quests) || quests.length === 0){
-      container.appendChild(el('p', {class:'muted'}, 'Nessuna missione opzionale disponibile al momento.'));
+      container.appendChild(el('p', {class:'muted'}, tr('sidequests.noneAvailable', 'Nessuna missione opzionale disponibile al momento.')));
       return;
     }
     const progress = store.progress;
@@ -661,7 +921,7 @@ async function renderSidequests(){
       if(!unlocked){
         const card = el('div', {class:'card locked'},
           el('h3', {}, `🔒 ${quest.name}`),
-          el('p', {class:'muted'}, `Richiede livello ${unlock}.`)
+          el('p', {class:'muted'}, tr('sidequests.locked', `Richiede livello ${unlock}.`, { level: unlock }))
         );
         container.appendChild(card);
       } else {
@@ -676,7 +936,7 @@ async function renderSidequests(){
     });
   }catch(e){
     container.innerHTML = '';
-    container.appendChild(el('p', {class:'muted'}, 'Impossibile caricare le missioni opzionali. Riprova piu tardi.'));
+    container.appendChild(el('p', {class:'muted'}, tr('sidequests.loadError', 'Impossibile caricare le missioni opzionali. Riprova piu tardi.')));
   }
 }
 
@@ -696,19 +956,39 @@ function initPageButtons(){
 
 async function main(){
   initPageButtons();
+  if(I18N){
+    const selector = document.getElementById('languageSelect');
+    I18N.initLanguageSelector(selector);
+    I18N.applyTranslations(document);
+  }
   try{
     const rolesData = await api('/api/roles');
     ROLE_LABELS = { ...ROLE_LABELS, ...(rolesData.labels || {}) };
   }catch{}
+  await loadAchievementCatalogs();
+  normalizeStoredAchievements();
   renderProfile();
   renderXP();
   renderAchievements();
-  const profile = store.profile;
-  if(!profile){
-    await renderSidequests();
-    return;
-  }
   await renderSidequests();
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
+window.addEventListener('pq-language-changed', async () => {
+  try{
+    const rolesData = await api('/api/roles');
+    ROLE_LABELS = { ...ROLE_LABELS, ...(rolesData.labels || {}) };
+  }catch{}
+  await loadAchievementCatalogs();
+  normalizeStoredAchievements();
+  if(I18N){
+    const selector = document.getElementById('languageSelect');
+    if(selector) selector.value = currentLanguage();
+    I18N.applyTranslations(document);
+  }
+  renderProfile();
+  renderXP();
+  renderAchievements();
+  await renderSidequests();
+});

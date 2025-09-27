@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Code & Dragons",
-    "version": "1.7.0",
+    "version": "2.0.0",
     "passing_policy": "all",
     "order": [
       "c01_lists_l1",
@@ -160,11 +160,11 @@
     "c01_lists_l3": {
       "name": "Eco delle Tracce",
       "prompt": {
-        "mage": "La terza navata risuona di echi ripetuti: per calmare il rimbombo, lascia parlare solo la prima voce di ogni numero. Fallo con `dedup_stable(nums)`, che crea una nuova lista senza duplicati consecutivi mantenendo l'ordine della lista originale. Mantieni la firma e placa i test.",
-        "rogue": "Nel corridoio successivo le trappole scattano sui duplicati: lascia passare solo le prime impronte usando `dedup_stable(nums)`, che restituisce una nuova lista senza duplicati consecutivi mantenendo l'ordine della lista originale. Mantieni la firma e scivola oltre i test.",
-        "swordsman": "Durante l'allenamento successivo taglia via le ripetizioni: nel kata resta solo la prima esecuzione di ogni movimento. Ottienilo con `dedup_stable(nums)`, ritornando una nuova lista senza duplicati consecutivi mantenendo l'ordine della lista originale. Mantieni la firma e lascia che i test confermino la pulizia.",
-        "alchemist": "Gli alambicchi accumulano residui: separa ogni sostanza tenendo solo la prima apparizione. Usa `dedup_stable(nums)` per ottenere una nuova lista senza duplicati consecutivi, mantenendo l'ordine della lista originale. Mantieni la firma e supera i test come un filtraggio riuscito.",
-        "ranger": "Le tracce nel fango si ripetono: annota ogni specie solo alla prima comparsa lungo il cammino. Realizza questo con `dedup_stable(nums)`, restituendo una nuova lista senza duplicati consecutivi, mantenendo l'ordine della lista originale. Mantieni la firma e muoviti leggero tra i test."
+        "mage": "La terza navata risuona di echi ripetuti: per calmare il rimbombo, lascia parlare solo la prima voce di ogni numero. Fallo con `dedup_stable(nums)`, che crea una nuova lista con la prima occorrenza di ciascun valore mantenendo l'ordine della lista originale. Mantieni la firma e placa i test.",
+        "rogue": "Nel corridoio successivo le trappole scattano sui duplicati: lascia passare solo le prime impronte usando `dedup_stable(nums)`, che restituisce una nuova lista con la prima comparsa di ogni valore mantenendo l'ordine della lista originale. Mantieni la firma e scivola oltre i test.",
+        "swordsman": "Durante l'allenamento successivo taglia via le ripetizioni: nel kata resta solo la prima esecuzione di ogni movimento. Ottienilo con `dedup_stable(nums)`, ritornando una nuova lista con la prima occorrenza di ciascun valore mantenendo l'ordine della lista originale. Mantieni la firma e lascia che i test confermino la pulizia.",
+        "alchemist": "Gli alambicchi accumulano residui: separa ogni sostanza tenendo solo la prima apparizione. Usa `dedup_stable(nums)` per ottenere una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e supera i test come un filtraggio riuscito.",
+        "ranger": "Le tracce nel fango si ripetono: annota ogni specie solo alla prima comparsa lungo il cammino. Realizza questo con `dedup_stable(nums)`, restituendo una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e muoviti leggero tra i test."
       },
       "next_intro": "Tra poco ti verra richiesto di scandire il potere in blocchi regolari.",
       "signature": "def dedup_stable(nums: list[int]) -> list[int]:\n    ...",
@@ -1186,11 +1186,11 @@
     "c06_conditions_l5": {
       "name": "Tesoreria Ottimale",
       "prompt": {
-        "mage": "Alla Tesoreria Ottimale, ogni tributo va minimizzato. Calcola con `min_coins(amount, coins)`: restituisci il **numero minimo** di monete per ottenere `amount`; se impossibile, torna `1_000_000_000`. Mantieni la firma e lascia che i test si aprano.",
-        "rogue": "Quando paghi l’informatore, scegli il meno appariscente dei tributi. Implementa `min_coins(amount, coins)` tornando il minimo conteggio di monete, o `1_000_000_000` se non si può comporre l’importo. Mantieni la firma e scivola oltre i test.",
-        "swordsman": "Per l’Offerta d’Onore, servi l’esatto ammontare col minor numero di pezzi. Usa `min_coins(amount, coins)`: minimo numero di monete, oppure `1_000_000_000` se non è possibile. Mantieni la firma e vinci i test.",
-        "alchemist": "Per gli apprendisti, misura l’esborso più efficiente. Realizza `min_coins(amount, coins)` restituendo il conteggio minimo, o `1_000_000_000` quando non componibile. Mantieni la firma e promuovi i test.",
-        "ranger": "Nel tributo tribale distribuisci il minor numero di monete. Con `min_coins(amount, coins)` torna il minimo, o `1_000_000_000` se l’importo è irraggiungibile. Mantieni la firma e attraversa i test."
+        "mage": "Alla Tesoreria Ottimale, ogni tributo va minimizzato. Calcola con `min_coins(amount, coins)`: restituisci il **numero minimo** di monete per ottenere `amount`; se impossibile, torna `1000000000`. Mantieni la firma e lascia che i test si aprano.",
+        "rogue": "Quando paghi l’informatore, scegli il meno appariscente dei tributi. Implementa `min_coins(amount, coins)` tornando il minimo conteggio di monete, o `1000000000` se non si può comporre l’importo. Mantieni la firma e scivola oltre i test.",
+        "swordsman": "Per l’Offerta d’Onore, servi l’esatto ammontare col minor numero di pezzi. Usa `min_coins(amount, coins)`: minimo numero di monete, oppure `1000000000` se non è possibile. Mantieni la firma e vinci i test.",
+        "alchemist": "Per gli apprendisti, misura l’esborso più efficiente. Realizza `min_coins(amount, coins)` restituendo il conteggio minimo, o `1000000000` quando non componibile. Mantieni la firma e promuovi i test.",
+        "ranger": "Nel tributo tribale distribuisci il minor numero di monete. Con `min_coins(amount, coins)` torna il minimo, o `1000000000` se l’importo è irraggiungibile. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Mentre avanzi, ti attendono le gallerie del testo, dove contare e cercare righe e storie.",
       "signature": "def min_coins(amount: int, coins: list[int]) -> int:\n    ...",
@@ -1224,32 +1224,32 @@
     "c07_textio_l1": {
       "name": "Scriptorium Fedele",
       "prompt": {
-        "mage": "Nello Scriptorium degli Echi, un rotolo sussurra riga dopo riga: scrivi e rileggi per non perdere nessun segno. Implementa `write_and_read(lines)` restituendo **una nuova lista** con le stesse righe in **stesso ordine**: non modificare l’input, limita‑ti a copiarne il contenuto. Mantieni la firma e lascia che i test scorrano come inchiostro.",
-        "rogue": "Nel covo, ogni messaggio passa di mano: copialo e verifica che nulla sia cambiato. Con `write_and_read(lines)` ritorna una **nuova lista** con le stesse righe, nell’ordine originale. Non alterare l’input. Mantieni la firma e scivola oltre i test.",
-        "swordsman": "Il maestro detta, tu riporti senza aggiungere né togliere. Realizza `write_and_read(lines)` che produca una **copia** delle righe nello stesso ordine. Non toccare la lista ricevuta. Mantieni la firma e convinci i test.",
-        "alchemist": "Sul banco, trascrivi le bande dell’oscilloscopio come sono, poi rileggile. Implementa `write_and_read(lines)` restituendo una **nuova lista** identica nei contenuti e nell’ordine. Lascia intatta la sorgente. Mantieni la firma e titola i test.",
-        "ranger": "Al fuoco da campo, riscrivi il rapporto degli scout e leggilo uguale a com’era. Con `write_and_read(lines)` ritorna una **copia** delle righe, stessa sequenza, senza toccare l’originale. Mantieni la firma e attraversa i test."
+        "mage": "Nello Scriptorium degli Echi ogni rotolo viene inciso e poi riascoltato: `write_and_read(lines)` deve restituire l’eco fedele degli appunti nell’ordine in cui sono stati fissati. Prima le parole vengono consegnate a un tomo chiamato `textio_write_and_read.txt`. Poi, quando il tomo viene riaperto, ogni riga emerge dal silenzio, purificata dai segni di fine riga, e va a comporre una nuova lista che custodisce la memoria del rito.",
+        "rogue": "Nel covo ogni messaggio è sottoposto a doppia prova: `write_and_read(lines)` deve restituire la sequenza delle frasi così come sono state vergate e ricontrollate. Prima vengono incise nell’ombra di `textio_write_and_read.txt`. Poi, riaprendo il registro segreto, il ladro scorre ogni segno, rimuove le tracce superflue di fine riga e ricompone una lista parallela, pronta a essere sottratta al fuoco.",
+        "swordsman": "Nel dojo il maestro detta e pretende rigore: `write_and_read(lines)` deve restituire una copia perfetta della sequenza ricevuta. Gli ordini sono affidati al rotolo `textio_write_and_read.txt`, chiuso con disciplina. In seguito, riaperto il rotolo, ogni riga viene letta con attenzione, spogliata dei segni di fine riga e raccolta in una nuova lista, testimonianza della fedeltà dell’allievo.",
+        "alchemist": "Sul banco degli esperimenti ogni segnale va fissato e ricontrollato: `write_and_read(lines)` deve restituire la serie completa delle trascrizioni, nell’ordine esatto in cui sono state registrate. Prima tutte le osservazioni si condensano in un grimorio chiamato `textio_write_and_read.txt`. Poi, al momento della rilettura, ogni riga viene distillata senza le impurità di fine riga e versata in una lista nuova, che diventa il distillato finale.",
+        "ranger": "Attorno al fuoco gli esploratori recitano i loro rapporti due volte: `write_and_read(lines)` deve restituire la lista delle righe così come sono state trascritte e poi lette di nuovo. Prima vengono deposte in un diario di nome `textio_write_and_read.txt`. Poi, sfogliando di nuovo il diario alla luce delle braci, ogni riga viene liberata dai segni superflui di fine riga e aggiunta a una lista distinta, pronta a essere tramandata."
       },
       "next_intro": "Mentre ti rimetti in cammino, il prossimo banco ti chiedera di contare ogni riga delle pergamene trascritte.",
-      "signature": "def write_and_read(lines: list[str]) -> list[str]:\n    ...",
+      "signature": "def write_and_read(lines: list[str]) -> list[str]:\n    filename = 'textio_write_and_read.txt'\n    ...",
       "tests": [
         {
-          "code": "assert write_and_read(['a','b'])==['a','b']"
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha', 'beta']\nresult = write_and_read(lines)\nassert result == lines and result is not lines\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
         },
         {
-          "code": "assert write_and_read([])==[]"
+          "code": "_sandbox_open_log.clear()\nlines = []\nresult = write_and_read(lines)\nassert result == []\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "assert write_and_read(['x'])==['x']"
+          "code": "_sandbox_open_log.clear()\nlines = ['solo']\nresult = write_and_read(lines)\nassert result == ['solo'] and result is not lines\n"
         },
         {
-          "code": "assert write_and_read(['1','2','3'])[0]=='1'"
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2', '3']\nwrite_and_read(lines)\nlog = list(_sandbox_open_log)\nassert len(log) >= 2\n"
         },
         {
-          "code": "assert len(write_and_read(['z']))==1"
+          "code": "_sandbox_open_log.clear()\nlines = ['k']\nres1 = write_and_read(lines)\nres2 = write_and_read(lines)\nassert res1 == ['k'] and res2 == ['k']\nlog = list(_sandbox_open_log)\nassert sum(1 for entry in log if 'w' in entry['mode']) >= 2\n"
         },
         {
-          "code": "assert isinstance(write_and_read(['k']), list)"
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha', 'beta']\na = write_and_read(lines)\nb = write_and_read(lines)\nassert a == b == lines\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in _sandbox_open_log)\n"
         }
       ],
       "hints": [
@@ -1262,32 +1262,32 @@
     "c07_textio_l2": {
       "name": "Conto delle Pergamene",
       "prompt": {
-        "mage": "Il rotolo è lungo: prima di analizzarlo, conta le pergamene. Scrivi `count_lines(lines)` restituendo il **numero di righe** nella lista `lines`. Non cambiare l’ordine, non filtrare: limita‑ti a contare. Mantieni la firma e placa i test.",
-        "rogue": "Per stimare il rischio devi sapere quante note circolano. Con `count_lines(lines)` restituisci **quante** righe ci sono, senza alterare l’input. Mantieni la firma e non far scattare i test.",
-        "swordsman": "Nel dojo si verifica la disciplina del testo: conta ogni riga. Implementa `count_lines(lines)` tornando il **conteggio** degli elementi della lista. Mantieni la firma e onora i test.",
-        "alchemist": "Prima di reagire, misura il volume del resoconto. `count_lines(lines)` deve restituire il **totale** delle righe presenti. Non toccare i dati. Mantieni la firma e promuovi i test.",
-        "ranger": "Nel diario di campo, stabilisci quante voci sono state annotate. Con `count_lines(lines)` ritorna il **numero** di righe. Mantieni la firma e attraversa i test."
-      },
+        "mage": "Nell’archivio dello Scriptorium ogni pergamena deve essere registrata e il custode tiene il conto delle voci annotate: `count_lines(lines)` deve restituire quel numero. Prima i rotoli vengono deposti in un tomo chiamato `textio_count.txt`. Poi, quando il tomo viene riaperto, lo scriba lo percorre riga per riga, segnando mentalmente ogni eco incontrata. Alla fine del cammino, il totale raccolto è la risposta.",
+        "rogue": "Nel deposito ogni messaggio nascosto è contato come un tesoro: `count_lines(lines)` deve rivelare quante voci sono state realmente custodite. Prima i segreti vengono sigillati in un registro di nome `textio_count.txt`. Poi il ladro, riaprendolo nell’ombra, scorre ogni riga con passo silenzioso, lasciando che il numero cresca di segno in segno fino a conoscere la quantità esatta.",
+        "swordsman": "Nel dojo il maestro non ammette esitazioni: ogni comando dato va contato come un colpo di spada. `count_lines(lines)` deve dunque restituire il numero di ordini impartiti. Prima l’allievo affida ogni parola al rotolo chiamato `textio_count.txt`. Poi, riaprendolo con disciplina, percorre tutte le righe una dopo l’altra, accumulando nel cuore il totale, che diventa la misura della sua obbedienza.",
+        "alchemist": "Al banco degli esperimenti ogni reagente va registrato e numerato con cura: `count_lines(lines)` deve dire quante formule sono state annotate. Le note vengono distillate nel grimorio `textio_count.txt`. Una volta sigillato e riaperto, ogni linea è un ingrediente contato uno a uno, finché il calcolo rivela l’esatto numero di voci custodite.",
+        "ranger": "Negli avamposti ogni rapporto raccolto è una traccia che non va persa: `count_lines(lines)` deve restituire il totale delle righe consegnate. Per questo lo scout affida tutte le notizie al diario `textio_count.txt`. Quando lo riapre alla luce del fuoco, scorre ogni riga come un passo compiuto nel cammino, e solo sommando tutti i segni arriva al numero finale."
+   },
       "next_intro": "A seguire dovrai scovare una frase esatta tra i registri accumulati.",
-      "signature": "def count_lines(lines: list[str]) -> int:\n    ...",
+      "signature": "def count_lines(lines: list[str]) -> int:\n    filename = 'textio_count.txt'\n    ...",
       "tests": [
         {
-          "code": "assert count_lines(['x','y','z'])==3"
+          "code": "_sandbox_open_log.clear()\nlines = ['a', 'b', 'c']\ncount = count_lines(lines)\nassert count == 3\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "assert count_lines([])==0"
+          "code": "_sandbox_open_log.clear()\nlines = []\ncount = count_lines(lines)\nassert count == 0\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "assert count_lines(['a'])==1"
+          "code": "_sandbox_open_log.clear()\nlines = ['x']\nassert count_lines(lines) == 1\n"
         },
         {
-          "code": "assert count_lines(['1','2'])==2"
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2']\nassert count_lines(lines) == 2\n"
         },
         {
-          "code": "assert count_lines(['r','s','t','u'])==4"
+          "code": "_sandbox_open_log.clear()\nlines = ['r', 's', 't']\nvalue = count_lines(lines)\nassert isinstance(value, int) and value == len(lines)\n"
         },
         {
-          "code": "assert isinstance(count_lines(['k']), int)"
+          "code": "_sandbox_open_log.clear()\nlines = ['shadow']\ncount_lines(lines)\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
         }
       ],
       "hints": [
@@ -1300,32 +1300,33 @@
     "c07_textio_l3": {
       "name": "Frase Nascosta",
       "prompt": {
-        "mage": "Tra le righe vive una frase nascosta: stanala senza alterare nulla. Implementa `contains_line(lines, needle)` restituendo `True` se **almeno una** riga è **esattamente uguale** a `needle`, altrimenti `False`. Mantieni la firma e soddisfa i test.",
-        "rogue": "Nel dossier, cerca la riga che attiva la serratura. `contains_line(lines, needle)` deve tornare `True` se una voce è **identica** a `needle`, altrimenti `False`. Mantieni la firma e scivola oltre i test.",
-        "swordsman": "Nel registro del dojo, verifica se la formula compare tale e quale. Scrivi `contains_line(lines, needle)` che controlla l’uguaglianza esatta di almeno una riga. Mantieni la firma e vinci i test.",
-        "alchemist": "Tra tracciati ripetuti cerca la misura campione. `contains_line(lines, needle)` restituisce `True` solo se una riga **coincide** esattamente; in caso contrario, `False`. Mantieni la firma e promuovi i test.",
-        "ranger": "Nel resoconto di pattuglia cerca la parola d’ordine esatta. Con `contains_line(lines, needle)` ritorna `True` se una riga è **uguale** a `needle`, altrimenti `False`. Mantieni la firma e attraversa i test."
+        "mage": "Nel catalogo degli echi non ogni versetto risponde, ma solo quello che esiste tra le pergamene: `contains_line(lines, needle)` deve svelare con un sì o con un no se la riga invocata è davvero presente. Prima ogni eco viene inciso in un registro chiamato `textio_contains.txt`. Poi il tomo viene riaperto e sfogliato parola per parola: ogni segno viene purificato da quelli di fine riga e confrontato con la formula cercata. Se un’eco coincide, il responso è affermativo; altrimenti, il silenzio porta la negazione.",
+        "rogue": "Nel covo delle parole d’ordine non tutte sopravvivono alla prova del tempo: `contains_line(lines, needle)` deve smascherare se quella pronunciata è ancora valida. Prima il ladro nasconde tutte le frasi in un registro segreto, `textio_contains.txt`. Poi, con passo furtivo, riapre il volume e lo percorre in silenzio: a ogni formula toglie la polvere dei segni di fine riga e la confronta con la chiave richiesta. Se la trova, l’ingresso è garantito; se no, la porta resta chiusa.",
+        "swordsman": "Nelle cronache degli allenamenti ogni comando deve essere cercato come un colpo preciso: `contains_line(lines, needle)` restituisce la verità - il comando esiste o no. Prima i dettami sono affidati a un rotolo chiamato `textio_contains.txt`. Poi, riaperto con disciplina, il rotolo viene scandagliato riga per riga: ogni segno viene spogliato dei marchi superflui di fine riga e confrontato con l’ordine cercato. Se il comando appare, la risposta è sì; se resta celato, la risposta è no.",
+        "alchemist": "Tra gli appunti del laboratorio non ogni reagente è disponibile: `contains_line(lines, needle)` deve rivelare se la formula desiderata è già stata trascritta. Prima tutte le note vengono distillate in un grimorio chiamato `textio_contains.txt`. Poi il grimorio viene riaperto e analizzato: ogni formula, liberata dalle scorie di fine riga, è paragonata con il reagente cercato. Se i segni coincidono, l’esperimento può iniziare; se no, resta incompleto.",
+        "ranger": "Nel registro delle piste non tutti i segni portano al sentiero giusto: `contains_line(lines, needle)` deve indicare se la traccia richiesta è stata registrata. Prima il viandante affida ogni passo a un diario di nome `textio_contains.txt`. Poi, tornando a sfogliarlo, esamina ogni riga, spogliandola delle tracce dei segni di fine riga, e la confronta con la pista cercata. Se il segno appare, la via è confermata; se manca, la ricerca continua nel vuoto."
+
       },
       "next_intro": "La prova successiva verifica la tua abilita nel creare copie indipendenti delle liste.",
-      "signature": "def contains_line(lines: list[str], needle: str) -> bool:\n    ...",
+      "signature": "def contains_line(lines: list[str], needle: str) -> bool:\n    filename = 'textio_contains.txt'\n    ...",
       "tests": [
         {
-          "code": "assert contains_line(['a','b'],'b') is True"
+          "code": "_sandbox_open_log.clear()\nlines = ['sun', 'moon']\nassert contains_line(lines, 'moon') is True\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "assert contains_line(['a'],'x') is False"
+          "code": "_sandbox_open_log.clear()\nlines = ['sun', 'moon']\nassert contains_line(lines, 'star') is False\n"
         },
         {
-          "code": "assert contains_line(['x','y'],'y') is True"
+          "code": "_sandbox_open_log.clear()\nlines = []\nassert contains_line(lines, 'anything') is False\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "assert contains_line([], 'a') is False"
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha']\nassert contains_line(lines, 'alpha') is True\n"
         },
         {
-          "code": "assert contains_line(['m'],'m') is True"
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha']\nassert contains_line(lines, 'beta') is False\n"
         },
         {
-          "code": "assert contains_line(['k','l'],'k') is True"
+          "code": "_sandbox_open_log.clear()\nlines = ['k', 'l']\ncontains_line(lines, 'k')\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
         }
       ],
       "hints": [
@@ -1338,32 +1339,32 @@
     "c07_textio_l4": {
       "name": "Cronaca Duplicata",
       "prompt": {
-        "mage": "La Cronaca Duplicata va preservata: crea una copia fedele. Implementa `copy_list(src)` restituendo una **nuova lista** con gli stessi elementi e lo stesso ordine di `src`. Non riutilizzare la stessa lista: deve essere un oggetto distinto. Mantieni la firma e placa i test.",
-        "rogue": "Per non lasciare tracce, lavora su una copia. `copy_list(src)` deve costruire e restituire una **lista nuova** con gli stessi contenuti, nell’ordine originale. Mantieni la firma e sfila tra i test.",
-        "swordsman": "L’esercizio richiede rigore: duplica senza mutare l’originale. Realizza `copy_list(src)` che ritorni una **copia** dei valori, non la stessa lista. Mantieni la firma e onora i test.",
-        "alchemist": "Serve un campione gemello su cui sperimentare. Con `copy_list(src)` restituisci una **nuova lista** identica nei dati e nell’ordine. L’originale resta intatto. Mantieni la firma e promuovi i test.",
-        "ranger": "Nel campo, conserva l’archivio e lavora su una copia. `copy_list(src)` deve creare e restituire una **lista separata** con gli stessi elementi. Mantieni la firma e attraversa i test."
-      },
+        "mage": "Nel Scriptorium ogni pergamena viene prima affidata a un archivio e poi trascritta in un secondo tomo: `copy_list(lines)` deve restituire una lista gemella senza toccare l’originale. Prima si lascia traccia in un rotolo chiamato `textio_source.txt`. In seguito, quel rotolo viene riaperto e letto parola per parola, mentre un nuovo tomo, `textio_copy.txt`, riceve la stessa trascrizione. Ogni versetto, una volta ripulito dai segni di fine riga, entra anche in una lista segreta che sarà l’unica ricompensa dell’incantatore.",
+        "rogue": "Nel covo nessun messaggio sopravvive se non ha un duplicato: `copy_list(lines)` deve ritornare una lista con una copia fedele delle righe affidategli. Prima il contenuto viene inciso in un registro nascosto, `textio_source.txt`. Poi quel registro viene sfogliato attentamente, e di ogni frase ripulita della polvere dei segni di fine riga se ne conserva traccia sia in un nuovo registro, `textio_copy.txt`, sia in un elenco da portare con sé. L’originale resta nell’ombra, intatto, mentre il ladro fugge con la copia.",
+        "swordsman": "Nel dojo il maestro pretende che il discepolo trascriva ogni ordine e lo riporti in un secondo manoscritto: `copy_list(lines)` deve restituire una lista gemella senza toccare quella iniziale. Le parole vengono prima deposte in un rotolo chiamato `textio_source.txt`. Poi, in un atto di disciplina, il rotolo viene riaperto, e ogni comando, purificato dai segni di fine riga, viene inciso di nuovo in `textio_copy.txt` e memorizzato in una lista separata. Solo questa lista, al termine, diventa la prova della fedeltà dell’allievo.",
+        "alchemist": "Al banco degli esperimenti nessun reagente si usa senza averne annotato la formula in duplice copia: `copy_list(lines)` deve restituire una lista nuova e uguale all’originale. Per questo ogni appunto viene sigillato prima in un grimorio chiamato `textio_source.txt`. Poi, aprendo di nuovo quelle pagine, ogni segno, liberato dalle scorie di fine riga, viene trascritto in un secondo libro, `textio_copy.txt`, e distillato in una lista separata. È questa lista che l’alchimista custodirà come distillato finale.",
+        "ranger": "Gli esploratori sanno che i loro diari possono bruciare sul fuoco del campo, perciò ne fanno sempre un duplicato: `copy_list(lines)` deve restituire una lista distinta ma uguale all'originale. Prima il diario viene consegnato a un registro di nome `textio_source.txt`. Poi, riaperto quel registro, ogni riga, ripulita dalle tracce di fineb riga, viene nuovamente segnata in un secondo registro, `textio_copy.txt`, e allo stesso tempo raccolta in una lista che il ranger terrà con sé. Così l’originale resta sepolto, ma la copia sopravvive nel silenzio della foresta."
+    },
       "next_intro": "Prima di lasciare questa sala, chiudere il scriptorium estrarrai le prime righe da consegnare in fretta.",
-      "signature": "def copy_list(src: list[str]) -> list[str]:\n    ...",
+      "signature": "def copy_list(src: list[str]) -> list[str]:\n    source_file = 'textio_source.txt'\n    copy_file = 'textio_copy.txt'\n    ...",
       "tests": [
         {
-          "code": "a=['x','y']; b=copy_list(a); assert a==b and a is not b"
+          "code": "_sandbox_open_log.clear()\nlines = ['north', 'south']\ncopy = copy_list(lines)\nassert copy == lines and copy is not lines\nlog = list(_sandbox_open_log)\nassert any('w' in entry['mode'] for entry in log)\nassert any('r' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "a=[]; b=copy_list(a); assert a==b and a is not b"
+          "code": "_sandbox_open_log.clear()\nlines = ['only']\nresult = copy_list(lines)\nassert result == ['only']\n"
         },
         {
-          "code": "a=['z']; b=copy_list(a); assert b==['z'] and a is not b"
+          "code": "_sandbox_open_log.clear()\nlines = []\nresult = copy_list(lines)\nassert result == []\n"
         },
         {
-          "code": "a=['1','2']; b=copy_list(a); assert len(b)==2"
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2']\nfirst = copy_list(lines)\nsecond = copy_list(lines)\nassert first == second == lines\n"
         },
         {
-          "code": "a=['r']; b=copy_list(a); assert b[0]=='r'"
+          "code": "_sandbox_open_log.clear()\nlines = ['alpha', 'beta']\ncopy_list(lines)\nlog = list(_sandbox_open_log)\nassert sum(1 for entry in log if 'w' in entry['mode']) >= 1\n"
         },
         {
-          "code": "a=['k']; b=copy_list(a); assert a==b"
+          "code": "_sandbox_open_log.clear()\nlines = ['mirror']\ncopy_list(lines)\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
         }
       ],
       "hints": [
@@ -1376,32 +1377,32 @@
     "c07_textio_l5": {
       "name": "Estratto d'Avanguardia",
       "prompt": {
-        "mage": "All’alba si leggono solo i primi segnali. Scrivi `head(lines, n)` restituendo una **nuova lista** con le **prime `n` righe** di `lines` (o tutte se `n` supera la lunghezza). Non modificare l’originale. Mantieni la firma e soddisfa i test.",
-        "rogue": "Per un passaggio rapido ti bastano le prime righe. Implementa `head(lines, n)` che ritorna una **nuova lista** con i primi `n` elementi (o tutti, se `n` è troppo grande). Mantieni la firma e non allertare i test.",
-        "swordsman": "Nel kata delle cronache si esamina l’inizio. Con `head(lines, n)` restituisci una **copia** contenente i primi `n` elementi, senza toccare l’input. Mantieni la firma e vinci i test.",
-        "alchemist": "Analizza il front‑run del segnale: `head(lines, n)` deve produrre una lista con le prime `n` righe (tutte se `n` eccede). L’originale non si altera. Mantieni la firma e promuovi i test.",
-        "ranger": "Per orientarti ti bastano le prime tracce. `head(lines, n)` ritorna una nuova lista con i primi `n` elementi, o l’intera lista se `n` è più grande. Mantieni la firma e attraversa i test."
+        "mage": "Nello Scriptorium, quando una pergamena è troppo lunga, il custode legge solo i versi iniziali: `head(lines, n)` deve restituire al massimo `n` righe, nell’ordine in cui compaiono. I segni vengono affidati a un tomo chiamato `textio_head.txt`. Poi, se la misura richiesta è positiva, il tomo viene riaperto e letto dall’inizio: i primi segni vengono raccolti, ripuliti dalle pieghe di fine riga, e custoditi in una nuova lista. Se il numero invocato è nullo o minore, non si raccoglie nulla.",
+        "rogue": "Nel covo non si consultano mai tutte le carte, ma solo gli indizi iniziali: `head(lines, n)` deve fornire le prime tracce fino a `n`. Prima le frasi sono incise in un registro chiamato `textio_head.txt`. Poi, se la richiesta è valida, il ladro apre il registro e legge soltanto le prime voci. Ogni riga è spogliata delle scorie di fine linea e inserita in un elenco segreto. Se i passi finiscono prima del numero atteso, ci si ferma comunque.",
+        "swordsman": "Nel dojo il maestro concede all’allievo solo le istruzioni necessarie per iniziare: `head(lines, n)` restituisce le prime `n` frasi, oppure tutte se l’elenco è più corto. I comandi vengono prima custoditi in un rotolo chiamato `textio_head.txt`. Poi il rotolo è riaperto, e l’allievo legge riga per riga solo fino al limite imposto. Ogni parola è liberata dai segni di fine riga e inserita in una lista che diventa la guida dell’addestramento.",
+        "alchemist": "Nel laboratorio bastano pochi campioni per avviare un esperimento: `head(lines, n)` deve restituire solo le prime `n` righe annotate. Gli appunti si versano in un grimorio chiamato `textio_head.txt`. Se il numero richiesto è positivo, il grimorio viene sfogliato dall’inizio: ogni formula letta, purificata dai segni di fine riga, entra in un alambicco-lista finché non si raggiunge la quantità voluta o finché il testo non finisce.",
+        "ranger": "Nella foresta al viandante bastano i primi segni della rotta: `head(lines, n)` deve riportare le prime `n` tracce disponibili. Prima gli esploratori depongono ogni punto del cammino in un diario di nome `textio_head.txt`. Poi, riaperto il diario, si leggono solo le prime voci, ripulite dai segni di fine viaggio. La raccolta si interrompe quando si raggiunge il numero richiesto o quando le tracce finiscono, e la lista ottenuta guida i passi successivi."
       },
       "next_intro": "Preparati al deposito dei diagrammi viventi e ai segreti dello stile JSON.",
-      "signature": "def head(lines: list[str], n: int) -> list[str]:\n    ...",
+      "signature": "def head(lines: list[str], n: int) -> list[str]:\n    filename = 'textio_head.txt'\n    ...",
       "tests": [
         {
-          "code": "assert head(['a','b','c','d'],2)==['a','b']"
+          "code": "_sandbox_open_log.clear()\nlines = ['a', 'b', 'c', 'd']\nres = head(lines, 2)\nassert res == ['a', 'b']\nlog = list(_sandbox_open_log)\nassert any('r' in entry['mode'] for entry in log)\n"
         },
         {
-          "code": "assert head(['x'],5)==['x']"
+          "code": "_sandbox_open_log.clear()\nlines = ['x']\nassert head(lines, 5) == ['x']\n"
         },
         {
-          "code": "assert head([],1)==[]"
+          "code": "_sandbox_open_log.clear()\nlines = []\nassert head(lines, 1) == []\n"
         },
         {
-          "code": "assert head(['1','2','3'],0)==[]"
+          "code": "_sandbox_open_log.clear()\nlines = ['1', '2', '3']\nassert head(lines, 0) == []\n"
         },
         {
-          "code": "assert head(['r','s'],1)==['r']"
+          "code": "_sandbox_open_log.clear()\nlines = ['r', 's']\nassert head(lines, 1) == ['r']\n"
         },
         {
-          "code": "assert head(['k','l'],2)==['k','l']"
+          "code": "_sandbox_open_log.clear()\nlines = ['k', 'l']\nresult = head(lines, 2)\nassert result == ['k', 'l']\nlog = list(_sandbox_open_log)\nassert all(entry['path'].startswith(SANDBOX_DIR) for entry in log)\n"
         }
       ],
       "hints": [
@@ -1421,7 +1422,7 @@
         "ranger": "Nel campo, alcuni rapporti sono solo voci. `is_valid_record(x)` deve confermare **True** solo quando `x` è un dizionario; altrimenti **False**. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Il passo successivo richiede di estrarre solo le chiavi richieste dal consiglio.",
-      "signature": "def is_valid_record(obj) -> bool:\n    ...",
+      "signature": "def is_valid_record(x: dict | list | str | None) -> bool:\n    ...",
       "tests": [
         {
           "code": "assert is_valid_record({'a':1}) is True"
@@ -1445,7 +1446,7 @@
       "hints": [
         {
           "if": "",
-          "say": "Verifica che obj sia un dizionario e che ogni chiave sia di tipo str; basta una scansione sulle chiavi con isinstance."
+          "say": "Verifica che `x` sia un dizionario e che ogni chiave sia di tipo str; basta una scansione sulle chiavi con isinstance."
         }
       ]
     },
@@ -1453,13 +1454,13 @@
       "name": "Chiavi del Consiglio",
       "prompt": {
         "mage": "Davanti a un registro immenso devi estrarre solo le rune richieste. Fai sì che la storia lo chieda: `pick(d, keys)` ritorna un **nuovo** dizionario con **solo** le chiavi elencate in `keys` presenti in `d` (senza modificare `d`). Mantieni la firma e placa i test.",
-        "rogue": "Nella refurtiva scegli solo ciò che serve: `pick(d, keys)` deve creare un nuovo dict con le chiavi richieste e già presenti in `d`, senza toccare l’originale. Mantieni la firma e sfila tra i test.",
-        "swordsman": "Negli appunti del dojo sottolinei solo i passaggi chiave. Implementa `pick(d, keys)` che restituisce un nuovo dizionario filtrato su quelle chiavi (se esistono), lasciando `d` intatto. Mantieni la firma e vinci i test.",
-        "alchemist": "Nel banco di separazione, trattieni solo i costituenti indicati. Con `pick(d, keys)` crea un nuovo dizionario con le chiavi richieste presenti in `d`, senza alterare `d`. Mantieni la firma e titola i test.",
-        "ranger": "Nel rapporto di campo includi solo i dati utili. `pick(d, keys)` restituisce un nuovo dict con le chiavi richieste e presenti, lasciando `d` com’è. Mantieni la firma e attraversa i test."
+        "rogue": "Nella refurtiva scegli solo ciò che serve: `pick(d, keys)` deve creare un nuovo dict con le chiavi richieste `keys` e già presenti in `d`, senza toccare l’originale. Mantieni la firma e sfila tra i test.",
+        "swordsman": "Negli appunti del dojo sottolinei solo i passaggi chiave. Implementa `pick(d, keys)` che restituisce un nuovo dizionario filtrato sulle chiavi `keys` prensenti in `d`, lasciando `d` intatto. Mantieni la firma e vinci i test.",
+        "alchemist": "Nel banco di separazione, trattieni solo i costituenti indicati. Con `pick(d, keys)` crea un nuovo dizionario con le chiavi richieste `keys` presenti in `d`, senza alterare `d`. Mantieni la firma e titola i test.",
+        "ranger": "Nel rapporto di campo includi solo i dati utili. `pick(d, keys)` restituisce un nuovo dict con le chiavi richieste `keys` e presenti in `d`, lasciando `d` com’è. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Più avanti dovrai sommare l'energia numerica che pulsa tra strutture annidate.",
-      "signature": "def pick(obj: dict, keys: list[str]) -> dict:\n    ...",
+      "signature": "def pick(d: dict, keys: list[str]) -> dict:\n    ...",
       "tests": [
         {
           "code": "assert pick({'a':1,'b':2},['b'])=={'b':2}"
@@ -1490,70 +1491,70 @@
     "c08_json_l3": {
       "name": "Globo Pulsante",
       "prompt": {
-        "mage": "Un albero di dati nasconde numeri in cavità profonde. Integra la ricerca nel racconto: `json_sum_numbers(data)` deve sommare **ricorsivamente** tutti gli `int` e `float` presenti in dizionari e liste annidati. Mantieni la firma e soddisfa i test.",
-        "rogue": "Nel bottino alcuni valori sono nascosti in fondo alle casse. `json_sum_numbers(data)` deve visitare dict e liste annidati e sommare tutti i numeri trovati. Mantieni la firma e scivola oltre i test.",
-        "swordsman": "Tra i registri d’addestramento la somma si trova percorrendo ogni livello. Implementa `json_sum_numbers(data)` per sommare ricorsivamente tutti i numeri in `dict` e `list`. Mantieni la firma e onora i test.",
-        "alchemist": "Nel reticolo delle misure i numeri compaiono ovunque: `json_sum_numbers(data)` li sommi tutti attraversando dizionari e liste in profondità. Mantieni la firma e promuovi i test.",
-        "ranger": "Nell’intrico del bosco-dati, raccogli ogni numero su alberi e radure. `json_sum_numbers(data)` attraversa `dict` e `list`, accumulando la somma totale. Mantieni la firma e attraversa i test."
+        "mage": "Un albero di dati nasconde numeri in cavità profonde. Con `sum_numbers(obj)` devi percorrere questa struttura e restituire la somma totale. La funzione deve essere **ricorsiva**: se `obj` è un intero o un float, restituiscilo direttamente; se è una lista o una tupla, richiama `sum_numbers` su ciascun elemento e somma i risultati; se è un dizionario, richiama `sum_numbers` su ciascun valore e somma i risultati; se è un altro tipo, restituisci 0. In questo modo tutti i numeri, anche quelli nascosti in strutture annidate, vengono inclusi nel calcolo. Mantieni la firma e fai in modo che superi i test.",
+        "rogue": "Nel bottino alcuni valori sono nascosti in fondo alle casse. `sum_numbers(obj)` deve recuperare tutti i numeri, ovunque si trovino. La funzione deve essere **ricorsiva**: se `obj` è un intero o un float, restituiscilo direttamente; se è una lista o una tupla, richiama `sum_numbers` su ciascun elemento e somma i risultati; se è un dizionario, richiama `sum_numbers` su ciascun valore e somma i risultati; se è un altro tipo, restituisci 0. In questo modo tutti i numeri, passo dopo passo, vengono inclusi nel calcolo. Mantieni la firma e fai in modo che superi i test.",
+        "swordsman": "Tra i registri d’addestramento la forza si trova solo percorrendo ogni livello. Implementa `sum_numbers(obj)` in modo **ricorsivo**: se `obj` è un intero o un float, restituiscilo direttamente; se è una lista o una tupla, richiama `sum_numbers` su ciascun elemento e somma i risultati; se è un dizionario, richiama `sum_numbers` su ciascun valore e somma i risultati; se è un altro tipo, restituisci 0. In questo modo tutti i numeri, anche quelli nascosti in strutture annidate, vengono inclusi nel calcolo. Mantieni la firma e fai in modo che superi i test.",
+        "alchemist": "Nel reticolo delle misure i numeri compaiono ovunque. Implementa `sum_numbers(obj)` in modo **ricorsivo**: se `obj` è un intero o un float, restituiscilo direttamente; se è una lista o una tupla, richiama `sum_numbers` su ciascun elemento e somma i risultati; se è un dizionario, richiama `sum_numbers` su ciascun valore e somma i risultati; se è un altro tipo, restituisci 0. In questo modo tutti i numeri, passo dopo passo, vengono inclusi nel calcolo. Mantieni la firma e fai in modo che superi i test.",
+        "ranger": "Nell’intrico del bosco-dati ogni radura può celare numeri preziosi. Implementa `sum_numbers(obj)` in modo **ricorsivo**: se `obj` è un intero o un float, restituiscilo direttamente; se è una lista o una tupla, richiama `sum_numbers` su ciascun elemento e somma i risultati; se è un dizionario, richiama `sum_numbers` su ciascun valore e somma i risultati; se è un altro tipo, restituisci 0. In questo modo tutti i numeri, anche quelli nascosti in strutture annidate, vengono inclusi nel calcolo. Mantieni la firma e fai in modo che superi i test."
       },
       "next_intro": "La sala seguente ti chiede di fondere proiezioni senza frantumare quelle originarie.",
-      "signature": "def json_sum_numbers(obj) -> float:\n    ...",
+      "signature": "def sum_numbers(obj: int | float | list | tuple | dict) -> float:\n    ...",
       "tests": [
         {
-          "code": "data={'a':1,'b':[2,{'c':3}], 'd':'x'}\nassert json_sum_numbers(data)==6"
+          "code": "data={'a':1,'b':[2,{'c':3}], 'd':'x'}\nassert sum_numbers(data)==6"
         },
         {
-          "code": "assert json_sum_numbers([])==0"
+          "code": "assert sum_numbers([])==0"
         },
         {
-          "code": "assert json_sum_numbers({'x':[1,2,3]})==6"
+          "code": "assert sum_numbers({'x':[1,2,3]})==6"
         },
         {
-          "code": "assert json_sum_numbers({'a':{'b':2.5}})==2.5"
+          "code": "assert sum_numbers({'a':{'b':2.5}})==2.5"
         },
         {
-          "code": "assert json_sum_numbers(7)==7"
+          "code": "assert sum_numbers(7)==7"
         },
         {
-          "code": "assert json_sum_numbers({'m':0})==0"
+          "code": "assert sum_numbers({'m':0})==0"
         }
       ],
       "hints": [
         {
           "if": "",
-          "say": "Visita ricorsivamente liste e dizionari: somma i numeri (int o float), ignora gli altri tipi e somma i risultati parziali."
+          "say": "Se `obj` è un numero, restituiscilo. Se è una lista, tupla o dizionario, visita ricorsivamente i suoi elementi: somma i numeri (int o float), ignora gli altri tipi, e somma i risultati parziali."
         }
       ]
     },
     "c08_json_l4": {
       "name": "Citta Sovrapposte",
       "prompt": {
-        "mage": "Due registri discordanti devono diventare un’unica verità. Il racconto lo impone: `merge_json_struct(a, b)` restituisce un **merge superficiale** dei due dizionari, dove `b` prevale in caso di conflitto; gli altri tipi restano invariati. Mantieni la firma e supera i test.",
-        "rogue": "Due versioni dello stesso fascicolo vanno riconciliate: `merge_json_struct(a, b)` crea un nuovo dict dove i valori di `b` sovrascrivono quelli di `a` sulle stesse chiavi. Mantieni la firma e sfila tra i test.",
-        "swordsman": "Due rendiconti d’allenamento vanno uniti scegliendo l’ultimo valido. Scrivi `merge_json_struct(a, b)` con merge **shallow** e priorità a `b` sui conflitti. Mantieni la firma e vinci i test.",
-        "alchemist": "Unisci due analisi parziali: con `merge_json_struct(a, b)` produci un dizionario che copia `a` e aggiorna coi campi di `b` in conflitto. Mantieni la firma e promuovi i test.",
-        "ranger": "Concilia due mappe del sentiero: `merge_json_struct(a, b)` restituisce un nuovo dizionario dove `b` aggiorna `a` chiave per chiave. Mantieni la firma e attraversa i test."
+        "mage": "Due registri discordanti devono diventare un’unica verità. Il racconto lo impone: `merge_struct(a, b)` restituisce un **merge superficiale** dei due dizionari, dove `b` prevale in caso di conflitto; gli altri tipi restano invariati. Mantieni la firma e supera i test.",
+        "rogue": "Due versioni dello stesso fascicolo vanno riconciliate: `merge_struct(a, b)` crea un nuovo dict dove i valori di `b` sovrascrivono quelli di `a` sulle stesse chiavi. Mantieni la firma e sfila tra i test.",
+        "swordsman": "Due rendiconti d’allenamento vanno uniti scegliendo l’ultimo valido. Scrivi `merge_struct(a, b)` con merge **shallow** e priorità a `b` sui conflitti. Mantieni la firma e vinci i test.",
+        "alchemist": "Unisci due analisi parziali: con `merge_struct(a, b)` produci un dizionario che copia `a` e aggiorna coi campi di `b` in conflitto. Mantieni la firma e promuovi i test.",
+        "ranger": "Concilia due mappe del sentiero: `merge_struct(a, b)` restituisce un nuovo dizionario dove `b` aggiorna `a` chiave per chiave. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Prima di lasciare questa sala, uscire dovrai trasformare ogni registro in linee pronte per gli automi.",
-      "signature": "def merge_json_struct(a: dict, b: dict) -> dict:\n    ...",
+      "signature": "def merge_struct(a: dict, b: dict) -> dict:\n    ...",
       "tests": [
         {
-          "code": "assert merge_json_struct({'a':1},{'a':2,'b':3})=={'a':2,'b':3}"
+          "code": "assert merge_struct({'a':1},{'a':2,'b':3})=={'a':2,'b':3}"
         },
         {
-          "code": "assert merge_json_struct({}, {'x':1})=={'x':1}"
+          "code": "assert merge_struct({}, {'x':1})=={'x':1}"
         },
         {
-          "code": "assert merge_json_struct({'x':1},{})=={'x':1}"
+          "code": "assert merge_struct({'x':1},{})=={'x':1}"
         },
         {
-          "code": "assert merge_json_struct({'a':1},{'a':1})=={'a':1}"
+          "code": "assert merge_struct({'a':1},{'a':1})=={'a':1}"
         },
         {
-          "code": "assert merge_json_struct({'k':1},{'k':2,'q':3})=={'k':2,'q':3}"
+          "code": "assert merge_struct({'k':1},{'k':2,'q':3})=={'k':2,'q':3}"
         },
         {
-          "code": "assert merge_json_struct({'m':0},{'n':1})=={'m':0,'n':1}"
+          "code": "assert merge_struct({'m':0},{'n':1})=={'m':0,'n':1}"
         }
       ],
       "hints": [
@@ -1573,25 +1574,25 @@
         "ranger": "Nel campo, ogni evento finisce su una riga del diario. `to_json_lines(records)` restituisce una lista di stringhe JSON, una per record. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Mentre avanzi, varchi il corridoio delle possibilita incerte, dove try ed eccezioni regnano.",
-      "signature": "def to_json_lines(lst: list[dict]) -> list[str]:\n    ...",
+      "signature": "def to_json_lines(records: list[dict]) -> list[str]:\n    ...",
       "tests": [
         {
-          "code": "out=to_json_lines([{'a':1},{'b':2}])\nassert isinstance(out,list) and len(out)==2"
+          "code": "import json\nout = to_json_lines([{'a': 1}, {'b': 2}])\nassert isinstance(out, list) and len(out) == 2\nfor s in out:\n    assert isinstance(s, str)\n    assert isinstance(json.loads(s), dict)"
         },
         {
-          "code": "assert to_json_lines([])==[]"
+          "code": "assert to_json_lines([]) == []"
         },
         {
-          "code": "assert isinstance(to_json_lines([{}]), list)"
+          "code": "import json\nsrc = [{'x': 1}, {'y': 2, 'z': 3}]\nout = to_json_lines(src)\nparsed = [json.loads(s) for s in out]\nassert parsed == src"
         },
         {
-          "code": "out=to_json_lines([{'x':1}]); assert ''.join(out).startswith('{')"
+          "code": "import json\n# deve iniziare con '{' (oggetto JSON) ed essere parseabile\nout = to_json_lines([{'x': 1}])\nassert out and out[0].lstrip().startswith('{')\njson.loads(out[0])"
         },
         {
-          "code": "out=to_json_lines([{'k':9}]); assert len(out)==1"
+          "code": "import json\nout = to_json_lines([{'k': 9}])\nassert len(out) == 1 and isinstance(out[0], str)\nassert json.loads(out[0]) == {'k': 9}"
         },
         {
-          "code": "out=to_json_lines([{'m':0}]); assert isinstance(out[0], str)"
+          "code": "import json\nsrc = [{'a': 'è'}, {'b': [1, 2]}, {'c': {'d': 3}}]\nout = to_json_lines(src)\nassert [json.loads(s) for s in out] == src"
         }
       ],
       "hints": [

@@ -11,23 +11,23 @@
   <div class="container layout">
     <aside class="sidebar">
       <div class="profile">
-        <h2>🎭 Personaggio</h2>
+        <h2 data-i18n-key="sidebar.character" data-i18n-default="🎭 Personaggio">🎭 Personaggio</h2>
         <div id="profileView"></div>
         <div id="xpBar"></div>
         <div class="toolbar">
-          <button id="newGameBtn">Nuova partita</button>
-          <button id="exportBtn">Salva</button>
+          <button id="newGameBtn" data-i18n-key="buttons.newGame" data-i18n-default="Nuova partita">Nuova partita</button>
+          <button id="exportBtn" data-i18n-key="buttons.save" data-i18n-default="Salva">Salva</button>
           <label class="importLabel">
-            Carica
+            <span data-i18n-key="buttons.load" data-i18n-default="Carica">Carica</span>
             <input type="file" id="importInput" accept=".pqs" hidden>
           </label>
-          <button id="shopBtn">Emporio</button>
-          <button id="sidequestsBtn">Side Quest</button>
-          <button id="compendiumBtn">Compendio</button>
+          <button id="shopBtn" data-i18n-key="buttons.shop" data-i18n-default="Emporio">Emporio</button>
+          <button id="sidequestsBtn" data-i18n-key="buttons.sidequests" data-i18n-default="Side Quest">Side Quest</button>
+          <button id="compendiumBtn" data-i18n-key="buttons.compendium" data-i18n-default="Compendio">Compendio</button>
         </div>
       </div>
       <div class="achievements">
-        <h2>🏅 Conquiste</h2>
+        <h2 data-i18n-key="sidebar.achievements" data-i18n-default="🏅 Conquiste">🏅 Conquiste</h2>
         <ul id="achievementsList"></ul>
       </div>
       <!--
@@ -39,28 +39,36 @@
       -->
     </aside>
     <main class="content">
+      <div class="language-switcher">
+        <label for="languageSelect"><span data-i18n-key="language.label" data-i18n-default="Lingua">Lingua</span></label>
+        <select id="languageSelect"></select>
+      </div>
       <h1>🐍 Code & Dragons RPG <span id="appVersion" class="muted" style="font-size:12px;margin-left:8px"></span></h1>
-      <p>Trasforma lo studio in avventura: programma, combatti e conquista la gloria.</p>
+      <p data-i18n-key="main.tagline" data-i18n-default="Trasforma lo studio in avventura: programma, combatti e conquista la gloria.">Trasforma lo studio in avventura: programma, combatti e conquista la gloria.</p>
       <div id="levels"></div>
     </main>
   </div>
 
   <dialog id="profileDialog">
     <form method="dialog" id="profileForm">
-      <h3>Crea il tuo personaggio</h3>
-      <label>Nome
-        <input type="text" id="playerName" placeholder="Es. Aurora" required>
+      <h3 data-i18n-key="profileDialog.title" data-i18n-default="Crea il tuo personaggio">Crea il tuo personaggio</h3>
+      <div class="language-switcher">
+        <label for="languageSelectSetup"><span data-i18n-key="language.label" data-i18n-default="Lingua">Lingua</span></label>
+        <select id="languageSelectSetup"></select>
+      </div>
+      <label><span data-i18n-key="profileDialog.name" data-i18n-default="Nome">Nome</span>
+        <input type="text" id="playerName" placeholder="Es. Aurora" required data-i18n-placeholder="profileDialog.name.placeholder" data-i18n-placeholder-default="Es. Aurora">
       </label>
-      <label>Ruolo
+      <label><span data-i18n-key="profileDialog.role" data-i18n-default="Ruolo">Ruolo</span>
         <select id="playerRole" required></select>
       </label>
       <menu>
-        <button type="button" id="cancelProfileBtn">Annulla</button>
-        <button id="saveProfileBtn" value="default">Inizia</button>
+        <button type="button" id="cancelProfileBtn" data-i18n-key="buttons.cancel" data-i18n-default="Annulla">Annulla</button>
+        <button id="saveProfileBtn" value="default" data-i18n-key="buttons.confirmSave" data-i18n-default="Inizia">Inizia</button>
       </menu>
       <div class="toolbar">
         <label class="importLabel">
-          Carica
+          <span data-i18n-key="buttons.load" data-i18n-default="Carica">Carica</span>
           <input type="file" id="importInputSetup" accept=".pqs" hidden>
         </label>
       </div>
@@ -70,10 +78,10 @@
   <dialog id="rewardDialog">
     <div id="rewardContent"></div>
     <menu>
-      <button id="rewardCloseBtn" type="button">Chiudi</button>
+      <button id="rewardCloseBtn" type="button" data-i18n-key="buttons.close" data-i18n-default="Chiudi">Chiudi</button>
     </menu>
   </dialog>
-
+  <script defer src="/static/i18n.js"></script>
   <script defer src="/static/app.js"></script>
 </body>
 </html>

@@ -16,14 +16,91 @@ except ImportError:
     except ImportError:
         from sandbox import run_safely
 
+SUPPORTED_LANGS = {"it", "en"}
+DEFAULT_LANG = "it"
+
 BASE = Path(__file__).parent
-LEVELS = json.loads((BASE / "levels.json").read_text(encoding="utf-8"))
-ACH = json.loads((BASE / "achievements.json").read_text(encoding="utf-8"))
-CHARACTERS = {"characters":[{"name":"Ada"}], "fallback_lines":["Rivedi i requisiti e riprova!"]}
+
+
+def _locale_suffix(lang: str) -> str:
+    return "" if lang == DEFAULT_LANG else f"_{lang}"
+
+
+def _load_locale_blob(name: str, lang: str) -> dict:
+    path = BASE / f"{name}{_locale_suffix(lang)}.json"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+LEVELS = {lang: _load_locale_blob("levels", lang) for lang in SUPPORTED_LANGS}
+ACH = {lang: _load_locale_blob("achievements", lang) for lang in SUPPORTED_LANGS}
+CHARACTERS = {
+    "characters": [{"name": "Ada"}],
+    "fallback_lines": {
+        "it": "Rivedi i requisiti e riprova!",
+        "en": "Review the requirements and try again!"
+    }
+}
 
 DEFAULT_BASE_XP = 10
 
-app = FastAPI(title="Code & Dragons", version=LEVELS["meta"]["version"])
+MESSAGES = {
+    "it": {
+        "level_not_found": "Livello non trovato",
+        "submit_stub": "Completa la funzione sostituendo '...' con la logica richiesta prima di rieseguire i test.",
+        "submit_timeout": "Esecuzione troppo lenta o loop infinito? Prova ad ottimizzare.",
+        "submit_test_failed": "Test {index} fallito: {error}",
+        "submit_success": "Ottimo lavoro! Hai superato il livello.",
+        "submit_failure_generic": "Rivedi i requisiti e riprova!"
+    },
+    "en": {
+        "level_not_found": "Level not found",
+        "submit_stub": "Complete the function by replacing '...' with the required logic before running the tests again.",
+        "submit_timeout": "Execution took too long or got stuck in a loop. Try optimizing your code.",
+        "submit_test_failed": "Test {index} failed: {error}",
+        "submit_success": "Great job! You cleared the level.",
+        "submit_failure_generic": "Review the requirements and try again!"
+    }
+}
+
+
+def normalize_lang(lang: str | None) -> str:
+    if not lang:
+        return DEFAULT_LANG
+    norm = str(lang).lower().split('-')[0]
+    return norm if norm in SUPPORTED_LANGS else DEFAULT_LANG
+
+
+def translate(key: str, lang: str | None = None, **params) -> str:
+    loc = normalize_lang(lang)
+    bundle = MESSAGES.get(loc, MESSAGES[DEFAULT_LANG])
+    default_bundle = MESSAGES[DEFAULT_LANG]
+    template = bundle.get(key, default_bundle.get(key, key))
+    return template.format(**params) if params else template
+
+
+def levels_for(lang: str | None) -> dict:
+    return LEVELS.get(normalize_lang(lang), LEVELS[DEFAULT_LANG])
+
+
+def achievements_for(lang: str | None) -> dict:
+    return ACH.get(normalize_lang(lang), ACH[DEFAULT_LANG])
+
+
+def build_achievement_payload(level_id: str, role: str | None, label: str | None, lang: str) -> dict | None:
+    if not label:
+        return None
+    ach_id = f"{level_id}:{role}" if role else level_id
+    payload = {
+        "id": ach_id,
+        "level_id": level_id,
+        "role": role,
+        "label": label,
+        "lang": lang
+    }
+    return payload
+
+
+app = FastAPI(title="Code & Dragons", version=LEVELS[DEFAULT_LANG]["meta"]["version"])
 app.mount("/static", StaticFiles(directory=str(BASE.parent / "frontend")), name="static")
 
 class SubmitPayload(BaseModel):
@@ -33,20 +110,25 @@ class SubmitPayload(BaseModel):
     player_name: str | None = None
     # consumabili rimossi
     items_used: list[str] | None = None
+    language: str | None = None
 
 # Side quests rimosse
 
 @app.get("/api/meta")
-def meta():
-    return LEVELS["meta"]
+def meta(lang: str | None = Query(default=None)):
+    meta_blob = dict(levels_for(lang)["meta"])
+    meta_blob["languages"] = sorted(SUPPORTED_LANGS)
+    meta_blob["default_language"] = DEFAULT_LANG
+    return meta_blob
 
 @app.get("/api/levels")
-def list_levels(role: str | None = Query(default=None)):
+def list_levels(role: str | None = Query(default=None), lang: str | None = Query(default=None)):
     # Usa l'ordine base e genera ID virtuali per-ruolo (lid__role)
-    ordered = LEVELS["meta"]["order"]
+    bundle = levels_for(lang)
+    ordered = bundle["meta"]["order"]
     data = []
     for base_id in ordered:
-        base = LEVELS["levels"][base_id]
+        base = bundle["levels"][base_id]
         name = base.get("name")
         if role and isinstance(name, dict):
             name = name.get(role)
@@ -68,14 +150,19 @@ def list_levels(role: str | None = Query(default=None)):
 
 
 @app.get("/api/sidequests")
-def list_sidequests(player_level: int = Query(default=1), role: str | None = Query(default=None)):
-    quests = LEVELS["meta"].get("sidequests", [])
+def list_sidequests(
+    player_level: int = Query(default=1),
+    role: str | None = Query(default=None),
+    lang: str | None = Query(default=None)
+):
+    bundle = levels_for(lang)
+    quests = bundle["meta"].get("sidequests", [])
     entries = []
     for item in quests:
         lid = item.get("id")
-        if not lid or lid not in LEVELS["levels"]:
+        if not lid or lid not in bundle["levels"]:
             continue
-        base = LEVELS["levels"][lid]
+        base = bundle["levels"][lid]
         name = base.get("name")
         prompt = base.get("prompt")
         next_intro = base.get("next_intro")
@@ -96,23 +183,34 @@ def list_sidequests(player_level: int = Query(default=1), role: str | None = Que
     return entries
 
 @app.get("/api/roles")
-def roles():
+def roles(lang: str | None = Query(default=None)):
+    ach = achievements_for(lang)
     return {
-        "roles": ACH["roles"],
-        "labels": ACH.get("role_labels", {})
+        "roles": ach["roles"],
+        "labels": ach.get("role_labels", {})
+    }
+
+
+@app.get("/api/achievements")
+def achievements_catalog(lang: str | None = Query(default=None)):
+    ach = achievements_for(lang)
+    return {
+        "by_chapter": ach.get("by_chapter", {}),
+        "sidequests": ach.get("sidequests", {})
     }
 
 @app.get("/api/intro/{role}")
-def intro(role: str):
-    return {"intro": ACH["role_intro"].get(role, "")}
+def intro(role: str, lang: str | None = Query(default=None)):
+    return {"intro": achievements_for(lang)["role_intro"].get(role, "")}
 
 ## /api/sidequests rimosso
 
-def base_xp_for(level_id: str) -> int:
+def base_xp_for(level_id: str, lang: str | None = None) -> int:
     """Return base XP scaled by chapter/level ordering."""
+    bundle = levels_for(lang)
     match = re.match(r"c(\d+)_.*_l(\d+)", level_id)
     if not match:
-        side_meta = next((sq for sq in LEVELS["meta"].get("sidequests", []) if sq.get("id") == level_id), None)
+        side_meta = next((sq for sq in bundle["meta"].get("sidequests", []) if sq.get("id") == level_id), None)
         if side_meta:
             try:
                 unlock = int(side_meta.get("unlock_level", 1))
@@ -129,14 +227,15 @@ def base_xp_for(level_id: str) -> int:
     # Later chapters and higher stages grant more XP.
     return DEFAULT_BASE_XP + (chapter_idx - 1) * 2 + (stage_idx - 1)
 
-def narration_for(role: str, level_id: str) -> str:
-    return ACH.get("narration_by_level", {}).get(level_id, {}).get(role, "")
+def narration_for(role: str, level_id: str, lang: str | None = None) -> str:
+    ach = achievements_for(lang)
+    return ach.get("narration_by_level", {}).get(level_id, {}).get(role, "")
 
 ## narration_variant rimosso (varianti non utilizzate)
 
-def extra_hint_for(level_id: str) -> str | None:
+def extra_hint_for(level_id: str, lang: str | None = None) -> str | None:
     # pick first generic extra hint (hint with empty 'if')
-    hints = LEVELS["levels"][level_id].get("hints", [])
+    hints = levels_for(lang)["levels"][level_id].get("hints", [])
     for h in hints:
         if h.get("if", "") == "":
             return h.get("say")
@@ -147,28 +246,31 @@ def submit(payload: SubmitPayload):
     lid = payload.level_id
     role_for_tests = payload.player_role
     used_items = set(payload.items_used or [])
+    lang = normalize_lang(payload.language)
+    bundle = levels_for(lang)
+    ach_bundle = achievements_for(lang)
     # supporta ID virtuali "base__role"
     if "__" in lid:
         base_id, role_suffix = lid.split("__", 1)
         lid = base_id
         role_for_tests = role_suffix or role_for_tests
-    if lid not in LEVELS["levels"]:
-        raise HTTPException(404, "Livello non trovato")
-    tests_spec = LEVELS["levels"][lid]["tests"]
+    if lid not in bundle["levels"]:
+        raise HTTPException(404, translate("level_not_found", lang))
+    tests_spec = bundle["levels"][lid]["tests"]
     if isinstance(tests_spec, dict):
         # Elimina test differenziati per ruolo: usa solo i default
         role_tests = tests_spec.get("default") or []
         tests = [t["code"] for t in role_tests]
     else:
         tests = [t["code"] for t in tests_spec]
-    signature = LEVELS["levels"][lid].get("signature", "")
+    signature = bundle["levels"][lid].get("signature", "")
     signature_trim = signature.strip() if isinstance(signature, str) else ""
     code_trim = (payload.code or "").strip()
     is_stub = code_trim == signature_trim
 
     result = run_safely(payload.code, tests, timeout_sec=4)
 
-    hints = LEVELS["levels"][lid].get("hints", [])
+    hints = bundle["levels"][lid].get("hints", [])
 
     def match_hint(err: str):
         for h in hints:
@@ -180,21 +282,21 @@ def submit(payload: SubmitPayload):
 
     raw = []
     if is_stub:
-        raw.append("Completa la funzione sostituendo '...' con la logica richiesta prima di rieseguire i test.")
+        raw.append(translate("submit_stub", lang))
     elif not result.get("ok", False):
         if result.get("timeout"):
-            raw.append("Esecuzione troppo lenta o loop infinito? Prova ad ottimizzare.")
+            raw.append(translate("submit_timeout", lang))
         if err := result.get("error"):
             raw.append(err)
     else:
         for idx, fail in enumerate(result["failures"], start=1):
             err = fail["error"]
             hint = match_hint(err)
-            raw.append(hint or f"Test {idx} fallito: {err}")
+            raw.append(hint or translate("submit_test_failed", lang, index=idx, error=err))
 
     extra_hint_granted = None
     if not passed and 'hint_token' in used_items:
-        extra_hint_granted = extra_hint_for(lid)
+        extra_hint_granted = extra_hint_for(lid, lang)
 
     counts = Counter(raw)
     unique = list(OrderedDict((m, None) for m in raw).keys())
@@ -209,39 +311,41 @@ def submit(payload: SubmitPayload):
     next_intro = None
 
     if payload.player_role:
-        narration = narration_for(payload.player_role, lid) or ""
+        narration = narration_for(payload.player_role, lid, lang) or ""
 
     # consumabili rimossi
 
     if passed:
         if payload.player_role:
-            pools = [ACH.get("by_chapter", {}), ACH.get("sidequests", {})]
-            achievement = None
+            pools = [ach_bundle.get("by_chapter", {}), ach_bundle.get("sidequests", {})]
+            achievement_label = None
             for pool in pools:
                 by_role = pool.get(lid, {}) if isinstance(pool, dict) else {}
                 if by_role:
-                    achievement = by_role.get(payload.player_role)
-                    if achievement:
+                    candidate = by_role.get(payload.player_role)
+                    if candidate:
+                        achievement_label = candidate
                         break
-            xp_gained = base_xp_for(lid)
-            ni = LEVELS["levels"][lid].get("next_intro")
+            xp_gained = base_xp_for(lid, lang)
+            ni = bundle["levels"][lid].get("next_intro")
             if isinstance(ni, dict):
                 next_intro = ni.get(payload.player_role)
             else:
                 next_intro = ni
             # chapter completion celebration message
-            msg = ACH.get("chapter_completion_msg", {}).get(lid, {}).get(payload.player_role)
+            msg = ach_bundle.get("chapter_completion_msg", {}).get(lid, {}).get(payload.player_role)
             if msg:
                 narration = (narration + (" " if narration else "") + msg).strip()
+            if achievement_label:
+                achievement = build_achievement_payload(lid, payload.player_role, achievement_label, lang)
         else:
-            xp_gained = base_xp_for(lid)
+            xp_gained = base_xp_for(lid, lang)
 
     persona = CHARACTERS["characters"][0]
-    line = f"{persona['name']}: " + (
-        "Ottimo lavoro! Hai superato il livello."
-        if passed
-        else (" ".join(feedback_list) if feedback_list else CHARACTERS["fallback_lines"][0])
-    )
+    fallback_lines = CHARACTERS.get("fallback_lines", {})
+    fallback_line = fallback_lines.get(lang) or translate("submit_failure_generic", lang)
+    persona_line = translate("submit_success", lang) if passed else (" ".join(feedback_list) if feedback_list else fallback_line)
+    line = f"{persona['name']}: {persona_line}"
     reveal_details = []
     if not passed:
         reveal_item = None

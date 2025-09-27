@@ -3,28 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Compendio — Code & Dragons RPG</title>
+  <title data-i18n-key="compendium.windowTitle" data-i18n-default="Compendio — Code & Dragons RPG">Compendio — Code & Dragons RPG</title>
   <link rel="stylesheet" href="/static/print.css" />
 </head>
 <body>
   <div class="sheet A4">
     <header>
-      <h1>📜 Compendio dell'Avventuriero</h1>
+      <h1 data-i18n-key="compendium.heading" data-i18n-default="📜 Compendio dell'Avventuriero">📜 Compendio dell'Avventuriero</h1>
       <div class="meta"><span id="generatedAt"></span></div>
     </header>
 
     <section>
-      <h2>🎭 Personaggio</h2>
+      <h2 data-i18n-key="sidebar.character" data-i18n-default="🎭 Personaggio">🎭 Personaggio</h2>
       <div id="profile"></div>
     </section>
 
     <section>
-      <h2>🧭 Progressi</h2>
+      <h2 data-i18n-key="compendium.progressHeading" data-i18n-default="🧭 Progressi">🧭 Progressi</h2>
       <div id="progress"></div>
     </section>
 
     <section>
-      <h2>🏅 Conquiste</h2>
+      <h2 data-i18n-key="compendium.achievementsHeading" data-i18n-default="🏅 Conquiste">🏅 Conquiste</h2>
       <ul id="achievements"></ul>
     </section>
 
@@ -33,10 +33,11 @@
     
 
     <footer>
-      <button id="printBtn">Stampa</button>
+      <button id="printBtn" data-i18n-key="compendium.button.print" data-i18n-default="Stampa">Stampa</button>
     </footer>
   </div>
 
-  <script src="/static/compendium.js" defer></script>
+  <script defer src="/static/i18n.js"></script>
+  <script defer src="/static/compendium.js"></script>
 </body>
 </html>
