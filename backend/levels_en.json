@@ -1573,25 +1573,25 @@
         "ranger": "In the field, each event ends up on a line of the journal. `to_json_lines(records)` returns a list of JSON strings, one per record. Keep the signature and make your way through the tests."
       },
       "next_intro": "As you advance, you cross the corridor of uncertain possibilities, where try and exceptions reign.",
-      "signature": "def to_json_lines(records: list[dict]) -> list[str]:\n    ...",
+      "signature": "import json\n\ndef to_json_lines(records: list[dict]) -> list[str]:\n    ...",
       "tests": [
         {
-          "code": "import json\nout = to_json_lines([{'a': 1}, {'b': 2}])\nassert isinstance(out, list) and len(out) == 2\nfor s in out:\n    assert isinstance(s, str)\n    assert isinstance(json.loads(s), dict)"
+          "code": "out = to_json_lines([{'a': 1}, {'b': 2}])\nassert isinstance(out, list) and len(out) == 2\nfor s in out:\n    assert isinstance(s, str)\n    assert isinstance(json.loads(s), dict)"
         },
         {
           "code": "assert to_json_lines([]) == []"
         },
         {
-          "code": "import json\nsrc = [{'x': 1}, {'y': 2, 'z': 3}]\nout = to_json_lines(src)\nparsed = [json.loads(s) for s in out]\nassert parsed == src"
+          "code": "src = [{'x': 1}, {'y': 2, 'z': 3}]\nout = to_json_lines(src)\nparsed = [json.loads(s) for s in out]\nassert parsed == src"
         },
         {
-          "code": "import json\nout = to_json_lines([{'x': 1}])\nassert out and out[0].lstrip().startswith('{')\njson.loads(out[0])"
+          "code": "out = to_json_lines([{'x': 1}])\nassert out and out[0].lstrip().startswith('{')\njson.loads(out[0])"
         },
         {
-          "code": "import json\nout = to_json_lines([{'k': 9}])\nassert len(out) == 1 and isinstance(out[0], str)\nassert json.loads(out[0]) == {'k': 9}"
+          "code": "out = to_json_lines([{'k': 9}])\nassert len(out) == 1 and isinstance(out[0], str)\nassert json.loads(out[0]) == {'k': 9}"
         },
         {
-          "code": "import json\nsrc = [{'a': 'è'}, {'b': [1, 2]}, {'c': {'d': 3}}]\nout = to_json_lines(src)\nassert [json.loads(s) for s in out] == src"
+          "code": "src = [{'a': 'è'}, {'b': [1, 2]}, {'c': {'d': 3}}]\nout = to_json_lines(src)\nassert [json.loads(s) for s in out] == src"
         }
       ],
       "hints": [
