@@ -388,11 +388,11 @@
     "c02_dicts_l4": {
       "name": "Rain of Letters",
       "prompt": {
-        "mage": "A rain of letters falls from the ceiling: count the true whispers, ignoring the noise of lights and metal. Invoke `letter_count(text)` to return a dictionary with the occurrences of each alphabetical letter in lowercase, ignoring symbols, numbers, and spaces. Keep the signature and satisfy the tests.",
-        "rogue": "Secret letters fall on your cloak: count only the real messages, ignore the broken seals. Use `letter_count(text)` to map frequencies of lowercase letters only, discarding the rest. Keep the signature and leap past the tests.",
-        "swordsman": "From the stands, letters rain down: count how many times each cry resounds, ignoring clangs and whistles. Execute `letter_count(text)` returning a dictionary of occurrences in lowercase and ignoring non-letters. Keep the signature and pass the tests.",
-        "alchemist": "The parchments are covered with engravings: count how many times each symbol reappears, ignoring stains. Apply `letter_count(text)` to count only lowercase letters, excluding everything else. Keep the signature and pass the tests.",
-        "ranger": "The wind scatters letters into the campfire: recognize the names and discard the ashes. Implement `letter_count(text)` to return the frequencies of lowercase letters, ignoring symbols and spaces. Keep the signature and pass the tests."
+        "mage": "A rain of letters falls from the ceiling: count the genuine whispers while ignoring the noise of lights and metal. Invoke `letter_count(text)` to return a dictionary with the occurrences of alphabetic letters only, all converted to lowercase, ignoring everything else. Keep the signature and pass the tests.",
+        "rogue": "Secret letters fall onto the cloak: count only the real messages, ignore the broken seals. Use `letter_count(text)` to map the frequencies of alphabetic letters only, converted to lowercase, discarding the rest. Keep the signature and clear the tests.",
+        "swordsman": "From the stands, letters rain down: count how many times each cry echoes, ignoring clashes and whistles. Execute `letter_count(text)` returning a dictionary with the occurrences of alphabetic letters only, all converted to lowercase, ignoring everything else. Keep the signature and pass the tests.",
+        "alchemist": "The scrolls are covered with engravings: count how many times each symbol reappears, ignoring the stains. Apply `letter_count(text)` to count only alphabetic letters converted to lowercase, excluding the rest. Keep the signature and complete the tests.",
+        "ranger": "The wind scatters letters into the campfire: recognize the names and discard the ashes. Implement `letter_count(text)` to return the frequencies of alphabetic letters only, all converted to lowercase, ignoring everything else. Keep the signature and pass the tests."
       },
       "next_intro": "In a few steps you will follow nested paths in the pages, ready to retrieve a hidden value or accept silence.",
       "signature": "def letter_count(text: str) -> dict[str,int]:\n    ...",

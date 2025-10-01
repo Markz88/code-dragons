@@ -388,11 +388,11 @@
     "c02_dicts_l4": {
       "name": "Pioggia di Lettere",
       "prompt": {
-        "mage": "Una pioggia di lettere si stacca dal soffitto: conta i sussurri autentici ignorando il rumore delle luci e del metallo. Invoca `letter_count(text)` per restituire un dizionario con le occorrenze di ogni lettera alfabetica in minuscolo, ignorando simboli, numeri e spazi. Mantieni la firma e soddisfa i test.",
-        "rogue": "Lettere segrete cadono sul mantello: conta solo i messaggi reali, ignora i sigilli rotti. Usa `letter_count(text)` per mappare frequenze di sole lettere minuscole, scartando il resto. Mantieni la firma e scavalca i test.",
-        "swordsman": "Dagli spalti piovono lettere: conta quante volte ogni grido risuona, ignorando clangori e fischi. Esegui `letter_count(text)` riportando un dizionario di occorrenze in minuscolo e ignorando non-lettere. Mantieni la firma e supera i test.",
-        "alchemist": "Le pergamene si coprono di incisioni: conta quante volte ogni simbolo riappare, ignorando le macchie. Applica `letter_count(text)` per conteggiare solo lettere in minuscolo, escludendo tutto il resto. Mantieni la firma e promuovi i test.",
-        "ranger": "Il vento sparge lettere nel fuoco da campo: riconosci i nomi e scarta la cenere. Implementa `letter_count(text)` per restituire le frequenze delle lettere in minuscolo, ignorando simboli e spazi. Mantieni la firma e attraversa i test."
+        "mage": "Una pioggia di lettere si stacca dal soffitto: conta i sussurri autentici ignorando il rumore delle luci e del metallo. Invoca `letter_count(text)` per restituire un dizionario con le occorrenze delle sole lettere alfabetiche, convertite in minuscolo, ignorando tutto il resto. Mantieni la firma e soddisfa i test.",
+        "rogue": "Lettere segrete cadono sul mantello: conta solo i messaggi reali, ignora i sigilli rotti. Usa `letter_count(text)` per mappare le frequenze esclusivamente delle lettere alfabetiche, convertite in minuscolo, scartando il resto. Mantieni la firma e scavalca i test.",
+        "swordsman": "Dagli spalti piovono lettere: conta quante volte ogni grido risuona, ignorando clangori e fischi. Esegui `letter_count(text)` riportando un dizionario con le occorrenze delle sole lettere alfabetiche convertite in minuscolo, ignorando tutto il resto. Mantieni la firma e supera i test.",
+        "alchemist": "Le pergamene si coprono di incisioni: conta quante volte ogni simbolo riappare, ignorando le macchie. Applica `letter_count(text)` per conteggiare soltanto le lettere alfabetiche convertite in minuscolo, escludendo il resto. Mantieni la firma e promuovi i test.",
+        "ranger": "Il vento sparge lettere nel fuoco da campo: riconosci i nomi e scarta la cenere. Implementa `letter_count(text)` per restituire le frequenze unicamente delle lettere alfabetiche, tutte convertite in minuscolo, ignorando il resto. Mantieni la firma e attraversa i test."
       },
       "next_intro": "Fra pochi passi seguirai percorsi annidati nelle pagine, pronto a recuperare un valore nascosto o accettare il silenzio.",
       "signature": "def letter_count(text: str) -> dict[str,int]:\n    ...",
