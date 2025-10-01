@@ -159,12 +159,12 @@
     },
     "c01_lists_l3": {
       "name": "Eco delle Tracce",
-      "prompt": {
-        "mage": "La terza navata risuona di echi ripetuti: per calmare il rimbombo, lascia parlare solo la prima voce di ogni numero. Fallo con `dedup_stable(nums)`, che crea una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e placa i test.",
-        "rogue": "Nel corridoio successivo le trappole scattano sui duplicati: lascia passare solo le prime impronte usando `dedup_stable(nums)`, che restituisce una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e scivola oltre i test.",
-        "swordsman": "Durante l'allenamento successivo taglia via le ripetizioni: nel kata resta solo la prima esecuzione di ogni movimento. Ottienilo con `dedup_stable(nums)`, ritornando una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e lascia che i test confermino la pulizia.",
-        "alchemist": "Gli alambicchi accumulano residui: separa ogni sostanza tenendo solo la prima apparizione. Usa `dedup_stable(nums)` per ottenere una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e supera i test come un filtraggio riuscito.",
-        "ranger": "Le tracce nel fango si ripetono: annota ogni specie solo alla prima comparsa lungo il cammino. Realizza questo con `dedup_stable(nums)`, restituendo una nuova lista senza duplicati successivi, mantenendo l'ordine della lista originale. Mantieni la firma e muoviti leggero tra i test."
+        "prompt": {
+        "mage": "Nella terza navata gli echi si accavallano uno sull’altro: per riportare l’armonia, lascia che risuoni soltanto il primo di ogni suono ripetuto in successione. Usa `dedup_stable(nums)`, che crea una nuova lista eliminando i duplicati consecutivi ma senza alterare l’ordine originario. Mantieni la firma e lascia che i test siano placati.",
+        "rogue": "Nel corridoio segreto, ogni passo lascia troppe impronte uguali consecutive, attirando l’attenzione delle trappole. Conserva soltanto la prima di ogni serie uguale di impronte con `dedup_stable(nums)`, ottenendo una nuova lista priva di duplicati successivi e rispettando l’ordine originale. Mantieni la firma e sguscia oltre i test.",
+        "swordsman": "Nel kata di allenamento, un movimento ripetuto troppe volte in successione rompe il ritmo. Lascia soltanto la prima esecuzione di ogni gesto con `dedup_stable(nums)`, che restituisce una nuova lista senza duplicati consecutivi e nello stesso ordine. Mantieni la firma e lascia che i test confermino la disciplina.",
+        "alchemist": "Gli alambicchi ribollono di residui identici che si accumulano uno dietro l’altro. Isola solo la prima essenza di ciascuna sequenza con `dedup_stable(nums)`, ottenendo una nuova lista senza duplicati successivi e rispettando l’ordine originario. Mantieni la firma e supera i test come una distillazione ben riuscita.",
+        "ranger": "Sul sentiero fangoso le orme si ripetono in fila, confondendo la pista. Annota soltanto la prima di ogni serie uguale di tracce con `dedup_stable(nums)`, creando una nuova lista senza duplicati consecutivi e preservando l’ordine originale. Mantieni la firma e muoviti leggero tra i test."
       },
       "next_intro": "Tra poco ti verra richiesto di scandire il potere in blocchi regolari.",
       "signature": "def dedup_stable(nums: list[int]) -> list[int]:\n    ...",
